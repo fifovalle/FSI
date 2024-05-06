@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+body {
+  background: #f5f5f5;
+  font-family: "Poppins", sans-serif;
+}
+
+.login-box {
+  background: url("../img/favicon/bg-login.png");
+  background-size: cover;
+  background-position: center;
+  padding: 50px;
+  margin: 140px 50px 50px 50px;
+  box-shadow: 10px 2px 60px -5px rgba(0, 0, 0, 0.298);
+  border-radius: 10px;
+}
+
+.logo img {
+  width: 150px;
+  margin: auto;
+  margin-left: 195px;
+}
+
+@media only screen and (max-width: 767px) {
+  .logo {
+    font-size: 34px;
+  }
+}
+
+.header-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.login-form {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.login-form .form-control {
+  border-radius: 5px;
+  height: 50px;
+  margin-bottom: 25px;
+  border: 1px solid green;
+}
+
+.login-form .form-group {
+  position: relative;
+}
+
+.login-form .form-group .forgot-password {
+  position: absolute;
+  top: 45px;
+  right: 3px;
+  color: black;
+}
+
+.login-form .btn {
+  border-radius: 1px;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 12px;
+  text-align: center;
+  margin-top: -10px;
+  font-weight: 500;
+}
+
+.toggle-pass i {
+  position: absolute;
+  font-size: 28px;
+  top: 12px;
+  right: 18px;
+  cursor: pointer;
+}
+
+.captcha-box {
+  width: 200px;
+  height: 50px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.captcha-text {
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+}
