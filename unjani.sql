@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2024 at 03:18 AM
+-- Generation Time: May 07, 2024 at 08:30 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -44,7 +44,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ID_Admin`, `Nama_Admin`, `Foto_Admin`, `Email_Admin`, `Jenis_Kelamin_Admin`, `Status_Verifikasi_Email`, `Kata_Sandi`, `Konfirmasi_Kata_Sandi`, `Token_Verifikasi`) VALUES
-(32, 'Naufal FIFA', 0x363633393831363164373632352e6a7067, 'fifanaufal10@gmail.com', 'Pria', 'Terverifikasi', '$2y$10$.n9ty8talBPZkPMV6KXXguep5je6POYf5IrN3mwA1omwvKq/wiplO', '$2y$10$.n9ty8talBPZkPMV6KXXguep5je6POYf5IrN3mwA1omwvKq/wiplO', 0);
+(32, 'Naufal FIFA', 0x363633393831363164373632352e6a7067, 'fifanaufal10@gmail.com', 'Pria', 'Terverifikasi', '$2y$10$.n9ty8talBPZkPMV6KXXguep5je6POYf5IrN3mwA1omwvKq/wiplO', '$2y$10$.n9ty8talBPZkPMV6KXXguep5je6POYf5IrN3mwA1omwvKq/wiplO', 0),
+(33, 'a', 0x363633396339343533363033392e6a7067, 'a@gmail.com', 'Pria', 'Belum Terverifikasi', '$2y$10$MM4p9FHTQqcusngnmUHw3OeK4pRqTw7hg3yWeGCktUzRtW/vPRtbe', '$2y$10$MM4p9FHTQqcusngnmUHw3OeK4pRqTw7hg3yWeGCktUzRtW/vPRtbe', 81552822),
+(34, 'a', 0x2e2e2f75706c6f6164732f64656661756c742e6a706567, 'sandroanugrahtambunan6@gmail.com', 'Pria', 'Belum Terverifikasi', '$2y$10$37YW.dcgq9OPdM86WJU5eOTj7DkRIRCoVfKqdSEspCMliNWNi2MgS', '$2y$10$37YW.dcgq9OPdM86WJU5eOTj7DkRIRCoVfKqdSEspCMliNWNi2MgS', 26012618);
 
 -- --------------------------------------------------------
 
@@ -209,7 +211,7 @@ ALTER TABLE `testimoni`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `ID_Admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `ID_Admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `berita`

@@ -19,7 +19,6 @@ if (isset($_POST['Simpan'])) {
 
     $pesanKesalahan = '';
 
-
     if (empty($namaAdmin) || empty($emailAdmin) || empty($kataSandi) || empty($konfirmasiKataSandi) || empty($jenisKelaminAdmin)) {
         $pesanKesalahan .= "Semua bidang harus diisi. ";
     }
@@ -38,30 +37,32 @@ if (isset($_POST['Simpan'])) {
         $pesanKesalahan .= "Format email tidak valid. ";
     }
 
-    $fotoAdmin = $_FILES['Foto_Admin'];
+    if (!empty($fotoAdmin['name'])) {
+        $namaFotoAdmin = mysqli_real_escape_string($koneksi, htmlspecialchars($fotoAdmin['name']));
+        $fotoAdminTemp = $fotoAdmin['tmp_name'];
+        $ukuranFotoAdmin = $fotoAdmin['size'];
+        $errorFotoAdmin = $fotoAdmin['error'];
 
-    $namaFotoAdmin = mysqli_real_escape_string($koneksi, htmlspecialchars($fotoAdmin['name']));
-    $fotoAdminTemp = $fotoAdmin['tmp_name'];
-    $ukuranFotoAdmin = $fotoAdmin['size'];
-    $errorFotoAdmin = $fotoAdmin['error'];
+        $tujuanFotoAdmin = '';
+        $ukuranMaksimal = 2 * 1024 * 1024;
 
-    $tujuanFotoAdmin = '';
-    $ukuranMaksimal = 2 * 1024 * 1024;
+        $apakahUnggahBerhasil = ($errorFotoAdmin === 0 && !empty($namaFotoAdmin)) && ($ukuranFotoAdmin <= $ukuranMaksimal);
+        $pesanKesalahan .= (!$apakahUnggahBerhasil && empty($pesanKesalahan)) ? "Gagal mengupload foto admin atau foto tidak diunggah atau ukuran melebihi batas maksimal 2MB." : '';
 
-    $apakahaUnggahBerhasil = ($errorFotoAdmin === 0 && !empty($namaFotoAdmin)) && ($ukuranFotoAdmin <= $ukuranMaksimal);
-    $pesanKesalahan .= (!$apakahaUnggahBerhasil && empty($pesanKesalahan)) ? "Gagal mengupload foto admin atau foto tidak diunggah atau ukuran melebihi batas maksimal 2MB." : '';
+        $formatYangDisetujui = ['jpg', 'jpeg', 'png'];
+        $formatFoto = strtolower(pathinfo($namaFotoAdmin, PATHINFO_EXTENSION));
+        $apakahFormatDisetujui = in_array($formatFoto, $formatYangDisetujui);
+        $pesanKesalahan .= (!$apakahFormatDisetujui && empty($pesanKesalahan)) ? "Format foto harus berupa JPG, JPEG, atau PNG." : '';
 
-    $formatYangDisetujui = ['jpg', 'jpeg', 'png'];
-    $formatFoto = strtolower(pathinfo($namaFotoAdmin, PATHINFO_EXTENSION));
-    $apakahFormatDisetujui = in_array($formatFoto, $formatYangDisetujui);
-    $pesanKesalahan .= (!$apakahFormatDisetujui && empty($pesanKesalahan)) ? "Format foto harus berupa JPG, JPEG, atau PNG." : '';
+        $namaFotoAdminBaru = $apakahFormatDisetujui ? uniqid() . '.' . $formatFoto : '';
 
-    $namaFotoAdminBaru = $apakahFormatDisetujui ? uniqid() . '.' . $formatFoto : '';
+        $tujuanFotoAdmin = $apakahFormatDisetujui ? '../uploads/' . $namaFotoAdminBaru : '';
 
-    $tujuanFotoAdmin = $apakahFormatDisetujui ? '../uploads/' . $namaFotoAdminBaru : '';
-
-    $apakahBerhasilDipindahkan = $apakahFormatDisetujui ? move_uploaded_file($fotoAdminTemp, $tujuanFotoAdmin) : false;
-    $pesanKesalahan .= (!$apakahBerhasilDipindahkan && empty($pesanKesalahan)) ? "Gagal mengupload foto admin." : '';
+        $apakahBerhasilDipindahkan = $apakahFormatDisetujui ? move_uploaded_file($fotoAdminTemp, $tujuanFotoAdmin) : false;
+        $pesanKesalahan .= (!$apakahBerhasilDipindahkan && empty($pesanKesalahan)) ? "Gagal mengupload foto admin." : '';
+    } else {
+        $namaFotoAdminBaru = '../uploads/default.jpeg';
+    }
 
     if (!empty($pesanKesalahan)) {
         setPesanKesalahan($pesanKesalahan);
