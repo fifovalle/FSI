@@ -6,7 +6,11 @@ if (isset($_POST['Simpan'])) {
     $deskripsi = mysqli_real_escape_string($koneksi, $_POST['Deskripsi']);
 
     if (empty($judul) || empty($deskripsi) || !isset($_FILES['Gambar']) || $_FILES['Gambar']['error'] !== UPLOAD_ERR_OK) {
-        setPesanKesalahan("Semua field harus diisi.");
+        if ($_FILES['Gambar']['error'] === UPLOAD_ERR_NO_FILE) {
+            setPesanKesalahan("Gambar tidak di-upload. Silakan upload gambar.");
+        } else {
+            setPesanKesalahan("Semua field harus diisi.");
+        }
         header("Location: $akar_tautan" . "src/pages/carousel.php");
         exit;
     }

@@ -8,39 +8,45 @@ if (isset($_POST['Simpan'])) {
     $namaFileUnik = uniqid('mahasiswa_') . '.' . $ekstensiFile;
     $tujuanFile = '../uploads/' . $namaFileUnik;
 
-    if (empty($namaFile) || empty($_POST['Nama_Mahasiswa']) || empty($_POST['Kesan_Mahasiswa']) || empty($_POST['Tanggal_Testimoni'])) {
-        setPesanKesalahan("Semua field harus diisi dan file foto mahasiswa harus diunggah.");
+    if (empty($_POST['Nama_Mahasiswa']) || empty($_POST['Kesan_Mahasiswa']) || empty($_POST['Tanggal_Testimoni'])) {
+        setPesanKesalahan("Semua field harus diisi.");
         header("Location: $akar_tautan" . "src/pages/testimoni.php");
         exit;
     }
 
-    if (move_uploaded_file($lokasiFile, $tujuanFile)) {
-        $fotoMahasiswa = $namaFileUnik;
-        $namaMahasiswa = mysqli_real_escape_string($koneksi, $_POST['Nama_Mahasiswa']);
-        $kesanMahasiswa = mysqli_real_escape_string($koneksi, $_POST['Kesan_Mahasiswa']);
-        $tanggalTestimoni = mysqli_real_escape_string($koneksi, $_POST['Tanggal_Testimoni']);
+    if (!empty($namaFile) && !empty($lokasiFile)) {
+        if (move_uploaded_file($lokasiFile, $tujuanFile)) {
+            $fotoMahasiswa = $namaFileUnik;
+            $namaMahasiswa = mysqli_real_escape_string($koneksi, $_POST['Nama_Mahasiswa']);
+            $kesanMahasiswa = mysqli_real_escape_string($koneksi, $_POST['Kesan_Mahasiswa']);
+            $tanggalTestimoni = mysqli_real_escape_string($koneksi, $_POST['Tanggal_Testimoni']);
 
-        $objekTestimoni = new Testimoni($koneksi);
+            $objekTestimoni = new Testimoni($koneksi);
 
-        $dataTestimoni = array(
-            "ID_Admin" => $_SESSION['ID_Admin'],
-            'Foto_Mahasiswa' => $fotoMahasiswa,
-            'Nama_Mahasiswa' => $namaMahasiswa,
-            'Kesan_Mahasiswa' => $kesanMahasiswa,
-            'Tanggal_Testimoni' => $tanggalTestimoni,
-        );
+            $dataTestimoni = array(
+                "ID_Admin" => $_SESSION['ID_Admin'],
+                'Foto_Mahasiswa' => $fotoMahasiswa,
+                'Nama_Mahasiswa' => $namaMahasiswa,
+                'Kesan_Mahasiswa' => $kesanMahasiswa,
+                'Tanggal_Testimoni' => $tanggalTestimoni,
+            );
 
-        $simpanDataTestimoni = $objekTestimoni->tambahTestimoni($dataTestimoni);
+            $simpanDataTestimoni = $objekTestimoni->tambahTestimoni($dataTestimoni);
 
-        if ($simpanDataTestimoni) {
-            setPesanKeberhasilan("Berhasil menyimpan data Testimoni.");
+            if ($simpanDataTestimoni) {
+                setPesanKeberhasilan("Berhasil menyimpan data Testimoni.");
+            } else {
+                setPesanKesalahan("Gagal menyimpan data Testimoni.");
+            }
+            header("Location: $akar_tautan" . "src/pages/testimoni.php");
+            exit;
         } else {
-            setPesanKesalahan("Gagal menyimpan data Testimoni.");
+            setPesanKesalahan("Gagal mengunggah foto mahasiswa.");
+            header("Location: $akar_tautan" . "src/pages/testimoni.php");
+            exit;
         }
-        header("Location: $akar_tautan" . "src/pages/testimoni.php");
-        exit;
     } else {
-        setPesanKesalahan("Gagal mengunggah file foto mahasiswa.");
+        setPesanKesalahan("Foto mahasiswa tidak diunggah. Silakan unggah  foto mahasiswa.");
         header("Location: $akar_tautan" . "src/pages/testimoni.php");
         exit;
     }

@@ -68,5 +68,17 @@
                 <div data-i18n="Tables">Testimoni</div>
             </a>
         </li>
+        <li class="menu-item <?php echo is_active('dosen.php', $halaman_sekarang); ?>">
+            <a href="<?php echo $akar_tautan; ?>src/pages/dosen.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-graduation"></i>
+                <div data-i18n="Tables">Tenaga Dosen</div>
+            </a>
+        </li>
+        <li class="menu-item <?php echo is_active('staff.php', $halaman_sekarang); ?>">
+            <a href="<?php echo $akar_tautan; ?>src/pages/staff.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Tables">Tenaga Staf</div>
+            </a>
+        </li>
     </ul>
 </aside>

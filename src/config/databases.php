@@ -127,6 +127,32 @@ class Admin
         }
     }
 
+    function tampilkanAdminDenganSessionId($idSessionAdmin)
+    {
+        $idSessionAdmin = intval($idSessionAdmin);
+        $query = "SELECT * FROM admin WHERE ID_Admin = $idSessionAdmin";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    function getPlainPassword($adminId, $koneksi)
+    {
+        $query = "SELECT Kata_Sandi FROM admin WHERE ID_Admin = $adminId";
+        $result = mysqli_query($koneksi, $query);
+        $row = mysqli_fetch_assoc($result);
+        $plainPassword = $row['Kata_Sandi'];
+        return $plainPassword;
+    }
+
     public function hapusAdmin($id)
     {
         $query = "SELECT ID_Admin, Foto_Admin FROM admin WHERE ID_Admin=?";
@@ -713,3 +739,78 @@ class Testimoni
     }
 }
 // ===================================TESTIMONI==================================
+
+// ===================================PENDIDIKAN DOSEN FSI==================================
+class PendidikanFsi
+{
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function menghilanganString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tambahPendidikanDosenFsi($data)
+    {
+        $query = "INSERT INTO  pendidikan_dosen_fsi (ID_Admin, NIP_NID, Nama_Dosen, Jabatan_Dosen) VALUES (?, ?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "isss",
+            $this->menghilanganString($data['ID_Admin']),
+            $this->menghilanganString($data['NIP_NID']),
+            $this->menghilanganString($data['Nama_Dosen']),
+            $this->menghilanganString($data['Jabatan_Dosen'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================PENDIDIKAN DOSEN FSI==================================
+
+// ===================================TENAGA PENDIDIKAN FSI==================================
+class DosenFsi
+{
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function menghilanganString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tambahTestimoni($data)
+    {
+        $query = "INSERT INTO testimoni (ID_Admin, Foto_Mahasiswa, Nama_Mahasiswa, Kesan_Mahasiswa, Tanggal_Testimoni) VALUES (?, ?, ?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "issss",
+            $this->menghilanganString($data['ID_Admin']),
+            $this->menghilanganString($data['Foto_Mahasiswa']),
+            $this->menghilanganString($data['Nama_Mahasiswa']),
+            $this->menghilanganString($data['Kesan_Mahasiswa']),
+            $this->menghilanganString($data['Tanggal_Testimoni'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================TENAGA PENDIDIKAN FSI==================================

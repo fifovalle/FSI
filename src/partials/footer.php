@@ -6,7 +6,7 @@
                 document.write(new Date().getFullYear());
             </script>
             , dibuat oleh
-            <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Fakultas Sains &
+            <a class="footer-link fw-bolder">Fakultas Sains &
                 Informatika</a>
         </div>
     </div>

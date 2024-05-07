@@ -28,6 +28,7 @@ if (!isset($_SESSION['ID_Admin'])) {
     <!-- SWEETALERT -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
 </head>
 
 <body>
@@ -138,6 +139,8 @@ if (!isset($_SESSION['ID_Admin'])) {
         <script src="../assets/js/dashboards-analytics.js"></script>
         <script src="../assets/js/delete-carousel.js"></script>
         <script src="../assets/js/value-carousel.js"></script>
+        <script src="../assets/js/crop-image.js"></script>
+
         <!-- CORE JS END -->
         <!-- ALERT -->
         <?php include '../partials/alert.php' ?>

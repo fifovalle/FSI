@@ -6,6 +6,13 @@ if (!isset($_SESSION['ID_Admin'])) {
     header("Location: login.php");
     exit();
 }
+
+$idSessionAdmin = $_SESSION['ID_Admin'];
+$adminModel = new Admin($koneksi);
+$dataAdmin = $adminModel->tampilkanAdminDenganSessionId($idSessionAdmin);
+if (!empty($dataAdmin)) {
+    $admin = $dataAdmin[0];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
@@ -58,7 +65,7 @@ if (!isset($_SESSION['ID_Admin'])) {
                                     <h5 class="card-header">Profil</h5>
                                     <div class="card-body">
                                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                                            <img src="../assets/img/avatars/1.png" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
+                                            <img src="../uploads/<?php echo $admin['Foto_Admin']; ?>" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
                                             <div class="button-wrapper">
                                                 <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                                                     <span class="d-none d-sm-block">Unggah Foto Baru</span>
@@ -79,19 +86,19 @@ if (!isset($_SESSION['ID_Admin'])) {
                                             <div class="row">
                                                 <div class="mb-3 col-md-6">
                                                     <label for="profilNamaAdmin" class="form-label">Nama Anda</label>
-                                                    <input class="form-control" type="text" id="profilNamaAdmin" name="Nama_Admin" value="Naufal" autofocus />
+                                                    <input class="form-control" type="text" id="profilNamaAdmin" name="Nama_Admin" value="<?php echo $admin['Nama_Admin']; ?>" autofocus />
                                                 </div>
                                                 <div class="mb-3 col-md-6">
                                                     <label for="profilEmailAdmin" class="form-label">Email Anda</label>
-                                                    <input class="form-control" type="text" id="profilEmailAdmin" name="Email" value="fifovalle10@gmail" autofocus />
+                                                    <input class="form-control" type="text" id="profilEmailAdmin" name="Email" value="<?php echo $admin['Email_Admin']; ?>" autofocus />
                                                 </div>
                                                 <div class="mb-3 col-md-6">
                                                     <label for="profilKataSandiAdmin" class="form-label">Kata Sandi Anda</label>
-                                                    <input class="form-control" type="text" id="profilKataSandiAdmin" name="Kata_Sandi" value="******" autofocus />
+                                                    <input class="form-control" type="text" id="profilKataSandiAdmin" name="Kata_Sandi" value="<?php echo $admin['Konfirmasi_Kata_Sandi']; ?>" autofocus />
                                                 </div>
                                                 <div class="mb-3 col-md-6">
                                                     <label for="profilKonfirmasiKataSandiAdmin" class="form-label">Konfirmasi Kata Sandi Anda</label>
-                                                    <input class="form-control" type="text" id="profilKonfirmasiKataSandiAdmin" name="Konfirmasi_Kata_Sandi" value="******" autofocus />
+                                                    <input class="form-control" type="text" id="profilKonfirmasiKataSandiAdmin" name="Konfirmasi_Kata_Sandi" value="<?php echo $admin['Konfirmasi_Kata_Sandi']; ?>" autofocus />
                                                 </div>
                                             </div>
                                             <div class="mt-2">

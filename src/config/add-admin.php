@@ -31,8 +31,6 @@ if (isset($_POST['Simpan'])) {
     $kecocokanKataSandi = $kataSandi === $konfirmasiKataSandi;
     $pesanKesalahan .= (!$kecocokanKataSandi && empty($pesanKesalahan)) ? "Kata sandi dan konfirmasi kata sandi harus sama." : '';
 
-    $hashKataSandi = password_hash($kataSandi, PASSWORD_DEFAULT);
-
     if (!filter_var($emailAdmin, FILTER_VALIDATE_EMAIL)) {
         $pesanKesalahan .= "Format email tidak valid. ";
     }
@@ -76,12 +74,14 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
+    $hashKataSandi = password_hash($kataSandi, PASSWORD_DEFAULT);
+
     $dataAdmin = array(
         'Foto_Admin' => $namaFotoAdminBaru,
         'Nama_Admin' => $namaAdmin,
         'Email_Admin' => $emailAdmin,
         'Kata_Sandi' => $hashKataSandi,
-        'Konfirmasi_Kata_Sandi' => $hashKataSandi,
+        'Konfirmasi_Kata_Sandi' => $konfirmasiKataSandi,
         'Jenis_Kelamin_Admin' => $jenisKelaminAdmin,
         'Status_Verifikasi_Email' => "Belum Terverifikasi",
         'Token_Verifikasi' => $token

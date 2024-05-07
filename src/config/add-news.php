@@ -2,11 +2,17 @@
 include 'databases.php';
 
 if (isset($_POST['Simpan'])) {
+    if (empty($_POST['Judul']) || empty($_POST['Isi_Berita']) || empty($_POST['Tanggal_Terbit'])) {
+        setPesanKesalahan("Semua field harus diisi.");
+        header("Location: $akar_tautan" . "src/pages/berita.php");
+        exit;
+    }
+
     $namaFile = $_FILES['Gambar']['name'];
     $lokasiFile = $_FILES['Gambar']['tmp_name'];
 
-    if (empty($namaFile) || empty($_POST['Judul']) || empty($_POST['Isi_Berita']) || empty($_POST['Tanggal_Terbit'])) {
-        setPesanKesalahan("Semua field harus diisi.");
+    if (empty($namaFile)) {
+        setPesanKesalahan("Gambar tidak diunggah. Silakan upload gambar.");
         header("Location: $akar_tautan" . "src/pages/berita.php");
         exit;
     }
