@@ -15,10 +15,10 @@
                         <label for="suntingTautanBarNavigasi" class="form-label">Tautan Bar Navigasi</label>
                         <input type="link" placeholder="Masukan Tautan Bar Navigasi" name="Tautan" class="form-control" id="suntingTautanBarNavigasi" required>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" name="Simpan" id="tombolSimpanNavbar">Simpan</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" name="Simpan" id="tombolSimpanNavbar">Simpan</button>
             </div>
         </div>
     </div>

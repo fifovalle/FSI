@@ -13,7 +13,7 @@ $(document).ready(function () {
         console.log(data);
         let testimoniData = JSON.parse(data);
         console.log(testimoniData);
-        $("#suntingProgramStudiID").val(testimoniData.ID_Testimoni);
+        $("#suntingTestimoniID").val(testimoniData.ID_Testimoni);
         $("#suntingNamaMahasiswa").val(testimoniData.Nama_Mahasiswa);
         $("#suntingKesanMahasiswa").val(testimoniData.Kesan_Mahasiswa);
         $("#suntingTanggalTestimoni").val(testimoniData.Tanggal_Testimoni);
@@ -32,7 +32,7 @@ $(document).ready(function () {
       let formData = new FormData($(this).closest("form")[0]);
 
       $.ajax({
-        url: "../config/edit-navbar.php",
+        url: "../config/edit-testimoni.php",
         method: "POST",
         data: formData,
         processData: false,
@@ -55,7 +55,7 @@ $(document).ready(function () {
               timerProgressBar: true,
             }).then((result) => {
               result.dismiss === Swal.DismissReason.timer
-                ? (window.location.href = "../pages/data.php")
+                ? (window.location.href = "../pages/testimoni.php")
                 : null;
             });
           } else {

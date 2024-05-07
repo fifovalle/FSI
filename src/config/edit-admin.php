@@ -7,6 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $emailAdmin = $_POST['Email_Admin'] ?? '';
     $jenisKelaminAdmin = $_POST['Jenis_Kelamin_Admin'] ?? '';
 
+    $emailAdmin = filter_var($emailAdmin, FILTER_VALIDATE_EMAIL);
+    if (!$emailAdmin) {
+        echo json_encode(array("success" => false, "message" => "Format email tidak valid."));
+        exit;
+    }
+
     $adminModel = new Admin($koneksi);
 
     $dataAdmin = array(

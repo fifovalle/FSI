@@ -23,10 +23,10 @@
                         <label for="suntingTanggalTestimoni" class="form-label">Tanggal Testimoni</label>
                         <input type="date" name="Tanggal_Testimoni" class="form-control" id="suntingTanggalTestimoni" required>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" name="Simpan" id="tombolSimpanTestimoni">Simpan</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" name="Simpan" id="tombolSimpanTestimoni">Simpan</button>
             </div>
         </div>
     </div>

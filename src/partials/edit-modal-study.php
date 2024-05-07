@@ -11,10 +11,10 @@
                         <label for="suntingNamaProgramStudi" class="form-label">Program Studi</label>
                         <input type="text" placeholder="Masukkan Nama Program Studi" name="Nama_Prodi" class="form-control" id="suntingNamaProgramStudi" required>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" name="Simpan" id="tombolSimpanProgramStudi">Simpan</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" name="Simpan" id="tombolSimpanProgramStudi">Simpan</button>
             </div>
         </div>
     </div>

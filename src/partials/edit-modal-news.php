@@ -17,16 +17,16 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingIsiBerita" class="form-label">Isi Berita</label>
-                        <textarea id="suntingIsiBerita" class="form-control" placeholder="Masukan Isi Berita Carousel" style="resize: none;" rows="3" name="Deskripsi"></textarea>
+                        <textarea id="suntingIsiBerita" class="form-control" placeholder="Masukan Isi Berita Carousel" name="Isi_Berita" style="resize: none;" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="suntingTanggalTerbitBerita" class="form-label">Tanggal Terbit Berita</label>
                         <input type="date" name="Tanggal_Terbit" class="form-control" id="suntingTanggalTerbitBerita" required>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" name="Simpan" id="tombolSimpanBerita">Simpan</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" name="Simpan" id="tombolSimpanBerita">Simpan</button>
             </div>
         </div>
     </div>

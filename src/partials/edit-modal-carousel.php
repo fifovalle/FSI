@@ -17,12 +17,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingDeskripsiCarousel" class="form-label">Deskripsi Carousel</label>
-                        <textarea id="suntingDeskripsiCarousel" class="form-control" placeholder="Masukan Deskripsi Carousel" style="resize: none;" rows="3"></textarea>
+                        <textarea id="suntingDeskripsiCarousel" class="form-control" placeholder="Masukan Deskripsi Carousel" name="Deskripsi" style="resize: none;" rows="3"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" name="Simpan" id="tombolSimpanCarousel">Simpan</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" name="Simpan" id="tombolSimpanCarousel">Simpan</button>
             </div>
         </div>
     </div>

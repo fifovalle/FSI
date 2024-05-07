@@ -228,8 +228,6 @@ class Navbar
         }
     }
 
-
-
     public function tampilkanDataNavbar()
     {
         $query = "SELECT * FROM navbar LEFT JOIN admin ON navbar.ID_Admin = admin.ID_Admin";
@@ -245,6 +243,22 @@ class Navbar
             return null;
         }
     }
+
+    public function perbaruiNavbar($idNavbar, $dataNavbar)
+    {
+        $sql = "UPDATE navbar SET Daftar_Nama = ?, Tautan = ? WHERE ID_Navbar = ?";
+
+        $stmt = $this->koneksi->prepare($sql);
+
+        $stmt->bind_param("ssi", $dataNavbar['Daftar_Nama'], $dataNavbar['Tautan'], $idNavbar);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     public function hapusNavbar($id)
     {
@@ -313,6 +327,34 @@ class Berita
         } else {
             return null;
         }
+    }
+
+    public function perbaruiBerita($idBerita, $dataBerita)
+    {
+        $sql = "UPDATE berita SET Judul = ?, Isi_Berita = ?, Tanggal_Terbit = ?, Gambar = ? WHERE ID_Berita = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ssssi", $dataBerita['Judul'], $dataBerita['Isi_Berita'], $dataBerita['Tanggal_Terbit'], $dataBerita['Gambar'], $idBerita);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getGambarBeritaById($idBerita)
+    {
+        $sql = "SELECT Gambar FROM berita WHERE ID_Berita = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("i", $idBerita);
+        $stmt->execute();
+
+        $gambar = null;
+        $stmt->bind_result($gambar);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $gambar;
     }
 
     public function hapusBerita($id)
@@ -406,6 +448,35 @@ class Carousel
         }
     }
 
+    public function getGambarCarouselById($idCarousel)
+    {
+        $sql = "SELECT Gambar FROM carousel WHERE ID_Carousel = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("i", $idCarousel);
+        $stmt->execute();
+
+        $gambar = null;
+        $stmt->bind_result($gambar);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $gambar;
+    }
+
+
+    public function perbaruiCarousel($idCarousel, $dataCarousel)
+    {
+        $sql = "UPDATE carousel SET Judul = ?, Deskripsi = ?, Gambar = ? WHERE ID_Carousel = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("sssi", $dataCarousel['Judul'], $dataCarousel['Deskripsi'], $dataCarousel['Gambar'], $idCarousel);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function hapusCarousel($id)
     {
         $query = "SELECT ID_Carousel, Gambar FROM carousel WHERE ID_Carousel=?";
@@ -494,6 +565,20 @@ class ProgramStudi
         }
     }
 
+    public function perbaruiProgramStudi($idProdi, $dataProdi)
+    {
+        $sql = "UPDATE program_studi SET Nama_Prodi = ? WHERE ID_Prodi = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("si", $dataProdi['Nama_Prodi'], $idProdi);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     public function hapusProgramStudi($id)
     {
         $queryDelete = "DELETE FROM program_studi WHERE ID_Prodi=?";
@@ -559,6 +644,34 @@ class Testimoni
             return $data;
         } else {
             return null;
+        }
+    }
+
+    public function getFotoMahasiswaById($idTestimoni)
+    {
+        $sql = "SELECT Foto_Mahasiswa FROM testimoni WHERE ID_Testimoni = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("i", $idTestimoni);
+        $stmt->execute();
+
+        $foto = null;
+        $stmt->bind_result($foto);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $foto;
+    }
+
+    public function perbaruiTestimoni($idTestimoni, $dataTestimoni)
+    {
+        $sql = "UPDATE testimoni SET Nama_Mahasiswa = ?, Kesan_Mahasiswa = ?, Tanggal_Testimoni = ?, Foto_Mahasiswa = ? WHERE ID_Testimoni = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ssssi", $dataTestimoni['Nama_Mahasiswa'], $dataTestimoni['Kesan_Mahasiswa'], $dataTestimoni['Tanggal_Testimoni'], $dataTestimoni['Foto_Mahasiswa'], $idTestimoni);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
         }
     }
 

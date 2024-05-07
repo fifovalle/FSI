@@ -54,7 +54,7 @@ $(document).ready(function () {
               timerProgressBar: true,
             }).then((result) => {
               result.dismiss === Swal.DismissReason.timer
-                ? (window.location.href = "../pages/data.php")
+                ? (window.location.href = "../pages/bar-navigasi.php")
                 : null;
             });
           } else {

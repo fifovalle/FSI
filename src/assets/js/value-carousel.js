@@ -31,7 +31,7 @@ $(document).ready(function () {
       let formData = new FormData($(this).closest("form")[0]);
 
       $.ajax({
-        url: "../config/edit-navbar.php",
+        url: "../config/edit-carousel.php",
         method: "POST",
         data: formData,
         processData: false,
@@ -54,7 +54,7 @@ $(document).ready(function () {
               timerProgressBar: true,
             }).then((result) => {
               result.dismiss === Swal.DismissReason.timer
-                ? (window.location.href = "../pages/data.php")
+                ? (window.location.href = "../pages/carousel.php")
                 : null;
             });
           } else {
