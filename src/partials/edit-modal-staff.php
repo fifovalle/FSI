@@ -5,10 +5,11 @@
                 <h5 class="modal-title" id="addDataModalLabel">Sunting Staff</h5>
             </div>
             <div class="modal-body">
-                <form method="post" action="../config/">
+                <form method="POST" enctype="multipart/form-data">
+                    <input type="hidden" id="suntingStaffID" name="ID_Staff" autocomplete="off">
                     <div class="mb-3">
-                        <label for="suntingNIPNID" class="form-label">NIP / NID</label>
-                        <input type="number" placeholder="Masukkan NIP / NID" name="NIP_NID" class="form-control" id="suntingNIPNID">
+                        <label for="suntingNIPNIDStaff" class="form-label">NIP / NID</label>
+                        <input type="number" placeholder="Masukkan NIP / NID" name="NIP_NID_Staff" class="form-control" id="suntingNIPNIDStaff">
                     </div>
                     <div class="mb-3">
                         <label for="suntingNamaStaff" class="form-label">Nama Staff</label>
@@ -19,7 +20,7 @@
                         <input type="text" placeholder="Masukkan Jabatan Staff" name="Jabatan_Staff" class="form-control" id="suntingNamaJabatanStaff">
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" name="Simpan"><?php echo htmlspecialchars('Simpan'); ?></button>
+                        <button type="button" class="btn btn-primary" name="Simpan" id="tombolSimpanStaff">Simpan</button>
                     </div>
                 </form>
             </div>

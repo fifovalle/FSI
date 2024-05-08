@@ -15,7 +15,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="<?php echo $akar_tautan; ?>src/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                        <img src="<?php echo $akar_tautan; ?>src/uploads/<?php echo $_SESSION['Foto_Admin']; ?>" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -24,12 +24,12 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="<?php echo $akar_tautan; ?>src/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                        <img src="<?php echo $akar_tautan; ?>src/uploads/<?php echo $_SESSION['Foto_Admin']; ?>" alt class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">Hamba Allah</span>
-                                    <small class="text-muted">Super Idol Admin</small>
+                                    <span class="fw-semibold d-block"><?php echo $_SESSION['Nama_Admin']; ?></span>
+                                    <small class="text-muted"><strong>Admin</strong></small>
                                 </div>
                             </div>
                         </a>

@@ -66,26 +66,26 @@ if (!isset($_SESSION['ID_Admin'])) {
                                         </tr>
                                     </thead>
                                     <?php
-                                    $testimoniModel = new Testimoni($koneksi);
-                                    $testimoniInfo = $testimoniModel->tampilkanDataTestimoni();
+                                    $dosenModel = new Dosen($koneksi);
+                                    $dosenInfo = $dosenModel->tampilkanDataDosen();
                                     ?>
                                     <tbody class="table-border-bottom-0">
-                                        <?php if (!empty($testimoniInfo)) : ?>
-                                            <?php foreach ($testimoniInfo as $testimoni) : ?>
+                                        <?php if (!empty($dosenInfo)) : ?>
+                                            <?php foreach ($dosenInfo as $dosen) : ?>
                                                 <tr>
                                                     <td>
-                                                        <strong><?php echo $testimoni['Nama_Mahasiswa']; ?></strong>
+                                                        <?php echo $dosen['NIP_NID_Dosen']; ?>
                                                     </td>
-                                                    <td><?php echo $testimoni['Kesan_Mahasiswa']; ?></td>
-                                                    <td><?php echo $testimoni['Nama_Admin']; ?></td>
+                                                    <td><strong><?php echo $dosen['Nama_Dosen']; ?></strong></td>
+                                                    <td><?php echo $dosen['Jabatan_Dosen']; ?></td>
                                                     <td>
                                                         <div class="dropdown">
                                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                                                 <i class="bx bx-dots-vertical-rounded"></i>
                                                             </button>
                                                             <div class="dropdown-menu">
-                                                                <a class="dropdown-item buttonStudy" data-bs-toggle="modal" data-bs-target="#suntingDosen"><i class="bx bx-edit-alt me-1"></i>Sunting</a>
-                                                                <a class="dropdown-item" onclick="konfirmasiHapusTestimoni(<?php echo $testimoni['ID_Testimoni']; ?>)"><i class="bx bx-trash me-1"></i>Hapus</a>
+                                                                <a class="dropdown-item buttonDosen" data-bs-toggle="modal" data-id="<?php echo $dosen['ID_Dosen']; ?>"><i class="bx bx-edit-alt me-1"></i>Sunting</a>
+                                                                <a class="dropdown-item" onclick="konfirmasiHapusdosen(<?php echo $dosen['ID_Dosen']; ?>)"><i class="bx bx-trash me-1"></i>Hapus</a>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -93,7 +93,7 @@ if (!isset($_SESSION['ID_Admin'])) {
                                             <?php endforeach; ?>
                                         <?php else : ?>
                                             <tr>
-                                                <td colspan="6" class="text-center text-danger fw-bold">Tidak ada data testimoni!</td>
+                                                <td colspan="6" class="text-center text-danger fw-bold">Tidak ada data dosen!</td>
                                             </tr>
                                         <?php endif; ?>
                                     </tbody>
@@ -127,8 +127,8 @@ if (!isset($_SESSION['ID_Admin'])) {
         <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
         <script src="../assets/js/main.js"></script>
         <script src="../assets/js/dashboards-analytics.js"></script>
-        <script src="../assets/js/value-testimoni.js"></script>
-        <script src="../assets/js/delete-testimoni.js"></script>
+        <script src="../assets/js/value-dosen.js"></script>
+        <script src="../assets/js/delete-dosen.js"></script>
         <!-- CORE JS END -->
         <!-- ALERT -->
         <?php include '../partials/alert.php' ?>

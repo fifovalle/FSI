@@ -5,10 +5,10 @@
                 <h5 class="modal-title" id="addDataModalLabel">Tambah Dosen</h5>
             </div>
             <div class="modal-body">
-                <form method="post" action="../config/">
+                <form method="post" action="../config/add-dosen.php" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="tambahNIPNID" class="form-label">NIP / NID</label>
-                        <input type="number" placeholder="Masukkan NIP / NID" name="NIP_NID" class="form-control" id="tambahNIPNID">
+                        <input type="number" placeholder="Masukkan NIP / NID" name="NIP_NID_Dosen" class="form-control" id="tambahNIPNID">
                     </div>
                     <div class="mb-3">
                         <label for="tambahNamaDosen" class="form-label">Nama Dosen</label>

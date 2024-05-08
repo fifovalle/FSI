@@ -52,6 +52,20 @@ class Admin
         }
     }
 
+    public function perbaruiProfile($id, $data)
+    {
+        $query = "UPDATE admin SET Foto_Admin=?, Nama_Admin=?, Email_Admin=?, Kata_Sandi=?, Konfirmasi_Kata_Sandi=? WHERE ID_Admin=?";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("sssssi", $data['Foto_Admin'], $data['Nama_Admin'], $data['Email_Admin'], $data['Kata_Sandi'], $data['Konfirmasi_Kata_Sandi'], $id);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function updateStatusVerifikasi($adminId, $status)
     {
         $query = "UPDATE admin SET Status_Verifikasi_Email = ? WHERE ID_Admin = ?";
@@ -81,6 +95,18 @@ class Admin
         } else {
             return false;
         }
+    }
+
+    public function getProfilById($id)
+    {
+        $query = "SELECT * FROM admin WHERE ID_Admin = '$id'";
+        $result = mysqli_query($this->koneksi, $query);
+
+        if (!$result || mysqli_num_rows($result) == 0) {
+            return null;
+        }
+
+        return mysqli_fetch_assoc($result);
     }
 
     public function getAdminByToken($token)
@@ -740,8 +766,8 @@ class Testimoni
 }
 // ===================================TESTIMONI==================================
 
-// ===================================PENDIDIKAN DOSEN FSI==================================
-class PendidikanFsi
+// ===================================DOSEN==================================
+class Dosen
 {
     private $koneksi;
 
@@ -755,15 +781,14 @@ class PendidikanFsi
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
     }
 
-    public function tambahPendidikanDosenFsi($data)
+    public function tambahDosen($data)
     {
-        $query = "INSERT INTO  pendidikan_dosen_fsi (ID_Admin, NIP_NID, Nama_Dosen, Jabatan_Dosen) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO  tenaga_dosen (NIP_NID_Dosen, Nama_Dosen, Jabatan_Dosen) VALUES (?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "isss",
-            $this->menghilanganString($data['ID_Admin']),
-            $this->menghilanganString($data['NIP_NID']),
+            "iss",
+            $this->menghilanganString($data['NIP_NID_Dosen']),
             $this->menghilanganString($data['Nama_Dosen']),
             $this->menghilanganString($data['Jabatan_Dosen'])
         );
@@ -774,11 +799,55 @@ class PendidikanFsi
             return false;
         }
     }
-}
-// ===================================PENDIDIKAN DOSEN FSI==================================
 
-// ===================================TENAGA PENDIDIKAN FSI==================================
-class DosenFsi
+    public function perbaruiDosen($idDosen, $dataDosen)
+    {
+        $sql = "UPDATE tenaga_dosen SET NIP_NID_Dosen = ?, Nama_Dosen = ?, Jabatan_Dosen = ? WHERE ID_Dosen = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("issi", $dataDosen['NIP_NID_Dosen'], $dataDosen['Nama_Dosen'], $dataDosen['Jabatan_Dosen'], $idDosen);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function tampilkanDataDosen()
+    {
+        $query = "SELECT * FROM tenaga_dosen";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function hapusDosen($id)
+    {
+        $queryDelete = "DELETE FROM tenaga_dosen WHERE ID_Dosen=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================DOSEN==================================
+
+// ===================================STAFF==================================
+class Staff
 {
     private $koneksi;
 
@@ -792,18 +861,16 @@ class DosenFsi
         return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
     }
 
-    public function tambahTestimoni($data)
+    public function tambahStaff($data)
     {
-        $query = "INSERT INTO testimoni (ID_Admin, Foto_Mahasiswa, Nama_Mahasiswa, Kesan_Mahasiswa, Tanggal_Testimoni) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO tenaga_staff (NIP_NID_Staff, Nama_Staff, Jabatan_Staff) VALUES (?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "issss",
-            $this->menghilanganString($data['ID_Admin']),
-            $this->menghilanganString($data['Foto_Mahasiswa']),
-            $this->menghilanganString($data['Nama_Mahasiswa']),
-            $this->menghilanganString($data['Kesan_Mahasiswa']),
-            $this->menghilanganString($data['Tanggal_Testimoni'])
+            "iss",
+            $this->menghilanganString($data['NIP_NID_Staff']),
+            $this->menghilanganString($data['Nama_Staff']),
+            $this->menghilanganString($data['Jabatan_Staff'])
         );
 
         if ($statement->execute()) {
@@ -812,5 +879,49 @@ class DosenFsi
             return false;
         }
     }
+
+    public function perbaruiStaff($idStaff, $dataStaff)
+    {
+        $sql = "UPDATE tenaga_staff SET NIP_NID_Staff = ?, Nama_Staff = ?, Jabatan_Staff = ? WHERE ID_Staff = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("issi", $dataStaff['NIP_NID_Staff'], $dataStaff['Nama_Staff'], $dataStaff['Jabatan_Staff'], $idStaff);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function tampilkanDataStaff()
+    {
+        $query = "SELECT * FROM tenaga_staff";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function hapusStaff($id)
+    {
+        $queryDelete = "DELETE FROM tenaga_staff WHERE ID_Staff=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
-// ===================================TENAGA PENDIDIKAN FSI==================================
+// ===================================STAFF==================================

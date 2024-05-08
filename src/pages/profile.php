@@ -82,7 +82,7 @@ if (!empty($dataAdmin)) {
                                     </div>
                                     <hr class="my-0" />
                                     <div class="card-body">
-                                        <form id="formAccountSettings" method="POST" onsubmit="return false">
+                                        <form method="post" action="../config/edit-profil.php" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="mb-3 col-md-6">
                                                     <label for="profilNamaAdmin" class="form-label">Nama Anda</label>
@@ -90,7 +90,7 @@ if (!empty($dataAdmin)) {
                                                 </div>
                                                 <div class="mb-3 col-md-6">
                                                     <label for="profilEmailAdmin" class="form-label">Email Anda</label>
-                                                    <input class="form-control" type="text" id="profilEmailAdmin" name="Email" value="<?php echo $admin['Email_Admin']; ?>" autofocus />
+                                                    <input class="form-control" type="text" id="profilEmailAdmin" name="Email_Admin" value="<?php echo $admin['Email_Admin']; ?>" autofocus />
                                                 </div>
                                                 <div class="mb-3 col-md-6">
                                                     <label for="profilKataSandiAdmin" class="form-label">Kata Sandi Anda</label>
@@ -102,7 +102,7 @@ if (!empty($dataAdmin)) {
                                                 </div>
                                             </div>
                                             <div class="mt-2">
-                                                <button type="submit" class="btn btn-primary me-2">Ubah Perubahan</button>
+                                                <button type="submit" class="btn btn-primary me-2" name="Simpan">Ubah Perubahan</button>
                                             </div>
                                         </form>
                                     </div>
