@@ -1,0 +1,10 @@
+@media screen and (max-width: 2048px) {
+  .section-akreditasiinternal {
+    padding: 200px 100px 200px 10px;
+  }
+
+  .header-akreditasiinternal img {
+    border-radius: 4px;
+    width: 20%;
+  }
+}

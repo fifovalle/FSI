@@ -1,0 +1,249 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 2048px) {
+  .navbar-brand {
+    display: block;
+    width: 100%;
+  }
+
+  .navbar-brand1 {
+    display: none !important;
+  }
+
+  .navbar {
+    display: block;
+    padding: 20px 0 20px 0;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 20px 0 rgba(31, 38, 135, 0.17);
+    backdrop-filter: blur(5.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .nav-link {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-link i {
+    margin-top: 5.5px;
+  }
+
+  .nav-link:hover {
+    color: #007bff;
+  }
+
+  .menu-active {
+    color: #007bff;
+  }
+
+  .nav-item {
+    margin: 0 10px 0 10px;
+    font-size: 16px;
+  }
+
+  .dropdown-menu {
+    background-color: #01012f;
+  }
+  .dropdown-item,
+  .dropdown-item.dropdown .nav-link {
+    padding: 0.25rem 1.5rem;
+    color: #ffff;
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item.dropdown .nav-link:hover {
+    color: #007bff;
+    background-color: transparent;
+  }
+
+  .dropdown-item.active,
+  .dropdown-item.dropdown {
+    color: #007bff;
+    background-color: transparent;
+  }
+
+  .dropdown-item:hover .submenu {
+    display: block;
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    min-width: 200px;
+    background-color: #eeeeee;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .submenu-item {
+    padding: 0.5rem;
+    color: #333;
+    text-decoration: none;
+    display: block;
+  }
+
+  .submenu-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+  }
+
+  .submenu-item.active {
+    color: #007bff;
+  }
+}
+
+/* Untuk Smartphone */
+@media screen and (min-width: 360px) and (max-width: 428px) {
+  .navbar {
+    background-color: #007bff;
+    padding: 10px 0 10px 0;
+  }
+
+  .navbar-brand {
+    display: none;
+  }
+  .navbar-brand1 {
+    display: block !important;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  #checkbox {
+    display: none;
+  }
+
+  .toggle {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition-duration: 0.5s;
+  }
+
+  .bars {
+    width: 100%;
+    height: 4px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 4px;
+  }
+
+  #bar2 {
+    transition-duration: 0.8s;
+  }
+
+  #bar1,
+  #bar3 {
+    width: 70%;
+  }
+
+  #checkbox:checked + .toggle .bars {
+    position: absolute;
+    transition-duration: 0.5s;
+  }
+
+  #checkbox:checked + .toggle #bar2 {
+    transform: scaleX(0);
+    transition-duration: 0.5s;
+  }
+
+  #checkbox:checked + .toggle #bar1 {
+    width: 100%;
+    transform: rotate(45deg);
+    transition-duration: 0.5s;
+  }
+
+  #checkbox:checked + .toggle #bar3 {
+    width: 100%;
+    transform: rotate(-45deg);
+    transition-duration: 0.5s;
+  }
+
+  #checkbox:checked + .toggle {
+    transition-duration: 0.5s;
+    transform: rotate(180deg);
+  }
+
+  .nav-link {
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .nav-link:hover {
+    color: black;
+  }
+  .nav-item {
+    margin: 5px 0 5px 0;
+  }
+
+  .dropdown-item,
+  .dropdown-item.dropdown .nav-link {
+    font-size: 10px;
+    font-weight: bold;
+    color: b;
+  }
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    min-width: 200px;
+    background-color: #eeeeee;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .submenu-item {
+    padding: 0.5rem;
+    font-size: 10px;
+    color: black;
+    text-decoration: none;
+    display: block;
+  }
+
+  .submenu-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+  }
+}

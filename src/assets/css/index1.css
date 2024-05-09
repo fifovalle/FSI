@@ -1,0 +1,362 @@
+@media screen and (min-width: 360px) and (max-width: 428px) {
+  * {
+    overflow-x: hidden;
+  }
+  #carouselExampleCaptions {
+    width: auto;
+    padding: 0 auto;
+  }
+
+  .carousel-inner {
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  .carousel-item {
+    height: 200px;
+  }
+
+  .carousel-item img {
+    object-fit: cover;
+    opacity: 0.8;
+  }
+
+  .carousel-caption h5 {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow-y: hidden;
+  }
+
+  .carousel-caption button {
+    width: 120px;
+    font-size: 10px;
+    border-radius: 20px;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: #d3d3d3;
+    border-radius: 20%;
+    padding: 5px;
+  }
+
+  #TentangFakultas {
+    width: auto;
+  }
+
+  .section-fakultas {
+    margin: 30px 0 0 0;
+    padding: 0 15px 50px 15px;
+  }
+
+  .section-fakultas .col-sm-12 {
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
+
+  .row.fakultas h1 {
+    font-size: 25px;
+    margin: 0 50px 50px 50px;
+  }
+  .section-fakultas .col-sm-12 p {
+    font-size: 15px;
+    padding: 0 10px 0 10px;
+  }
+
+  video {
+    width: 250px;
+    height: 250px;
+  }
+  .section-jurusan {
+    width: auto;
+    margin: 50px 0 50px 0;
+    padding: 70px 20px 70px 20px;
+  }
+  .header-jurusan lead {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #000000;
+  }
+  .header-jurusan h1 {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    overflow-y: hidden;
+  }
+  .card-jurusan .card-title {
+    overflow-y: hidden;
+  }
+  .card-agenda .card-title,
+  .card-berita .card-title,
+  .card-pengumuman .card-title {
+    overflow-y: hidden;
+  }
+
+  .header-beritaterbaru {
+    padding: 0 20px 0 20px;
+  }
+  .header-beritaterbaru h1 {
+    font-size: 22px;
+    margin: 0 auto;
+  }
+  .opsi-button {
+    padding: 0 50px 0 50px;
+  }
+
+  #AgendaButton,
+  #BeritaButton,
+  #PengumumanButton {
+    font-size: 14px;
+  }
+
+  .agenda {
+    border-radius: 10px 10px 10px 10px;
+    margin: 30px 0 10px 0;
+  }
+
+  .berita,
+  .pengumuman {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 10px 10px 10px 10px;
+  }
+  .card-jurusan,
+  .card-agenda,
+  .card-berita,
+  .card-pengumuman {
+    width: 18rem;
+    margin-bottom: 30px;
+  }
+
+  .card-img-top {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  .bg-dekan {
+    padding: 0 10px;
+  }
+
+  .img-thumbnail {
+    width: 100%;
+    height: 100%;
+  }
+
+  #foto-dekan {
+    padding: 30px 80px 0 80px;
+  }
+  #selayang-pandang {
+    padding: 50px 50px 0 50px;
+  }
+  .content-pengantar h1 {
+    overflow-y: hidden;
+    font-size: 30px;
+  }
+  .content-pengantar p {
+    font-size: 12px;
+  }
+
+  .content-pengantar h4 {
+    font-size: 17px;
+    overflow-y: hidden;
+  }
+
+  .content-pengantar h5 {
+    font-size: 14px;
+    overflow-y: hidden;
+  }
+  .header-wakildekan lead {
+    font-size: 20px;
+  }
+
+  .header-wakildekan h1 {
+    margin-bottom: 25px;
+    overflow-y: hidden;
+  }
+  .section-visimisi {
+    width: auto;
+  }
+
+  .containercss {
+    width: 300px;
+  }
+
+  blockquote {
+    font-size: 18px;
+    width: auto;
+    overflow-y: hidden;
+  }
+
+  .slidecss {
+    width: 290px;
+  }
+
+  .h2Slidder {
+    font-size: 18px;
+    overflow-y: hidden;
+  }
+
+  .deskripsiSlider {
+    font-size: 10px;
+    overflow-y: hidden;
+  }
+
+  .description-quotes {
+    font-size: 10px;
+  }
+
+  .quotes {
+    font-size: 80px;
+  }
+
+  #carousel-wrapper {
+    #menu {
+      #current-option {
+        #current-option-text1 {
+          font-size: 16px;
+          width: 165px;
+          margin-top: -50px;
+          line-height: 18px;
+          overflow-y: hidden;
+          &::before {
+            position: absolute;
+            transform: translate(100px, 380px);
+          }
+
+          &::after {
+            position: absolute;
+            transform: translate(100px, -380px);
+          }
+        }
+        #current-option-text2 {
+          font-size: 16px;
+          width: 140px;
+          overflow-y: hidden;
+          margin-top: -130px;
+        }
+      }
+
+      #previous-option {
+        position: absolute;
+        transform: translate(130px, 50px);
+      }
+
+      #next-option {
+        position: absolute;
+        transform: translate(130px, -50px) rotate(180deg);
+      }
+    }
+    #image {
+      height: 376px;
+      width: 200px;
+      transform: translate(30px, 0);
+    }
+  }
+
+  @keyframes previous-text {
+    50%,
+    55% {
+      transform: translate(0%, 390px);
+    }
+    to {
+      transform: translate(0%, 380px);
+    }
+  }
+
+  @keyframes previous-top-arrow {
+    50% {
+      transform: translate(310px, 53px);
+    }
+  }
+
+  @keyframes previous-bottom-arrow {
+    50% {
+      transform: translate(310px, -47px) rotate(180deg);
+    }
+  }
+
+  @keyframes previous-image {
+    0% {
+      transform: translate(30px, 0) scale(1);
+      opacity: 1;
+    }
+    70% {
+      transform: translate(30px, 0) scale(1.1);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(30px, 0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes next-text {
+    50%,
+    55% {
+      transform: translate(0%, -390px);
+    }
+    to {
+      transform: translate(0%, -380px);
+    }
+  }
+
+  @keyframes next-top-arrow {
+    50% {
+      transform: translate(310px, 47px);
+    }
+  }
+
+  @keyframes next-bottom-arrow {
+    50% {
+      transform: translate(310px, -53px) rotate(180deg);
+    }
+  }
+
+  @keyframes next-image {
+    0% {
+      transform: translate(30px, 0) scale(1);
+      opacity: 1;
+    }
+    70% {
+      transform: translate(30px, 0) scale(1.1);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(30px, 0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  .description {
+    margin: auto;
+  }
+  .header-visi h1 {
+    margin: 0 50px 0 0;
+  }
+  .header-visi h3 {
+    margin: 0 0 50px 0;
+    font-size: 15px;
+    padding: 20px 10px 20px 10px;
+  }
+  .header-misi h1 {
+    margin: 0 0 10px 100px;
+  }
+  .header-misi h3 {
+    padding: 10px 10px 5px 10px;
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .header-misi ol {
+    padding: 10px 30px 10px 30px;
+    font-size: 15px;
+    text-align: center;
+  }
+  .header-misi li {
+    margin: 25px 0 25px 0;
+  }
+}

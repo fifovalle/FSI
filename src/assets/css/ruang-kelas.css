@@ -1,0 +1,42 @@
+@media screen and (max-width: 2048px) {
+  .section-kelas {
+    margin: 140px 240px 100px 240px;
+    padding: 0;
+  }
+  .header-kelas {
+    border: 15px solid whitesmoke;
+    border-style: ridge;
+    padding: 50px 70px;
+  }
+
+  .title-kelas h1 {
+    border-bottom: 4px solid #01012f;
+    margin: 0 200px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #01012f;
+  }
+  .title-kelas p {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 2px;
+  }
+
+  .keterangan-kelas {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+    border-left: 4px solid #01012f;
+    padding: 20px 30px;
+    margin: 70px 10px;
+    letter-spacing: 2px;
+    background-color: #edeaea;
+    border-radius: 0 10px 10px 0;
+  }
+  .kelas-img img {
+    width: 500px;
+    height: 500px;
+  }
+}

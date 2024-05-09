@@ -1,0 +1,548 @@
+@media screen and (max-width: 2048px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .carousel-main {
+    margin-top: 130px;
+  }
+  .carousel-inner {
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+
+  .carousel-item {
+    height: 700px;
+  }
+
+  .carousel-item img {
+    object-fit: cover;
+    opacity: 0.8;
+  }
+  .carousel-caption h5 {
+    font-size: 70px;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .carousel-caption button {
+    width: 200px;
+    font-size: 20px;
+    border-radius: 20px;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: #d3d3d3;
+    border-radius: 20%;
+    padding: 20px;
+  }
+
+  .section-jurusan {
+    margin: 50px 0 50px 0;
+    padding: 100px 20px 100px 20px;
+    background: #01012f;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .header-jurusan {
+    margin-bottom: 40px;
+  }
+  .header-jurusan lead {
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #b0b0b0;
+  }
+  .header-jurusan h1 {
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: white;
+    text-shadow: 2px 2px 4px #b0b0b0;
+    text-transform: uppercase;
+  }
+
+  .header-jurusan hr {
+    border-color: #000000;
+    border-width: 2px;
+  }
+
+  .card-jurusan,
+  .card-agenda,
+  .card-berita,
+  .card-pengumuman {
+    width: 21rem;
+    padding: 20px 0 20px 0;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .card-jurusan:hover,
+  .card-agenda:hover,
+  .card-berita:hover,
+  .card-pengumuman:hover {
+    background: #e8d5b5;
+    box-shadow: 0 8px 32px 10px rgba(255, 255, 255, 0.37);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-radius: 10px;
+    color: black;
+    transition: background-color 0.5s ease;
+  }
+
+  #icon-jurusan {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-beritaterbaru {
+    padding: 70px 0 70px 0;
+    border-radius: 50px;
+    margin: 0 10px 0 10px;
+    background: white;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .header-beritaterbaru h1 {
+    margin: 0 500px 0 500px;
+    padding: 10px 0 10px 0;
+    background: transparent;
+    color: #01012f82;
+    text-shadow: 1px 1px 1px #01012f;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 3px;
+    border-bottom: 5px solid #01012f82;
+  }
+
+  #AgendaButton,
+  #BeritaButton,
+  #PengumumanButton {
+    color: whitesmoke;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: 2px solid black;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px 40px 10px 40px;
+  }
+
+  .agenda {
+    background: #01012f82;
+    border: 3px solid #d3d3d3;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.3);
+  }
+  .berita {
+    background: #01012f82;
+    border: 3px solid #d3d3d3;
+    border-right: none;
+    border-left: none;
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.3);
+  }
+  .pengumuman {
+    background: #01012f82;
+    border: 3px solid #d3d3d3;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.3);
+  }
+  .active {
+    background-color: #01012f;
+  }
+
+  .agenda:hover,
+  .berita:hover,
+  .pengumuman:hover {
+    background: #01012f;
+    cursor: pointer;
+  }
+
+  .card-img-top {
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .title-agenda::after {
+    content: "";
+    display: block;
+    color: black;
+    font-size: 20px;
+  }
+  .title-berita::after {
+    content: "";
+    display: block;
+    color: black;
+    font-size: 20px;
+  }
+  .title-pengumuman::after {
+    content: "";
+    display: block;
+    color: black;
+    font-size: 20px;
+  }
+
+  hr {
+    color: black;
+    border-width: 2px;
+  }
+
+  .section-visimisi {
+    margin: 30px 0 30px 0;
+    padding: 50px 0 50px 0;
+    background: #01012f;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .header-visi h1 {
+    border: 10px solid whitesmoke;
+    border-left: none;
+    color: white;
+    text-shadow: 2px 2px 2px #000000;
+    padding: 15px 0 15px 0;
+    margin: 0 350px 50px 0;
+    border-radius: 0 30px 30px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+  }
+  .header-visi h3 {
+    padding: 70px 50px 70px 50px;
+    font-size: 24px;
+    font-weight: 500;
+    color: whitesmoke;
+    text-transform: uppercase;
+  }
+  .header-visi strong {
+    color: #ffcc00;
+    text-shadow: 1px 1px 1px #ffffff;
+  }
+
+  .header-misi h1 {
+    border: 10px solid whitesmoke;
+    border-right: none;
+    color: white;
+    text-shadow: 2px 2px 2px #000000;
+    padding: 15px 0 15px 0;
+    margin: 0 0 50px 350px;
+    border-radius: 30px 0 0 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+  }
+  .header-misi h3 {
+    padding: 10px 30px 10px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: justify;
+    color: #ffcc00;
+    text-shadow: 1px 1px 1px #ffffff;
+  }
+  .header-misi ol {
+    padding: 10px 50px 10px 50px;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: justify;
+    color: whitesmoke;
+  }
+
+  .header-misi li {
+    margin: 10px 0 10px 0;
+  }
+
+  .section-fakultas {
+    margin: 0 30px 0 30px;
+    padding: 0 20px 70px 20px;
+    border-radius: 0 65px 0 65px;
+    background-color: #01012f;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .row.fakultas h1 {
+    background: #01012f;
+    color: whitesmoke;
+    text-shadow: 2px 2px 2px #000000;
+    padding: 10px 0 10px 0;
+    margin: 0 400px 50px 400px;
+    border: 10px solid whitesmoke;
+    border-top: none;
+    border-style: double;
+    border-radius: 0 0 30px 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 20px;
+  }
+
+  .row.fakultas video {
+    border: 20px solid whitesmoke;
+    border-radius: 4px;
+    width: 50%;
+    border-style: groove;
+  }
+
+  .section-pimpinan {
+    margin: 50px 0 0 0;
+    background: white;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .foto-dekan {
+    padding: 100px 150px 0 150px;
+  }
+
+  .foto-dekan img {
+    box-shadow: 15px 15px 20px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 10px;
+    border-left: 4px solid rgba(31, 38, 135, 0.37);
+    border-top: 4px solid rgba(31, 38, 135, 0.37);
+    border-right: 2px solid rgba(31, 38, 135, 0.37);
+    border-bottom: 2px solid rgba(31, 38, 135, 0.37);
+  }
+
+  #selayang-pandang {
+    padding: 150px 50px 0 0;
+  }
+
+  .hr1 {
+    border-color: blue;
+    border-width: 4px;
+    border-radius: 5px;
+    width: 200px;
+  }
+
+  .hr2 {
+    border-color: blue;
+    border-width: 4px;
+    border-radius: 5px;
+    width: 200px;
+    margin: 0 0 0 613px;
+  }
+
+  .content-pengantar h1 {
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 5px #000000;
+    text-align: start;
+    color: #ffcc00;
+  }
+  .content-pengantar p {
+    font-weight: bold;
+    margin-bottom: 50px;
+    font-size: 18px;
+  }
+
+  .content-pengantar h4 {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .content-pengantar h5 {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .header-wakildekan lead {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #000000;
+  }
+
+  .header-wakildekan h1 {
+    margin-bottom: 30px;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: black;
+    text-shadow: 2px 2px 4px #ffff;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: #ccc;
+  }
+
+  .containercss {
+    width: 500px;
+    min-height: 315px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 30px;
+    overflow: hidden;
+  }
+
+  h1 {
+    text-align: center;
+    text-shadow: 0 1px white;
+    color: #02303f;
+  }
+  h2 {
+    color: #736861;
+    margin: 15px 0 5px;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+  }
+  h6 {
+    color: #928566;
+    margin: 0;
+  }
+  input[type="radio"] {
+    position: absolute;
+    width: 1px; /* Setting this to 0 make it invisible for VoiceOver */
+    height: 1px; /* Setting this to 0 make it invisible for VoiceOver */
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+  label {
+    display: block;
+    width: 32%;
+    border: 4px solid white;
+    position: absolute;
+    bottom: 5px;
+    cursor: pointer;
+    transition: border-color 0.3s linear;
+  }
+
+  label.second {
+    left: 34%;
+  }
+  label.third {
+    left: 68%;
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 30px;
+    width: 500px;
+    background-color: #69a9ff;
+    color: white;
+    box-shadow: 0 5px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: background-color 0.6s linear;
+  }
+
+  blockquote:after {
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 100%;
+    border: solid transparent;
+    border-top-color: #69a9ff;
+    border-left-color: #69a9ff;
+    border-width: 10px;
+    left: 10%;
+  }
+  #second:checked ~ .two blockquote {
+    background-color: #ea524c;
+  }
+  .two blockquote:after {
+    border: solid transparent;
+    border-top-color: #ea524c;
+    border-left-color: #ea524c;
+    border-width: 10px;
+  }
+  #third:checked ~ .three blockquote {
+    background-color: #54885f;
+  }
+  .three blockquote:after {
+    border: solid transparent;
+    border-top-color: #54885f;
+    border-left-color: #54885f;
+    border-width: 10px;
+  }
+  .quotes {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 5em;
+  }
+  .leftq {
+    top: -25px;
+    left: 5px;
+  }
+  .rightq {
+    bottom: -10px;
+    right: 5px;
+  }
+
+  .imgSliderTestimoni {
+    float: left;
+    margin-right: 20px;
+    margin-left: 15px;
+  }
+
+  .slidecss {
+    position: absolute;
+    left: -100%;
+    opacity: 0;
+    transition: all 0.6s ease-in;
+  }
+
+  #first:checked ~ label.first {
+    border-width: 6px;
+    border-color: #69a9ff;
+  }
+  #second:checked ~ label.second {
+    border-width: 6px;
+    border-color: #ea524c;
+  }
+  #third:checked ~ label.third {
+    border: 6px solid #54885f;
+  }
+
+  #first:checked ~ div.one {
+    left: 0;
+    opacity: 1;
+  }
+  #second:checked ~ div.two {
+    left: 0;
+    opacity: 1;
+  }
+  #third:checked ~ div.three {
+    left: 0;
+    opacity: 1;
+  }
+
+  /* CAROUSEL TESTIMONI END */
+}

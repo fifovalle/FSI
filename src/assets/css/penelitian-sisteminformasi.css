@@ -1,0 +1,48 @@
+@media screen and (max-width: 2048px) {
+  .section-penelitianinformasi {
+    padding: 200px 250px 0px 250px;
+  }
+
+  .header-penelitianinformasi {
+    background-color: whitesmoke;
+    padding: 40px 20px;
+    border-radius: 8px;
+  }
+
+  .header-penelitianinformasi h2 {
+    font-weight: bold;
+    border-bottom: 3px solid black;
+    margin: 0 300px;
+  }
+
+  .title-penelitian a {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .title-penelitian a:hover {
+    text-decoration: underline;
+    color: rgb(128, 128, 255);
+  }
+
+  .header-penelitianinformasi p {
+    margin-top: 20px;
+    font-size: 15px;
+  }
+
+  .q-journal {
+    color: #ffa33c;
+    font-weight: 600;
+  }
+  .header-scopus a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 600;
+  }
+  .header-scopus a:hover {
+    text-decoration: underline;
+    color: rgb(128, 128, 255);
+  }
+}

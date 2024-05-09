@@ -1,0 +1,22 @@
+@media screen and (max-width: 2048px) {
+  .section-pedoman {
+    margin: 140px 400px 100px 400px;
+    padding: 0;
+  }
+  .header-pedoman {
+    border: 20px solid whitesmoke;
+    border-style: ridge;
+  }
+  .header-pedoman h1 {
+    border-bottom: 4px solid black;
+    margin: 0 100px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+
+  .header-pedoman img {
+    width: 70%;
+  }
+}
