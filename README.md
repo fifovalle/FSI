@@ -20,6 +20,14 @@ Jelajahi karya terbaru dan keterampilan saya dalam dunia pengembangan perangkat 
 ## 📷 Preview Halaman
 
 Berikut adalah beberapa tampilan halaman website :
+![1](https://github.com/fifovalle/FSI/assets/90078068/e96f0e23-d1e8-4581-9ba3-69c3d42bbfa3)
+![2](https://github.com/fifovalle/FSI/assets/90078068/3c9b689f-4937-4a49-8722-fd7b52346332)
+![3](https://github.com/fifovalle/FSI/assets/90078068/9b965c48-fa69-47f5-8115-6f34d6e4569d)
+![4](https://github.com/fifovalle/FSI/assets/90078068/5b8d9367-6201-4b96-a08c-095e634d4afc)
+![5](https://github.com/fifovalle/FSI/assets/90078068/fb100e83-2f2e-4dea-a094-f462adc8a62f)
+![6](https://github.com/fifovalle/FSI/assets/90078068/c9a31d16-ad7c-49b4-88cd-50822ffd22d9)
+![7](https://github.com/fifovalle/FSI/assets/90078068/632b7e00-f50a-40fe-a37f-4f0502a162de)
+![8](https://github.com/fifovalle/FSI/assets/90078068/e19d6256-9a2b-4e47-b501-861cb446ccae)
 
 ## 📬 Kontak
 
