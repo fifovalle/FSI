@@ -1,3 +1,5 @@
+<?php include '../admin/config/databases.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +24,16 @@
                 <div class="row header-tenagadosen fakultas-animation">
                     <div class="col-md-12 col-sm-12 text-center mt-md-2 mb-md-2">
                         <h2 class="mb-3">Daftar Tenaga pendidikan/Dosen Fakultas Sains dan Informatika</h2>
+                        <?php
+                        $dosenModel = new Dosen($koneksi);
+                        $dosenInfo = $dosenModel->tampilkanDataDosen();
+                        $totalData = count($dosenInfo);
+                        $limit = 5;
+                        $totalPages = ceil($totalData / $limit);
+                        $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+                        $offset = ($page - 1) * $limit;
+                        $dosenInfoPerPage = array_slice($dosenInfo, $offset, $limit);
+                        ?>
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
@@ -32,83 +44,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>412126469</td>
-                                    <td>Dr. Yenny Febriani Yun, S.Si., M.Si.</td>
-                                    <td>Dosen Kimia</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>412139370</td>
-                                    <td>Hernandi Sujono, S.Si., M.Si.</td>
-                                    <td>Dosen Kimia</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>412143169</td>
-                                    <td>Dr. Lilis Siti Aisyah, S.Si., M.Si.</td>
-                                    <td>Dosen Kimia</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>412152772</td>
-                                    <td>Dewi Meliati Agustini, S.Si., M.Si.</td>
-                                    <td>Dosen Kimia</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>412157080</td>
-                                    <td>Dr. Rahmaniar Mulyani, S.Si., M.Si.</td>
-                                    <td>Dosen Kimia</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>412177782</td>
-                                    <td>Abdi Wadud Syafe'i, S.Si., M.Si.</td>
-                                    <td>Dosen Kimia</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">7</th>
-                                    <td>412179681</td>
-                                    <td>Dr. Anggi Suprabawati, S.Si., M.Si.</td>
-                                    <td>Dosen Kimia</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">8</th>
-                                    <td>412187688</td>
-                                    <td>Sari Purbaya, S.Si., M.Si.</td>
-                                    <td>Dosen Kimia</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">9</th>
-                                    <td>412146459</td>
-                                    <td>Dra. Ade Kanianingsih, M. Stat.</td>
-                                    <td>Dosen Kimia</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">10</th>
-                                    <td>412187064</td>
-                                    <td>Dr. Trisna Yuliana, M.Si.</td>
-                                    <td>Dosen Kimia</td>
-                                </tr>
+                                <?php foreach ($dosenInfoPerPage as $index => $dosen) : ?>
+                                    <tr>
+                                        <td><?= $offset + $index + 1 ?></td>
+                                        <td><?= $dosen['NIP_NID_Dosen'] ?></td>
+                                        <td><?= $dosen['Nama_Dosen'] ?></td>
+                                        <td><?= $dosen['Jabatan_Dosen'] ?></td>
+                                    </tr>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
                     <div class="col-md-12 col-sm-12 mt-md-2 navigasi">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
+                                <li class="page-item <?= ($page <= 1) ? 'disabled' : ''; ?>">
+                                    <a class="page-link" href="?page=<?= $page - 1 ?>" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
+                                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                                    <li class="page-item <?= ($page == $i) ? 'active' : ''; ?>">
+                                        <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                                    </li>
+                                <?php endfor; ?>
+                                <li class="page-item <?= ($page >= $totalPages) ? 'disabled' : ''; ?>">
+                                    <a class="page-link" href="?page=<?= $page + 1 ?>" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>
@@ -120,7 +81,6 @@
         </div>
     </main>
     <script src="../assets/js/tentang-fakultas.js"></script>
-    <script src="../assets/js/tenaga-dosen.js"></script>
     <!-- MAIN END -->
 
     <!-- FOOTER START -->

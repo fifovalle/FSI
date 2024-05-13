@@ -4,15 +4,27 @@ include 'databases.php';
 if (isset($_POST['Simpan'])) {
     $daftarNama = mysqli_real_escape_string($koneksi, htmlspecialchars($_POST['Daftar_Nama']));
     $tautan = mysqli_real_escape_string($koneksi, $_POST['Tautan']);
+    $kategori = mysqli_real_escape_string($koneksi, $_POST['Kategori']);
 
-    if (!filter_var($tautan, FILTER_VALIDATE_URL)) {
-        setPesanKesalahan("Tautan harus berupa URL yang valid.");
+    if (empty($daftarNama) || empty($tautan)){
+        setPesanKesalahan("Semua field harus diisi.");
         header("Location: $akar_tautan" . "src/admin/pages/bar-navigasi.php");
         exit;
     }
+    
+    $parsedUrl = parse_url($tautan);
+    if (!isset($parsedUrl['scheme'])) {
+        $tautan = 'http://' . $tautan;
+    }
 
-    if (empty($daftarNama) || empty($tautan)) {
-        setPesanKesalahan("Semua field harus diisi.");
+    if (!filter_var($tautan, FILTER_VALIDATE_URL)) {
+        echo json_encode(array("success" => false, "message" => "Tautan tidak valid."));
+        exit;
+    }
+
+    // Validasi untuk memastikan kategori dipilih
+    if ($kategori == "Pilih Kategori") {
+        setPesanKesalahan("Anda harus memilih kategori.");
         header("Location: $akar_tautan" . "src/admin/pages/bar-navigasi.php");
         exit;
     }
@@ -23,6 +35,7 @@ if (isset($_POST['Simpan'])) {
         "ID_Admin" => $_SESSION['ID_Admin'],
         'Daftar_Nama' => $daftarNama,
         'Tautan' => $tautan,
+        'Kategori' => $kategori,
     );
 
     $simpanDataNavbar = $objekNavbar->tambahNavbar($dataNavbar);

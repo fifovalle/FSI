@@ -1,3 +1,5 @@
+<?php include '../config/databases.php'; ?>
+
 <!doctype html>
 <html>
 
@@ -10,8 +12,7 @@
     <link rel="stylesheet" href="../assets/css/login.css" />
     <script type='text/javascript' src=''></script>
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
-    <script type='text/javascript'
-        src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
 </head>
 
 <body>
@@ -29,14 +30,14 @@
                     <div class="col-sm-6">
                         <br>
                         <h3 class="header-title">Lupa Kata Sandi?</h3>
-                        <form class="login-form">
+                        <form class="login-form" action="../config/forgot-pass.php" method="post">
                             <p>Masukan email anda, untuk mendapatkan akses merubah kata sandi!</p>
                             <p></p>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Masukan email anda">
+                                <input type="text" class="form-control" name="Email_Forgot" placeholder="Masukan email anda">
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-success btn-block">Kirim</button>
+                                <button class="btn btn-success btn-block" name="Kirim" type="submit">Kirim</button>
                             </div>
                         </form>
                     </div>

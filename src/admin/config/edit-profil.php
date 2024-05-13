@@ -31,8 +31,10 @@ if (isset($_POST['Simpan'])) {
     if (isset($_FILES['Foto_Admin']) && $_FILES['Foto_Admin']['error'] === UPLOAD_ERR_OK) {
         $namaFoto = $_FILES['Foto_Admin']['name'];
         $lokasiFoto = $_FILES['Foto_Admin']['tmp_name'];
-        $folderTujuan = __DIR__ . '/../uploads/';
-        $fotoAdmin = $folderTujuan . $namaFoto;
+        $formatFoto = pathinfo($namaFoto, PATHINFO_EXTENSION);
+        $namaFotoAdminBaru = uniqid() . '.' . $formatFoto; // Membuat nama file unik
+        $folderTujuan = '../../uploads/'; // Menentukan folder tujuan upload
+        $fotoAdmin = $folderTujuan . $namaFotoAdminBaru; // Menentukan path lengkap untuk foto baru
 
         $obyekAdmin = new Admin($koneksi);
         $adminSebelumnya = $obyekAdmin->getProfilById($idAdmin);
@@ -79,3 +81,4 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akar_tautan" . "src/admin/pages/profile.php");
     exit;
 }
+?>

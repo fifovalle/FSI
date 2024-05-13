@@ -23,15 +23,15 @@
     margin: 0 0 0 430px;
   }
 
-  .navigasi a {
-    padding: 12px 20px;
+  .navigasi button {
+    padding: 10px 18px;
     color: black;
     border: 1px solid;
     font-weight: 600;
     background-color: whitesmoke;
   }
 
-  .navigasi a:hover {
+  .navigasi button:hover {
     background-color: rgb(114, 114, 114);
     color: whitesmoke;
   }

@@ -397,152 +397,101 @@
     text-transform: uppercase;
   }
 
-  a {
-    color: #ccc;
+  .section-testimoni{
+    margin: 80px 0 30px 0;
   }
 
-  .containercss {
-    width: 500px;
-    min-height: 315px;
-    margin: 0 auto;
+  .section-testimoni h1{
+    font-weight: bold;
+    margin: 0 580px;
+    border-bottom: 5px solid #01012f82;
+  }
+
+  #cCarousel {
     position: relative;
-    padding-bottom: 30px;
-    overflow: hidden;
+    max-width: 900px;
+    margin: auto;
   }
-
-  h1 {
-    text-align: center;
-    text-shadow: 0 1px white;
-    color: #02303f;
-  }
-  h2 {
-    color: #736861;
-    margin: 15px 0 5px;
-    text-shadow: 0 1px rgba(255, 255, 255, 0.5);
-  }
-  h6 {
-    color: #928566;
-    margin: 0;
-  }
-  input[type="radio"] {
+  
+  #cCarousel .arrow {
     position: absolute;
-    width: 1px; /* Setting this to 0 make it invisible for VoiceOver */
-    height: 1px; /* Setting this to 0 make it invisible for VoiceOver */
-    padding: 0;
-    margin: -1px;
-    border: 0;
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-  }
-  label {
-    display: block;
-    width: 32%;
-    border: 4px solid white;
-    position: absolute;
-    bottom: 5px;
-    cursor: pointer;
-    transition: border-color 0.3s linear;
-  }
-
-  label.second {
-    left: 34%;
-  }
-  label.third {
-    left: 68%;
-  }
-
-  blockquote {
-    margin: 0;
-    padding: 30px;
-    width: 500px;
-    background-color: #69a9ff;
+    top: 50%;
+    display: flex;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    z-index: 1;
+    font-size: 26px;
     color: white;
-    box-shadow: 0 5px 2px rgba(0, 0, 0, 0.1);
+    background: #00000072;
+    cursor: pointer;
+  }
+  
+  #cCarousel #prev {
+    left: -20px;
+  }
+  
+  #cCarousel #next {
+    right: -5px;
+  }
+  
+  #carousel-vp {
+    width: 800px;
+    height: 400px;
+    display: flex;
+    align-items: center;
     position: relative;
-    transition: background-color 0.6s linear;
+    overflow: hidden;
+    margin: auto;
   }
-
-  blockquote:after {
-    content: " ";
-    height: 0;
-    width: 0;
+  
+  #cCarousel #cCarousel-inner {
+    display: flex;
     position: absolute;
-    top: 100%;
-    border: solid transparent;
-    border-top-color: #69a9ff;
-    border-left-color: #69a9ff;
-    border-width: 10px;
-    left: 10%;
+    transition: 0.3s ease-in-out;
+    gap: 10px;
+    left: 0px;
   }
-  #second:checked ~ .two blockquote {
-    background-color: #ea524c;
+  
+  .cCarousel-item {
+    width: 800px;
+    height: 400px;
+    border: 2px solid white;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
-  .two blockquote:after {
-    border: solid transparent;
-    border-top-color: #ea524c;
-    border-left-color: #ea524c;
-    border-width: 10px;
+  
+  .cCarousel-item img {
+    width: 300px ;
+    height: 300px;
+    color: white;
+    border-radius: 20px;
+    margin: auto;
+    object-fit: cover; 
   }
-  #third:checked ~ .three blockquote {
-    background-color: #54885f;
+  
+  .cCarousel-item .infos {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: white;
+    color: black;
   }
-  .three blockquote:after {
-    border: solid transparent;
-    border-top-color: #54885f;
-    border-left-color: #54885f;
-    border-width: 10px;
+  .cCarousel-item h6 {
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
   }
-  .quotes {
-    position: absolute;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 5em;
+  .cCarousel-item lead {
+    margin-top: 20px;
+    font-weight:600;
+    letter-spacing:1px;
+    color: rgba(80, 80, 80, 1);
   }
-  .leftq {
-    top: -25px;
-    left: 5px;
-  }
-  .rightq {
-    bottom: -10px;
-    right: 5px;
-  }
-
-  .imgSliderTestimoni {
-    float: left;
-    margin-right: 20px;
-    margin-left: 15px;
-  }
-
-  .slidecss {
-    position: absolute;
-    left: -100%;
-    opacity: 0;
-    transition: all 0.6s ease-in;
-  }
-
-  #first:checked ~ label.first {
-    border-width: 6px;
-    border-color: #69a9ff;
-  }
-  #second:checked ~ label.second {
-    border-width: 6px;
-    border-color: #ea524c;
-  }
-  #third:checked ~ label.third {
-    border: 6px solid #54885f;
-  }
-
-  #first:checked ~ div.one {
-    left: 0;
-    opacity: 1;
-  }
-  #second:checked ~ div.two {
-    left: 0;
-    opacity: 1;
-  }
-  #third:checked ~ div.three {
-    left: 0;
-    opacity: 1;
-  }
-
-  /* CAROUSEL TESTIMONI END */
 }

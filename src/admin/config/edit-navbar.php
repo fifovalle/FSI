@@ -5,6 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idNavbar = $_POST['ID_Navbar'] ?? '';
     $namaBarNavigasi = $_POST['Daftar_Nama'] ?? '';
     $tautanBarNavigasi = $_POST['Tautan'] ?? '';
+    $kategori = $_POST['Kategori'] ?? '';
 
     if (!is_numeric($idNavbar) || $idNavbar <= 0) {
         echo json_encode(array("success" => false, "message" => "ID navbar tidak valid."));
@@ -25,7 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $dataNavbar = array(
         'Daftar_Nama' => $namaBarNavigasi,
-        'Tautan' => $tautanBarNavigasi
+        'Tautan' => $tautanBarNavigasi,
+        'Kategori' => $kategori
     );
 
     $updateDataNavbar = $navbarModel->perbaruiNavbar($idNavbar, $dataNavbar);

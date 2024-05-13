@@ -13,7 +13,14 @@
             </label>
         </button>
         <div class="collapse navbar-collapse border border-0" id="navbarNavDarkDropdown">
+            <?php
+                $navbarModel = new Navbar($koneksi);
+                $navbarInfo = $navbarModel->tampilkanDataNavbar();
+                ?>
             <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+            <?php if (!empty($navbarInfo)) : ?>
+                <?php $nomor = 1; ?>
+                <?php foreach ($navbarInfo as $navbar) : ?>
                 <li class="nav-item">
                     <a class="nav-link menu-active" aria-current="page" href="../pages/index.php" id="beranda">Beranda</a>
                 </li>
@@ -108,6 +115,12 @@
                     </ul>
                 </li>
             </ul>
+            <?php endforeach; ?>
+            <?php else : ?>
+                <tr>
+                    <td colspan="5" class="text-center text-danger fw-bold">Tidak ada data!</td>
+                </tr>
+            <?php endif; ?>
         </div>
     </div>
 </nav>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2024 at 05:08 PM
+-- Generation Time: May 13, 2024 at 02:11 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -44,7 +44,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ID_Admin`, `Nama_Admin`, `Foto_Admin`, `Email_Admin`, `Jenis_Kelamin_Admin`, `Status_Verifikasi_Email`, `Kata_Sandi`, `Konfirmasi_Kata_Sandi`, `Token_Verifikasi`) VALUES
-(39, 'NAUFAL FIFA', 0x363633636530346631396365622e6a7067, 'fifanaufal10@gmail.com', 'Pria', 'Terverifikasi', '$2y$10$lIRda6l4/J1IPGQoPItcf.83diBBW49MIw95bcC/gHRavmcrnsJyu', 'Naufal123.', 0);
+(39, 'NAUFAL FIFA', 0x363633636530346631396365622e6a7067, 'fifanaufal10@gmail.com', 'Pria', 'Terverifikasi', '$2y$10$kYfDPeWOlt7.jFHRIj8UmefPf8j8XmCClFuSsDmPQPSa6fhf8307G', 'Naufal123.', 0),
+(40, 'Ahsan', 0x363633653039353631653266362e6a7067, 'ahsanghifari04@gmail.com', 'Pria', 'Terverifikasi', '$2y$10$Q08o3yYY1865ZuAiuAA39Oa4s8h5YY.Uhc8xuDRjkQ0fzkZ2j.DBK', 'Ahsan123.', 88412740);
 
 -- --------------------------------------------------------
 
@@ -61,6 +62,14 @@ CREATE TABLE `berita` (
   `Tanggal_Terbit` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `berita`
+--
+
+INSERT INTO `berita` (`ID_Berita`, `ID_Admin`, `Gambar`, `Judul`, `Isi_Berita`, `Tanggal_Terbit`) VALUES
+(8, 39, 0x6265726974615f363633663565333332363937652e6a7067, 'Wisuda', 'Mari melihat', '2024-05-10'),
+(9, 39, 0x6265726974615f363634303432653339343530622e6a7067, 'Woww', 'Mantap', '2024-05-12');
+
 -- --------------------------------------------------------
 
 --
@@ -74,6 +83,17 @@ CREATE TABLE `carousel` (
   `Deskripsi` text DEFAULT NULL,
   `Gambar` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `carousel`
+--
+
+INSERT INTO `carousel` (`ID_Carousel`, `ID_Admin`, `Judul`, `Deskripsi`, `Gambar`) VALUES
+(16, 39, 'a', 'a', 0x36363431356134353430343130312e6a7067),
+(17, 39, 'B', 'B', 0x36363431356135346463373966322e6a7067),
+(18, 39, 'C', 'C', 0x36363431356136313334306533332e6a706567),
+(19, 39, 'D', 'D', 0x36363431356136653664343364342e706e67),
+(20, 39, 'E', 'E', 0x36363431356137346230306161352e706e67);
 
 -- --------------------------------------------------------
 
@@ -111,8 +131,16 @@ CREATE TABLE `navbar` (
   `ID_Navbar` int(11) NOT NULL,
   `ID_Admin` int(11) DEFAULT NULL,
   `Daftar_Nama` varchar(100) NOT NULL,
-  `Tautan` varchar(255) NOT NULL
+  `Tautan` varchar(255) NOT NULL,
+  `Kategori` enum('Profil','SDM','Akademik','Penelitian','Mahasiswa','Fasilitas','Peminjaman Mutu') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `navbar`
+--
+
+INSERT INTO `navbar` (`ID_Navbar`, `ID_Admin`, `Daftar_Nama`, `Tautan`, `Kategori`) VALUES
+(23, 39, 'YUFUYF', 'https://hbdh.com', 'Akademik');
 
 -- --------------------------------------------------------
 
@@ -125,6 +153,13 @@ CREATE TABLE `program_studi` (
   `ID_Admin` int(11) DEFAULT NULL,
   `Nama_Prodi` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `program_studi`
+--
+
+INSERT INTO `program_studi` (`ID_Prodi`, `ID_Admin`, `Nama_Prodi`) VALUES
+(7, 40, 'S-1 INFORMATIKA');
 
 -- --------------------------------------------------------
 
@@ -139,6 +174,23 @@ CREATE TABLE `tenaga_dosen` (
   `Jabatan_Dosen` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tenaga_dosen`
+--
+
+INSERT INTO `tenaga_dosen` (`ID_Dosen`, `NIP_NID_Dosen`, `Nama_Dosen`, `Jabatan_Dosen`) VALUES
+(5, 412126469, 'Dr. Yenny Febriani Yun, S.Si., M.Si.', 'Dosen Kimia'),
+(6, 412139370, 'Hernandi Sujono, S.Si., M.Si.', 'Dosen Kimia'),
+(7, 412143169, 'Dr. Lilis Siti Aisyah, S.Si., M.Si.', 'Dosen Kimia'),
+(8, 412152772, 'Dewi Meliati Agustini, S.Si., M.Si.', 'Dosen Kimia'),
+(9, 412157080, 'Dr. Rahmaniar Mulyani, S.Si., M.Si.', 'Dosen Kimia'),
+(10, 412177782, 'Abdi Wadud Syafe\'i, S.Si., M.Si.', 'Dosen Kimia'),
+(11, 412179681, 'Dr. Anggi Suprabawati, S.Si., M.Si.', 'Dosen Kimia'),
+(12, 412187688, 'Sari Purbaya, S.Si., M.Si.', 'Dosen Kimia'),
+(13, 412146459, 'Dra. Ade Kanianingsih, M. Stat.', 'Dosen Kimia'),
+(14, 412187064, 'Dr. Trisna Yuliana, M.Si.', 'Dosen Kimia'),
+(16, 2222222, 's', 'Dosen');
+
 -- --------------------------------------------------------
 
 --
@@ -151,6 +203,13 @@ CREATE TABLE `tenaga_staff` (
   `Nama_Staff` varchar(225) NOT NULL,
   `Jabatan_Staff` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tenaga_staff`
+--
+
+INSERT INTO `tenaga_staff` (`ID_Staff`, `NIP_NID_Staff`, `Nama_Staff`, `Jabatan_Staff`) VALUES
+(4, 200026072, 'Juhana, S.E.', 'Ka. Bag. Tata Usaha');
 
 -- --------------------------------------------------------
 
@@ -166,6 +225,18 @@ CREATE TABLE `testimoni` (
   `Kesan_Mahasiswa` text NOT NULL,
   `Tanggal_Testimoni` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `testimoni`
+--
+
+INSERT INTO `testimoni` (`ID_Testimoni`, `ID_Admin`, `Foto_Mahasiswa`, `Nama_Mahasiswa`, `Kesan_Mahasiswa`, `Tanggal_Testimoni`) VALUES
+(13, 40, 0x6d61686173697377615f363633653538376432336630322e6a7067, 'Naufal Fadhil Ihsan Fikri Ashidqi', 'Jangan lupa subscribe channel zonadeveloper', '2024-05-01'),
+(14, 40, 0x6d61686173697377615f363633653538626630653037302e6a7067, 'Muhammad Rezky Indriawan', 'Makanlah sebelum makan itu dilarang', '2024-05-02'),
+(15, 40, 0x6d61686173697377615f363633653539303432363932332e6a7067, 'Sandro Anugrah Tambunan', 'KAPALLAUUTT', '2024-05-04'),
+(16, 40, 0x6d61686173697377615f363633653539323732333433632e6a7067, 'Ahsan Ghifari', 'Menyalahh abangkuhhhhhh', '2024-05-05'),
+(17, 40, 0x6d61686173697377615f363633653561343031636434312e6a7067, 'Sayyid Gibran Alghifari', 'GK TAU MALES PENGEN BELI TREUKKK', '2024-05-07'),
+(18, 40, 0x6d61686173697377615f363633653562663965353330632e6a7067, 'Adrian Musa Alfauzan', 'SINI SAMA OM RAWRRRR', '2024-05-15');
 
 --
 -- Indexes for dumped tables
@@ -210,7 +281,6 @@ ALTER TABLE `kelulusan`
 --
 ALTER TABLE `navbar`
   ADD PRIMARY KEY (`ID_Navbar`),
-  ADD UNIQUE KEY `ID_Admin_2` (`ID_Admin`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
@@ -247,19 +317,19 @@ ALTER TABLE `testimoni`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `ID_Admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `ID_Admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `ID_Berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_Berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `carousel`
 --
 ALTER TABLE `carousel`
-  MODIFY `ID_Carousel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_Carousel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `kalender_akademik`
@@ -277,31 +347,31 @@ ALTER TABLE `kelulusan`
 -- AUTO_INCREMENT for table `navbar`
 --
 ALTER TABLE `navbar`
-  MODIFY `ID_Navbar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_Navbar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `program_studi`
 --
 ALTER TABLE `program_studi`
-  MODIFY `ID_Prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_Prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tenaga_dosen`
 --
 ALTER TABLE `tenaga_dosen`
-  MODIFY `ID_Dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_Dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tenaga_staff`
 --
 ALTER TABLE `tenaga_staff`
-  MODIFY `ID_Staff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Staff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `testimoni`
 --
 ALTER TABLE `testimoni`
-  MODIFY `ID_Testimoni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_Testimoni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables

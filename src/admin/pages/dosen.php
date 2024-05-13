@@ -59,6 +59,7 @@ if (!isset($_SESSION['ID_Admin'])) {
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>NIP / NID</th>
                                             <th>Nama Dosen</th>
                                             <th>Jabatan</th>
@@ -71,8 +72,12 @@ if (!isset($_SESSION['ID_Admin'])) {
                                     ?>
                                     <tbody class="table-border-bottom-0">
                                         <?php if (!empty($dosenInfo)) : ?>
+                                            <?php $nomor = 1; ?>
                                             <?php foreach ($dosenInfo as $dosen) : ?>
                                                 <tr>
+                                                    <td>
+                                                        <?php echo $nomor++; ?>
+                                                    </td>
                                                     <td>
                                                         <?php echo $dosen['NIP_NID_Dosen']; ?>
                                                     </td>
@@ -97,9 +102,7 @@ if (!isset($_SESSION['ID_Admin'])) {
                                             </tr>
                                         <?php endif; ?>
                                     </tbody>
-
                                 </table>
-
                             </div>
                         </div>
 

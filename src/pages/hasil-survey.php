@@ -1,3 +1,5 @@
+<?php include '../admin/config/databases.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

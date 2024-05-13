@@ -14,6 +14,19 @@
                         <label for="tambahTautanBarNavigasi" class="form-label">Tautan Bar Navigasi</label>
                         <input type="link" placeholder="Masukan Tautan Bar Navigasi" name="Tautan" class="form-control" id="tambahTautanBarNavigasi" autocomplete="off">
                     </div>
+                    <div class="mb-3">
+                        <label for="tambahKategoriBarNavigasi" class="form-label">Kategori</label>
+                        <select name="Kategori" id="tambahKategoriBarNavigasi" class="form-control" required>
+                            <option value="" disabled selected>Pilih Kategori</option>
+                            <option value="Profil">Profil</option>
+                            <option value="SDM">SDM</option>
+                            <option value="Akademik">Akademik</option>
+                            <option value="Penelitian">Penelitian</option>
+                            <option value="Mahasiswa">Mahasiswa</option>
+                            <option value="Fasilitas">Fasilitas</option>
+                            <option value="Peminjaman Mutu">Peminjaman Mutu</option>
+                        </select>   
+                    </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" name="Simpan"><?php echo htmlspecialchars('Simpan'); ?></button>
                     </div>

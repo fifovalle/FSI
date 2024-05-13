@@ -97,16 +97,28 @@ class Admin
         }
     }
 
-    public function getProfilById($id)
+    public function getAdminByEmail($email)
     {
-        $query = "SELECT * FROM admin WHERE ID_Admin = '$id'";
+        $query = "SELECT * FROM admin WHERE Email_Admin = '$email'";
         $result = mysqli_query($this->koneksi, $query);
 
-        if (!$result || mysqli_num_rows($result) == 0) {
+        if ($result && mysqli_num_rows($result) > 0) {
+            $adminData = mysqli_fetch_assoc($result);
+            return $adminData;
+        } else {
             return null;
         }
+    }
 
-        return mysqli_fetch_assoc($result);
+    public function updateTokenByEmail($email, $newToken)
+    {
+        $query = "UPDATE admin SET Token_Verifikasi = '$newToken' WHERE Email_Admin = '$email'";
+        $result = mysqli_query($this->koneksi, $query);
+
+        if ($result) {
+            return true;
+            return false;
+        }
     }
 
     public function getAdminByToken($token)
@@ -267,12 +279,13 @@ class Navbar
 
     public function tambahNavbar($data)
     {
-        $query = "INSERT INTO navbar (ID_Admin, Daftar_Nama, Tautan) VALUES (?, ?, ?)";
+        $query = "INSERT INTO navbar (ID_Admin, Daftar_Nama, Tautan, Kategori) VALUES (?, ?, ?, ?)";
         $statement = $this->koneksi->prepare($query);
         $daftarNama = mysqli_real_escape_string($this->koneksi, $data['Daftar_Nama']);
         $tautan = mysqli_real_escape_string($this->koneksi, $data['Tautan']);
+        $kategori = mysqli_real_escape_string($this->koneksi, $data['Kategori']);
         $idAdmin = intval($data['ID_Admin']);
-        $statement->bind_param("iss", $idAdmin, $daftarNama, $tautan);
+        $statement->bind_param("isss", $idAdmin, $daftarNama, $tautan, $kategori);
         if ($statement->execute()) {
             return true;
         } else {
@@ -298,11 +311,11 @@ class Navbar
 
     public function perbaruiNavbar($idNavbar, $dataNavbar)
     {
-        $sql = "UPDATE navbar SET Daftar_Nama = ?, Tautan = ? WHERE ID_Navbar = ?";
+        $sql = "UPDATE navbar SET Daftar_Nama = ?, Tautan = ?, Kategori = ? WHERE ID_Navbar = ?";
 
         $stmt = $this->koneksi->prepare($sql);
 
-        $stmt->bind_param("ssi", $dataNavbar['Daftar_Nama'], $dataNavbar['Tautan'], $idNavbar);
+        $stmt->bind_param("sssi", $dataNavbar['Daftar_Nama'], $dataNavbar['Tautan'], $dataNavbar['Kategori'], $idNavbar);
 
         if ($stmt->execute()) {
             return true;
@@ -830,6 +843,22 @@ class Dosen
         }
     }
 
+    public function tampilkanDataDosenBeranda($offset, $limit)
+    {
+        $query = "SELECT * FROM tenaga_dosen LIMIT ?, ?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("ii", $offset, $limit);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        $dataDosen = [];
+        while ($row = $result->fetch_assoc()) {
+            $dataDosen[] = $row;
+        }
+
+        return $dataDosen;
+    }
+
     public function hapusDosen($id)
     {
         $queryDelete = "DELETE FROM tenaga_dosen WHERE ID_Dosen=?";
@@ -842,6 +871,14 @@ class Dosen
         } else {
             return false;
         }
+    }
+
+    public function hitungTotalDataDosen()
+    {
+        $query = "SELECT COUNT(*) as total FROM tenaga_dosen";
+        $result = $this->koneksi->query($query);
+        $row = $result->fetch_assoc();
+        return $row['total'];
     }
 }
 // ===================================DOSEN==================================
