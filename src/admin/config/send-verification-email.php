@@ -42,7 +42,7 @@ $mail->Body = '
                                             <p style="color:#455056; font-size:15px; line-height:24px; margin:0;">
                                                 Harap konfirmasikan bahwa Anda ingin menggunakan ini sebagai alamat email akun Anda. Setelah selesai, Anda akan dapat mulai mengakses!
                                             </p>
-                                            <a href="http://localhost/UNJANI/src/admin/config/verification-email.php?Token=' . $token . '" style="background:#20e277; text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff; text-transform:uppercase; font-size:14px; padding:10px 24px; display:inline-block; border-radius:50px;">Verifikasi</a>
+                                            <a href="https://unjani-fsi.000webhostapp.com/src/admin/config/verification-email.php?Token=' . $token . '" style="background:#20e277; text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff; text-transform:uppercase; font-size:14px; padding:10px 24px; display:inline-block; border-radius:50px;">Verifikasi</a>
                                         </td>
                                     </tr>
                                         <tr>

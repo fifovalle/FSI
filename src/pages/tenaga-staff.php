@@ -28,7 +28,7 @@
                         $staffModel = new Staff($koneksi);
                         $staffInfo = $staffModel->tampilkanDataStaff();
                         $totalData = count($staffInfo);
-                        $limit = 5;
+                        $limit = 10;
                         $totalPages = ceil($totalData / $limit);
                         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                         $offset = ($page - 1) * $limit;

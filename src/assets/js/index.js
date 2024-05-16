@@ -63,12 +63,6 @@ const observer4 = new IntersectionObserver(scrollDekan);
 const element4 = document.querySelector(".dekan-animation");
 observer4.observe(element4);
 
-let video = document.querySelector(".video-profil");
-video.addEventListener("ended", function () {
-  video.currentTime = 0;
-  video.play();
-});
-
 document.getElementById("AgendaButton").addEventListener("click", function () {
   document.getElementById("bg-agenda").classList.add("active");
   document.getElementById("bg-berita").classList.remove("active");

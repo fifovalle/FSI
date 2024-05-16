@@ -36,10 +36,21 @@
   .navbar-brand1 {
     display: none !important;
   }
+  
+  .nav-section1{
+    background-color: #01012f;
+    padding: 10px 0;
+  }
+  
+  .nav-section1 .nav-link{
+    color: whitesmoke;
+    font-weight: 600;
+  }
+ 
 
   .navbar {
     display: block;
-    padding: 20px 0 20px 0;
+    padding: 0 0 12px 0;
     background: rgba(255, 255, 255, 0.6);
     box-shadow: 0 8px 20px 0 rgba(31, 38, 135, 0.17);
     backdrop-filter: blur(5.5px);
@@ -52,51 +63,81 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+    text-transform: uppercase;
+    font-weight: 600;
+}
 
-  .nav-link i {
+.nav-link i {
     margin-top: 5.5px;
-  }
+}
 
-  .nav-link:hover {
+.navbar-nav .nav-link.show{
     color: #007bff;
-  }
+}
 
-  .menu-active {
+.nav-link:hover {
     color: #007bff;
-  }
+}
 
-  .nav-item {
+.nav-link.dropdown-toggle::after {
+    display: none;
+}
+
+.nav-link.menu-active {
+    color: #007bff;
+}
+
+.nav-item {
     margin: 0 10px 0 10px;
     font-size: 16px;
-  }
+}
 
-  .dropdown-menu {
-    background-color: #01012f;
-  }
-  .dropdown-item,
-  .dropdown-item.dropdown .nav-link {
-    padding: 0.25rem 1.5rem;
-    color: #ffff;
-  }
-
-  .dropdown-item:hover,
-  .dropdown-item.dropdown .nav-link:hover {
-    color: #007bff;
-    background-color: transparent;
-  }
-
-  .dropdown-item.active,
-  .dropdown-item.dropdown {
-    color: #007bff;
-    background-color: transparent;
-  }
-
-  .dropdown-item:hover .submenu {
+.nav-item:hover > .dropdown-menu {
     display: block;
-  }
+}
 
-  .submenu {
+.dropdown-menu {
+    background-color: #01012f;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+
+.dropdown-item,
+.dropdown-item.dropdown .nav-link {
+    padding: 0.25rem 1.5rem;
+    color: #fff;
+}
+
+.dropdown-item:hover > .submenu {
+    display: block;
+}
+
+.dropdown-item:hover,
+.dropdown-item.dropdown .nav-link:hover {
+    color: #007bff;
+    background-color: transparent;
+}
+
+.dropdown-item.active,
+.dropdown-item.dropdown {
+    color: #007bff;
+    background-color: transparent;
+}
+
+.submenu {
     display: none;
     position: absolute;
     top: 0;
@@ -106,23 +147,24 @@
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 0.25rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .submenu-item {
+.submenu-item {
     padding: 0.5rem;
     color: #333;
     text-decoration: none;
     display: block;
-  }
+}
 
-  .submenu-item:hover {
+.submenu-item:hover {
     background-color: #f8f9fa;
     color: #007bff;
-  }
+}
 
-  .submenu-item.active {
+.submenu-item.active {
     color: #007bff;
-  }
+}
+
 }
 
 /* Untuk Smartphone */

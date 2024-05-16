@@ -1,4 +1,6 @@
-<?php include '../config/databases.php'; ?>
+<?php
+include '../config/databases.php';
+?>
 
 <!doctype html>
 <html>
@@ -13,6 +15,8 @@
     <script type='text/javascript' src=''></script>
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
     <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -45,6 +49,9 @@
             </div>
         </div>
     </section>
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <!-- ALERT -->
+    <?php include '../partials/alert.php' ?>
 </body>
 
 </html>

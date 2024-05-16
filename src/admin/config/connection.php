@@ -4,7 +4,7 @@ $akar_tautan = "http://localhost/UNJANI/";
 
 $nama_server = "localhost";
 $nama_pengguna = "root";
-$kata_sandi = "";
+$kata_sandi = ".";
 $nama_database = "unjani";
 
 $koneksi = new mysqli($nama_server, $nama_pengguna, $kata_sandi, $nama_database);

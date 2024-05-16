@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();  
 
 if (isset($_POST['Simpan'])) {
     if (empty($_POST['Judul']) || empty($_POST['Isi_Berita']) || empty($_POST['Tanggal_Terbit'])) {
@@ -55,3 +56,4 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akar_tautan" . "src/admin/pages/berita.php");
     exit;
 }
+ ob_end_flush();

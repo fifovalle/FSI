@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();  
 
 if (isset($_POST['Simpan'])) {
     $nipNidDosen = mysqli_real_escape_string($koneksi, htmlspecialchars($_POST['NIP_NID_Dosen']));
@@ -33,3 +34,4 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akar_tautan" . "src/admin/pages/dosen.php");
     exit;
 }
+ ob_end_flush();

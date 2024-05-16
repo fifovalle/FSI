@@ -1,6 +1,6 @@
 @media screen and (max-width: 2048px) {
   .header-survey {
-    margin: 150px 150px 0 150px;
+    margin: 190px 150px 0 150px;
   }
 
   .header-survey {
@@ -30,7 +30,7 @@
   .header-hasilsurvey {
     order: 20px solid whitesmoke;
     border-style: ridge;
-    margin: 150px 250px 250px;
+    margin: 190px 250px 250px;
     border-radius: 50px;
     padding: 30px 50px;
   }

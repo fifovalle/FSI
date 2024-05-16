@@ -63,26 +63,26 @@ if (!empty($dataAdmin)) {
                                 </ul>
                                 <div class="card mb-4">
                                     <h5 class="card-header">Profil</h5>
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-start align-items-sm-center gap-4">
-                                            <img src="../../uploads/<?php echo $admin['Foto_Admin']; ?>" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
-                                            <div class="button-wrapper">
-                                                <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                                                    <span class="d-none d-sm-block">Unggah Foto Baru</span>
-                                                    <i class="bx bx-upload d-block d-sm-none"></i>
-                                                    <input type="file" id="upload" class="account-file-input" hidden accept="image/png, image/jpeg" />
-                                                </label>
-                                                <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                                                    <i class="bx bx-reset d-block d-sm-none"></i>
-                                                    <span class="d-none d-sm-block">Ulangi</span>
-                                                </button>
-                                                <p class="text-muted mb-0">Hanya diperbolehkan .png dan .jpg Dengan ukuran maksimal 2 MB</p>
+                                    <form method="post" action="../config/edit-profil.php" enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                                <img src="../../uploads/<?php echo $admin['Foto_Admin']; ?>" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
+                                                <div class="button-wrapper">
+                                                    <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                                        <span class="d-none d-sm-block">Unggah Foto Baru</span>
+                                                        <i class="bx bx-upload d-block d-sm-none"></i>
+                                                        <input type="file" id="upload" name="Foto_Admin" class="account-file-input" hidden />
+                                                    </label>
+                                                    <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+                                                        <i class="bx bx-reset d-block d-sm-none"></i>
+                                                        <span class="d-none d-sm-block">Ulangi</span>
+                                                    </button>
+                                                    <p class="text-muted mb-0">Hanya diperbolehkan .png dan .jpg Dengan ukuran maksimal 2 MB</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <hr class="my-0" />
-                                    <div class="card-body">
-                                        <form method="post" action="../config/edit-profil.php" enctype="multipart/form-data">
+                                        <hr class="my-0" />
+                                        <div class="card-body">
                                             <div class="row">
                                                 <div class="mb-3 col-md-6">
                                                     <label for="profilNamaAdmin" class="form-label">Nama Anda</label>
@@ -104,61 +104,61 @@ if (!empty($dataAdmin)) {
                                             <div class="mt-2">
                                                 <button type="submit" class="btn btn-primary me-2" name="Simpan">Ubah Perubahan</button>
                                             </div>
-                                        </form>
-                                    </div>
+                                    </form>
                                 </div>
-                                <div class="card">
-                                    <h5 class="card-header">Hapus Akun</h5>
-                                    <div class="card-body">
-                                        <div class="mb-3 col-12 mb-0">
-                                            <div class="alert alert-warning">
-                                                <h6 class="alert-heading fw-bold mb-1">
-                                                    Apakah anda yakin ingin menghapus akun ini?
-                                                </h6>
-                                                <p class="mb-0">
-                                                    Data yang di hapus tidak dapat dikembalikan
-                                                </p>
-                                            </div>
+                            </div>
+                            <div class="card">
+                                <h5 class="card-header">Hapus Akun</h5>
+                                <div class="card-body">
+                                    <div class="mb-3 col-12 mb-0">
+                                        <div class="alert alert-warning">
+                                            <h6 class="alert-heading fw-bold mb-1">
+                                                Apakah anda yakin ingin menghapus akun ini?
+                                            </h6>
+                                            <p class="mb-0">
+                                                Data yang di hapus tidak dapat dikembalikan
+                                            </p>
                                         </div>
-                                        <form id="formAccountDeactivation" onsubmit="return false">
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" type="checkbox" name="accountActivation" id="accountActivation" />
-                                                <label class="form-check-label" for="accountActivation">
-                                                    Saya menyetujui
-                                                </label>
-                                            </div>
-                                            <button type="submit" class="btn btn-danger deactivate-account">
-                                                Hapus Akun
-                                            </button>
-                                        </form>
                                     </div>
+                                    <form id="formAccountDeactivation" onsubmit="return false">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" name="accountActivation" id="accountActivation" />
+                                            <label class="form-check-label" for="accountActivation">
+                                                Saya menyetujui
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="btn btn-danger deactivate-account">
+                                            Hapus Akun
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- FOOTER START -->
-                        <?php include '../partials/footer.php'; ?>
-                        <!-- FOOTER END -->
-
-                        <div class="content-backdrop fade"></div>
                     </div>
+
+                    <!-- FOOTER START -->
+                    <?php include '../partials/footer.php'; ?>
+                    <!-- FOOTER END -->
+
+                    <div class="content-backdrop fade"></div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- CORE JS START -->
-        <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-        <script src="../assets/vendor/libs/popper/popper.js"></script>
-        <script src="../assets/vendor/js/bootstrap.js"></script>
-        <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-        <script src="../assets/vendor/js/menu.js"></script>
-        <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
-        <script src="../assets/js/main.js"></script>
-        <script src="../assets/js/dashboards-analytics.js"></script>
-        <script src="../assets/js/change-avatar.js"></script>
-        <!-- CORE JS END -->
-        <!-- ALERT -->
-        <?php include '../partials/alert.php' ?>
+    <!-- CORE JS START -->
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../assets/vendor/js/menu.js"></script>
+    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dashboards-analytics.js"></script>
+    <script src="../assets/js/change-avatar.js"></script>
+    <!-- CORE JS END -->
+    <!-- ALERT -->
+    <?php include '../partials/alert.php' ?>
 </body>
 
 </html>

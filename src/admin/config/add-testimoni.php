@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();
 
 if (isset($_POST['Simpan'])) {
     $namaFile = $_FILES['Foto_Mahasiswa']['name'];
@@ -70,3 +71,4 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akar_tautan" . "src/admin/pages/testimoni.php");
     exit;
 }
+ob_end_flush(); 

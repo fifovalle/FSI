@@ -60,8 +60,10 @@ if (!isset($_SESSION['ID_Admin'])) {
                                     <thead>
                                         <tr>
                                             <th>Foto Admin</th>
+                                            <th>Gambar Program Studi</th>
                                             <th>Pengelola</th>
                                             <th>Nama Program Studi</th>
+                                            <th>Tautan Program Studi</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -78,10 +80,16 @@ if (!isset($_SESSION['ID_Admin'])) {
                                                         <img src="../../uploads/<?php echo $programStudi['Foto_Admin']; ?>" alt="Avatar" class="rounded-circle avatar avatar-xl" />
                                                     </td>
                                                     <td>
+                                                        <img src="../../uploads/<?php echo $programStudi['Gambar_Prodi']; ?>" alt="Avatar" class="rounded-circle avatar avatar-xl" />
+                                                    </td>
+                                                    <td>
                                                         <strong><?php echo $programStudi['Nama_Admin']; ?></strong>
                                                     </td>
                                                     <td>
                                                         <?php echo $programStudi['Nama_Prodi']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $programStudi['Tautan_Prodi']; ?>
                                                     </td>
                                                     <td>
                                                         <div class="dropdown">
@@ -98,7 +106,7 @@ if (!isset($_SESSION['ID_Admin'])) {
                                             <?php endforeach; ?>
                                         <?php else : ?>
                                             <tr>
-                                                <td colspan="4" class="text-center text-danger fw-bold">Tidak ada data program studi!</td>
+                                                <td colspan="6" class="text-center text-danger fw-bold">Tidak ada data program studi!</td>
                                             </tr>
                                         <?php endif; ?>
                                     </tbody>

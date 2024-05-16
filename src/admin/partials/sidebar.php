@@ -56,6 +56,18 @@
                 <div data-i18n="Tables">Berita</div>
             </a>
         </li>
+        <li class="menu-item <?php echo is_active('agenda.php', $halaman_sekarang); ?>">
+            <a href="<?php echo $akar_tautan; ?>src/admin/pages/agenda.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-calendar"></i>
+                <div data-i18n="Tables">Agenda</div>
+            </a>
+        </li>
+        <li class="menu-item <?php echo is_active('announcement.php', $halaman_sekarang); ?>">
+            <a href="<?php echo $akar_tautan; ?>src/admin/pages/announcement.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-calendar"></i>
+                <div data-i18n="Tables">Pengumuman</div>
+            </a>
+        </li>
         <li class="menu-item <?php echo is_active('program-studi.php', $halaman_sekarang); ?>">
             <a href="<?php echo $akar_tautan; ?>src/admin/pages/program-studi.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-briefcase"></i>

@@ -32,12 +32,12 @@ if (isset($_POST['Simpan'])) {
         $namaFoto = $_FILES['Foto_Admin']['name'];
         $lokasiFoto = $_FILES['Foto_Admin']['tmp_name'];
         $formatFoto = pathinfo($namaFoto, PATHINFO_EXTENSION);
-        $namaFotoAdminBaru = uniqid() . '.' . $formatFoto; // Membuat nama file unik
-        $folderTujuan = '../../uploads/'; // Menentukan folder tujuan upload
-        $fotoAdmin = $folderTujuan . $namaFotoAdminBaru; // Menentukan path lengkap untuk foto baru
+        $namaFotoAdminBaru = uniqid() . '.' . $formatFoto;
+        $folderTujuan = '../../uploads/';
+        $fotoAdmin = $folderTujuan . $namaFotoAdminBaru;
 
         $obyekAdmin = new Admin($koneksi);
-        $adminSebelumnya = $obyekAdmin->getProfilById($idAdmin);
+        $adminSebelumnya = $obyekAdmin->getAdminById($idAdmin);
         $fotoLama = $adminSebelumnya['Foto_Admin'];
 
         if (!empty($fotoLama) && file_exists($fotoLama)) {
@@ -51,15 +51,24 @@ if (isset($_POST['Simpan'])) {
         }
     } else {
         $obyekAdmin = new Admin($koneksi);
-        $adminSebelumnya = $obyekAdmin->getProfilById($idAdmin);
+        $adminSebelumnya = $obyekAdmin->getAdminById($idAdmin);
         $fotoAdmin = $adminSebelumnya['Foto_Admin'];
+
+        if (!empty($fotoAdmin)) {
+            $lokasiFotoLama = '../../uploads/' . $fotoAdmin;
+            if (file_exists($lokasiFotoLama)) {
+                if (!unlink($lokasiFotoLama)) {
+                    setPesanKesalahan("Gagal menghapus foto lama.");
+                }
+            }
+        }
     }
 
     $hashKataSandi = password_hash($kataSandi, PASSWORD_DEFAULT);
 
     $dataAdmin = array(
         'ID_Admin' => $idAdmin,
-        'Foto_Admin' => $fotoAdmin,
+        'Foto_Admin' => $namaFotoAdminBaru,
         'Nama_Admin' => $namaAdmin,
         'Email_Admin' => $emailAdmin,
         'Kata_Sandi' => $hashKataSandi,
@@ -81,4 +90,3 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akar_tautan" . "src/admin/pages/profile.php");
     exit;
 }
-?>

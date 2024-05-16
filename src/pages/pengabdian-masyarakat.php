@@ -143,6 +143,7 @@
     </main>
     <script src="../assets/js/tentang-fakultas.js"></script>
     <script src="../assets/js/tenaga-dosen.js"></script>
+    
     <!-- MAIN END -->
 
     <!-- FOOTER START -->

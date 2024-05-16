@@ -28,7 +28,7 @@
                         $dosenModel = new Dosen($koneksi);
                         $dosenInfo = $dosenModel->tampilkanDataDosen();
                         $totalData = count($dosenInfo);
-                        $limit = 5;
+                        $limit = 10;
                         $totalPages = ceil($totalData / $limit);
                         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                         $offset = ($page - 1) * $limit;
@@ -55,7 +55,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-md-12 col-sm-12 mt-md-2 navigasi">
+                    <div class="col-md-12 col-sm-12 mt-md-2 px-auto justify-content-center navigasi">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item <?= ($page <= 1) ? 'disabled' : ''; ?>">

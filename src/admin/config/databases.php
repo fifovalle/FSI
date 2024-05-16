@@ -78,7 +78,7 @@ class Admin
     {
         $query = "UPDATE admin SET Token_Verifikasi = ? WHERE ID_Admin = ?";
         $stmt = mysqli_prepare($this->koneksi, $query);
-        mysqli_stmt_bind_param($stmt, "si", $token, $adminId);
+        mysqli_stmt_bind_param($stmt, "ii", $token, $adminId);
         return mysqli_stmt_execute($stmt);
     }
 
@@ -598,14 +598,17 @@ class ProgramStudi
 
     public function tambahProgramStudi($data)
     {
-        $query = "INSERT INTO program_studi (ID_Admin, Nama_Prodi) VALUES (?, ?)";
+        $query = "INSERT INTO program_studi (ID_Admin, Nama_Prodi, Gambar_Prodi, Tautan_Prodi) VALUES (?, ?, ?, ?)";
 
         $statement = $this->koneksi->prepare($query);
         $statement->bind_param(
-            "is",
+            "isss",
             $this->menghilanganString($data['ID_Admin']),
-            $this->menghilanganString($data['Nama_Prodi'])
+            $this->menghilanganString($data['Nama_Prodi']),
+            $this->menghilanganString($data['Gambar_Prodi']),
+            $this->menghilanganString($data['Tautan_Prodi'])
         );
+
 
         if ($statement->execute()) {
             return true;
@@ -632,9 +635,9 @@ class ProgramStudi
 
     public function perbaruiProgramStudi($idProdi, $dataProdi)
     {
-        $sql = "UPDATE program_studi SET Nama_Prodi = ? WHERE ID_Prodi = ?";
+        $sql = "UPDATE program_studi SET Nama_Prodi = ?, Gambar_Prodi = ?, Tautan_Prodi = ? WHERE ID_Prodi = ?";
         $stmt = $this->koneksi->prepare($sql);
-        $stmt->bind_param("si", $dataProdi['Nama_Prodi'], $idProdi);
+        $stmt->bind_param("sssi", $dataProdi['Nama_Prodi'], $dataProdi['Gambar_Prodi'], $dataProdi['Tautan_Prodi'], $idProdi);
 
         if ($stmt->execute()) {
             return true;
@@ -643,6 +646,20 @@ class ProgramStudi
         }
     }
 
+    public function getProgramStudiById($idProdi)
+    {
+        $sql = "SELECT Gambar_Prodi FROM program_studi WHERE ID_Prodi = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("i", $idProdi);
+        $stmt->execute();
+
+        $foto = null;
+        $stmt->bind_result($foto);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $foto;
+    }
 
     public function hapusProgramStudi($id)
     {
@@ -962,3 +979,243 @@ class Staff
     }
 }
 // ===================================STAFF==================================
+
+
+// ===================================AGENDA==================================
+class Agenda
+{
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function menghilanganString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+
+    public function tambahAgenda($data)
+    {
+        $query = "INSERT INTO agenda(ID_Admin, Gambar_Agenda, Judul_Agenda, Isi_Agenda) VALUES ( ?, ?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "isss",
+            $this->menghilanganString($data['ID_Admin']),
+            $this->menghilanganString($data['Gambar_Agenda']),
+            $this->menghilanganString($data['Judul_Agenda']),
+            $this->menghilanganString($data['Isi_Agenda'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function tampilkanDataAgenda()
+    {
+        $query = "SELECT * FROM agenda LEFT JOIN admin ON agenda.ID_Admin = admin.ID_Admin";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function hapusAgenda($id)
+    {
+        $query = "SELECT ID_Agenda, Gambar_Agenda FROM agenda WHERE ID_Agenda=?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        $idPemilikFoto = $row['ID_Agenda'];
+        $namaFoto = $row['Gambar_Agenda'];
+
+        if ($idPemilikFoto != $id) {
+            return false;
+        }
+
+        $queryDelete = "DELETE FROM agenda WHERE ID_Agenda=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            $direktoriFoto = "../../uploads/";
+
+            if (file_exists($direktoriFoto . $namaFoto)) {
+                if (unlink($direktoriFoto . $namaFoto)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function getGambarAgendaById($idAgenda)
+    {
+        $sql = "SELECT Gambar_Agenda FROM agenda WHERE ID_Agenda = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("i", $idAgenda);
+        $stmt->execute();
+
+        $gambarAgenda = null;
+        $stmt->bind_result($gambarAgenda);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $gambarAgenda;
+    }
+
+    public function perbaruiAgenda($idAgenda, $dataAgenda)
+    {
+        $sql = "UPDATE agenda SET Judul_Agenda = ?, Isi_Agenda = ?, Gambar_Agenda = ? WHERE ID_Agenda = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("sssi", $dataAgenda['Judul_Agenda'], $dataAgenda['Isi_Agenda'], $dataAgenda['Gambar_Agenda'], $idAgenda);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================AGENDA==================================
+
+
+// ===================================PENGUMUMAN==================================
+class Pengumuman
+{
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function menghilanganString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+
+    public function tambahPengumuman($data)
+    {
+        $query = "INSERT INTO pengumuman(ID_Admin, Foto_Pengumuman, Judul_Pengumuman, Isi_Pengumuman) VALUES ( ?, ?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "isss",
+            $this->menghilanganString($data['ID_Admin']),
+            $this->menghilanganString($data['Foto_Pengumuman']),
+            $this->menghilanganString($data['Judul_Pengumuman']),
+            $this->menghilanganString($data['Isi_Pengumuman'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function tampilkanDataPengumuman()
+    {
+        $query = "SELECT * FROM pengumuman LEFT JOIN admin ON pengumuman.ID_Admin = admin.ID_Admin";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function hapusPengumuman($id)
+    {
+        $query = "SELECT ID_Pengumuman, Foto_Pengumuman FROM pengumuman WHERE ID_Pengumuman=?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        $idPemilikFoto = $row['ID_Pengumuman'];
+        $namaFoto = $row['Foto_Pengumuman'];
+
+        if ($idPemilikFoto != $id) {
+            return false;
+        }
+
+        $queryDelete = "DELETE FROM pengumuman WHERE ID_Pengumuman=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            $direktoriFoto = "../../uploads/";
+
+            if (file_exists($direktoriFoto . $namaFoto)) {
+                if (unlink($direktoriFoto . $namaFoto)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function getGambarPengumumanById($idPengumuman)
+    {
+        $sql = "SELECT Foto_Pengumuman FROM pengumuman WHERE ID_Pengumuman = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("i", $idPengumuman);
+        $stmt->execute();
+
+        $fotoPengumuman = null;
+        $stmt->bind_result($fotoPengumuman);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $fotoPengumuman;
+    }
+
+    public function perbaruiPengumuman($idPengumuman, $dataPengumuman)
+    {
+        $sql = "UPDATE pengumuman SET Judul_Pengumuman = ?, Isi_Pengumuman = ?, Foto_Pengumuman = ? WHERE ID_Pengumuman = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("sssi", $dataPengumuman['Judul_Pengumuman'], $dataPengumuman['Isi_Pengumuman'], $dataPengumuman['Foto_Pengumuman'], $idPengumuman);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================PENGUMUMAN==================================

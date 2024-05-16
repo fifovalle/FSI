@@ -15,6 +15,7 @@ $(document).ready(function () {
         console.log(studyData);
         $("#suntingProgramStudiID").val(studyData.ID_Prodi);
         $("#suntingNamaProgramStudi").val(studyData.Nama_Prodi);
+        $("#suntingTautanProgramStudi").val(studyData.Tautan_Prodi);
         $("#suntingProgramStudi").modal("show");
       },
       error: function (xhr) {

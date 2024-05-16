@@ -1,8 +1,13 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
 
 include 'databases.php';
+ob_start();
 
-use PHPMailer\PHPMailer\PHPMailer;
+require '../../../vendor/phpmailer/src/Exception.php';
+require '../../../vendor/phpmailer/src/PHPMailer.php';
+require '../../../vendor/phpmailer/src/SMTP.php';
+
 
 if (isset($_POST['Simpan'])) {
     $fotoAdmin = $_FILES['Foto_Admin'];
@@ -102,3 +107,4 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akar_tautan" . "src/admin/pages/admin.php");
     exit;
 }
+ob_end_flush(); 

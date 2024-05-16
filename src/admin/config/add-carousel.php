@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();  
 
 if (isset($_POST['Simpan'])) {
     $judul = mysqli_real_escape_string($koneksi, htmlspecialchars($_POST['Judul']));
@@ -49,3 +50,4 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akar_tautan" . "src/admin/pages/carousel.php");
     exit;
 }
+ob_end_flush();

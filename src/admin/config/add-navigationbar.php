@@ -1,17 +1,18 @@
 <?php
 include 'databases.php';
+ob_start();  
 
 if (isset($_POST['Simpan'])) {
     $daftarNama = mysqli_real_escape_string($koneksi, htmlspecialchars($_POST['Daftar_Nama']));
     $tautan = mysqli_real_escape_string($koneksi, $_POST['Tautan']);
     $kategori = mysqli_real_escape_string($koneksi, $_POST['Kategori']);
 
-    if (empty($daftarNama) || empty($tautan)){
+    if (empty($daftarNama) || empty($tautan)) {
         setPesanKesalahan("Semua field harus diisi.");
         header("Location: $akar_tautan" . "src/admin/pages/bar-navigasi.php");
         exit;
     }
-    
+
     $parsedUrl = parse_url($tautan);
     if (!isset($parsedUrl['scheme'])) {
         $tautan = 'http://' . $tautan;
@@ -22,7 +23,6 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
-    // Validasi untuk memastikan kategori dipilih
     if ($kategori == "Pilih Kategori") {
         setPesanKesalahan("Anda harus memilih kategori.");
         header("Location: $akar_tautan" . "src/admin/pages/bar-navigasi.php");
@@ -51,3 +51,4 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akar_tautan" . "src/admin/pages/bar-navigasi.php");
     exit;
 }
+ ob_end_flush();
