@@ -38,9 +38,7 @@
                     </div>
                     <div class="col-md-3 text-start col-sm-12">
                         <div class="teks-prestasi2">
-                            <h2>Rifaz Muhammad Sukma</h2>
-                            <h2>Annisa Mufidah Sopia</h2>
-                            <h2>Saepurizal</h2>
+                            <h2>Rifaz Muhammad Sukma Annisa Mufidah Sopia Saepurizal</h2>
                             <h5>Kegiatan : Konferensi Perpustakaan Digital Indonesia Ke-13</h5>
                             <h6>Pencapaian : Juara 1</h6>
                             <h6>Tahun : 2022</h6>

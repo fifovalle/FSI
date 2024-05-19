@@ -13,16 +13,6 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
-    $parsedUrl = parse_url($tautan);
-    if (!isset($parsedUrl['scheme'])) {
-        $tautan = 'http://' . $tautan;
-    }
-
-    if (!filter_var($tautan, FILTER_VALIDATE_URL)) {
-        echo json_encode(array("success" => false, "message" => "Tautan tidak valid."));
-        exit;
-    }
-
     if ($kategori == "Pilih Kategori") {
         setPesanKesalahan("Anda harus memilih kategori.");
         header("Location: $akar_tautan" . "src/admin/pages/bar-navigasi.php");

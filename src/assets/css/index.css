@@ -397,11 +397,11 @@
     text-transform: uppercase;
   }
 
-  .section-testimoni{
+  .section-testimoni {
     margin: 80px 0 30px 0;
   }
 
-  .section-testimoni h1{
+  .section-testimoni h1 {
     font-weight: bold;
     margin: 0 580px;
     border-bottom: 5px solid #01012f82;
@@ -412,7 +412,7 @@
     max-width: 900px;
     margin: auto;
   }
-  
+
   #cCarousel .arrow {
     position: absolute;
     top: 50%;
@@ -428,15 +428,15 @@
     background: #00000072;
     cursor: pointer;
   }
-  
+
   #cCarousel #prev {
     left: -20px;
   }
-  
+
   #cCarousel #next {
     right: -5px;
   }
-  
+
   #carousel-vp {
     width: 800px;
     height: 400px;
@@ -446,7 +446,7 @@
     overflow: hidden;
     margin: auto;
   }
-  
+
   #cCarousel #cCarousel-inner {
     display: flex;
     position: absolute;
@@ -454,7 +454,7 @@
     gap: 10px;
     left: 0px;
   }
-  
+
   .cCarousel-item {
     width: 800px;
     height: 400px;
@@ -464,16 +464,16 @@
     display: flex;
     flex-direction: column;
   }
-  
+
   .cCarousel-item img {
-    width: 300px ;
+    width: 300px;
     height: 300px;
     color: white;
     border-radius: 20px;
     margin: auto;
-    object-fit: cover; 
+    object-fit: cover;
   }
-  
+
   .cCarousel-item .infos {
     height: 100%;
     display: flex;
@@ -490,8 +490,8 @@
   }
   .cCarousel-item lead {
     margin-top: 20px;
-    font-weight:600;
-    letter-spacing:1px;
+    font-weight: 600;
+    letter-spacing: 1px;
     color: rgba(80, 80, 80, 1);
   }
 }

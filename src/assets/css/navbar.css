@@ -36,17 +36,16 @@
   .navbar-brand1 {
     display: none !important;
   }
-  
-  .nav-section1{
+
+  .nav-section1 {
     background-color: #01012f;
     padding: 10px 0;
   }
-  
-  .nav-section1 .nav-link{
+
+  .nav-section1 .nav-link {
     color: whitesmoke;
     font-weight: 600;
   }
- 
 
   .navbar {
     display: block;
@@ -65,38 +64,38 @@
     align-items: center;
     text-transform: uppercase;
     font-weight: 600;
-}
+  }
 
-.nav-link i {
+  .nav-link i {
     margin-top: 5.5px;
-}
+  }
 
-.navbar-nav .nav-link.show{
+  .navbar-nav .nav-link.show {
     color: #007bff;
-}
+  }
 
-.nav-link:hover {
+  .nav-link:hover {
     color: #007bff;
-}
+  }
 
-.nav-link.dropdown-toggle::after {
+  .nav-link.dropdown-toggle::after {
     display: none;
-}
+  }
 
-.nav-link.menu-active {
+  .nav-link.menu-active {
     color: #007bff;
-}
+  }
 
-.nav-item {
+  .nav-item {
     margin: 0 10px 0 10px;
     font-size: 16px;
-}
+  }
 
-.nav-item:hover > .dropdown-menu {
+  .nav-item:hover > .dropdown-menu {
     display: block;
-}
+  }
 
-.dropdown-menu {
+  .dropdown-menu {
     background-color: #01012f;
     display: none;
     position: absolute;
@@ -113,31 +112,31 @@
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 0.25rem;
-}
+  }
 
-.dropdown-item,
-.dropdown-item.dropdown .nav-link {
+  .dropdown-item,
+  .dropdown-item.dropdown .nav-link {
     padding: 0.25rem 1.5rem;
     color: #fff;
-}
+  }
 
-.dropdown-item:hover > .submenu {
+  .dropdown-item:hover > .submenu {
     display: block;
-}
+  }
 
-.dropdown-item:hover,
-.dropdown-item.dropdown .nav-link:hover {
+  .dropdown-item:hover,
+  .dropdown-item.dropdown .nav-link:hover {
     color: #007bff;
     background-color: transparent;
-}
+  }
 
-.dropdown-item.active,
-.dropdown-item.dropdown {
+  .dropdown-item.active,
+  .dropdown-item.dropdown {
     color: #007bff;
     background-color: transparent;
-}
+  }
 
-.submenu {
+  .submenu {
     display: none;
     position: absolute;
     top: 0;
@@ -147,24 +146,23 @@
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 0.25rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+  }
 
-.submenu-item {
+  .submenu-item {
     padding: 0.5rem;
     color: #333;
     text-decoration: none;
     display: block;
-}
+  }
 
-.submenu-item:hover {
+  .submenu-item:hover {
     background-color: #f8f9fa;
     color: #007bff;
-}
+  }
 
-.submenu-item.active {
+  .submenu-item.active {
     color: #007bff;
-}
-
+  }
 }
 
 /* Untuk Smartphone */
