@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Waktu pembuatan: 18 Bulan Mei 2024 pada 15.12
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: May 19, 2024 at 04:04 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -40,16 +40,16 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`ID_Admin`, `Nama_Admin`, `Foto_Admin`, `Email_Admin`, `Jenis_Kelamin_Admin`, `Status_Verifikasi_Email`, `Kata_Sandi`, `Konfirmasi_Kata_Sandi`, `Token_Verifikasi`) VALUES
-(50, 'Naufal FIFA', 0x363634333434646235386538612e6a7067, 'fifanaufal10@gmail.com', 'Pria', 'Terverifikasi', '$2y$10$drIfs0sA2HIOF46sV12kDOMGu4AfiUxGYuzwTtQuMHDuyInVYpa7i', 'Naufal123.', 64802557);
+(50, 'Naufal FIFA', 0x363634333434646235386538612e6a7067, 'fifanaufal10@gmail.com', 'Pria', 'Terverifikasi', '$2y$10$LpzqSn3dpJdfe5BQHFvome10JGcdmN1ta24YcKBLt/qW4tExunjXK', '$2y$10$LpzqSn3dpJdfe5BQHFvome10JGcdmN1ta24YcKBLt/qW4tExunjXK', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `agenda`
+-- Table structure for table `agenda`
 --
 
 CREATE TABLE `agenda` (
@@ -63,7 +63,7 @@ CREATE TABLE `agenda` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `berita`
+-- Table structure for table `berita`
 --
 
 CREATE TABLE `berita` (
@@ -75,10 +75,17 @@ CREATE TABLE `berita` (
   `Tanggal_Terbit` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `berita`
+--
+
+INSERT INTO `berita` (`ID_Berita`, `ID_Admin`, `Gambar`, `Judul`, `Isi_Berita`, `Tanggal_Terbit`) VALUES
+(12, 50, 0x363634396632343531656133612e706e67, 'ADA YANG BARU', 'AAAA', '2024-05-17');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `carousel`
+-- Table structure for table `carousel`
 --
 
 CREATE TABLE `carousel` (
@@ -90,16 +97,17 @@ CREATE TABLE `carousel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `carousel`
+-- Dumping data for table `carousel`
 --
 
 INSERT INTO `carousel` (`ID_Carousel`, `ID_Admin`, `Judul`, `Deskripsi`, `Gambar`) VALUES
-(27, 50, 'A', 'A', 0x36363435376231633732313663312e6a7067);
+(27, 50, 'A', 'A', 0x363634396633323339333232322e6a7067),
+(28, 50, 'B', 'B', 0x36363439663334633062623230322e6a7067);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kalender_akademik`
+-- Table structure for table `kalender_akademik`
 --
 
 CREATE TABLE `kalender_akademik` (
@@ -111,7 +119,7 @@ CREATE TABLE `kalender_akademik` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelulusan`
+-- Table structure for table `kelulusan`
 --
 
 CREATE TABLE `kelulusan` (
@@ -125,7 +133,7 @@ CREATE TABLE `kelulusan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `navbar`
+-- Table structure for table `navbar`
 --
 
 CREATE TABLE `navbar` (
@@ -133,20 +141,26 @@ CREATE TABLE `navbar` (
   `ID_Admin` int(11) DEFAULT NULL,
   `Daftar_Nama` varchar(100) NOT NULL,
   `Tautan` varchar(255) NOT NULL,
-  `Kategori` enum('Profil','SDM','Akademik','Penelitian','Mahasiswa','Fasilitas','Peminjaman Mutu') NOT NULL
+  `Kategori` enum('Tentang Fakultas','Visi & Misi','Pimpinan','Struktur Organisasi','Kerja Sama','Laporan') NOT NULL,
+  `Sub_Kategori` enum('Survey') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `navbar`
+-- Dumping data for table `navbar`
 --
 
-INSERT INTO `navbar` (`ID_Navbar`, `ID_Admin`, `Daftar_Nama`, `Tautan`, `Kategori`) VALUES
-(29, 50, 'Visi &amp; Misi', 'http://localhost/UNJANI/src/pages/visi-misi.php', 'Profil');
+INSERT INTO `navbar` (`ID_Navbar`, `ID_Admin`, `Daftar_Nama`, `Tautan`, `Kategori`, `Sub_Kategori`) VALUES
+(34, 50, 'Tentang Fakultas', 'http://localhost/UNJANI/src/pages/tentang-fakultas.php', 'Tentang Fakultas', 'Survey'),
+(35, 50, 'Visi &amp; Misi', 'http://localhost/UNJANI/src/pages/visi-misi.php', 'Visi & Misi', 'Survey'),
+(36, 50, 'Pimpinan', 'http://localhost/UNJANI/src/pages/pimpinan.php', 'Pimpinan', ''),
+(37, 50, 'Struktur Organisasi', 'http://localhost/UNJANI/src/pages/struktur-organisasi.php', 'Struktur Organisasi', 'Survey'),
+(38, 50, 'Kerja Sama', 'https://linktr.ee/KerjaSamaFSI', 'Kerja Sama', 'Survey'),
+(39, 50, 'Laporan', 'https://drive.google.com/drive/folders/1jRfasqGRLrh7zlYOKDr_lmiuqGQlSVPH', 'Laporan', 'Survey');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengumuman`
+-- Table structure for table `pengumuman`
 --
 
 CREATE TABLE `pengumuman` (
@@ -160,7 +174,7 @@ CREATE TABLE `pengumuman` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `program_studi`
+-- Table structure for table `program_studi`
 --
 
 CREATE TABLE `program_studi` (
@@ -174,7 +188,7 @@ CREATE TABLE `program_studi` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tenaga_dosen`
+-- Table structure for table `tenaga_dosen`
 --
 
 CREATE TABLE `tenaga_dosen` (
@@ -185,7 +199,7 @@ CREATE TABLE `tenaga_dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tenaga_dosen`
+-- Dumping data for table `tenaga_dosen`
 --
 
 INSERT INTO `tenaga_dosen` (`ID_Dosen`, `NIP_NID_Dosen`, `Nama_Dosen`, `Jabatan_Dosen`) VALUES
@@ -228,7 +242,7 @@ INSERT INTO `tenaga_dosen` (`ID_Dosen`, `NIP_NID_Dosen`, `Nama_Dosen`, `Jabatan_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tenaga_staff`
+-- Table structure for table `tenaga_staff`
 --
 
 CREATE TABLE `tenaga_staff` (
@@ -239,7 +253,7 @@ CREATE TABLE `tenaga_staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tenaga_staff`
+-- Dumping data for table `tenaga_staff`
 --
 
 INSERT INTO `tenaga_staff` (`ID_Staff`, `NIP_NID_Staff`, `Nama_Staff`, `Jabatan_Staff`) VALUES
@@ -285,7 +299,7 @@ INSERT INTO `tenaga_staff` (`ID_Staff`, `NIP_NID_Staff`, `Nama_Staff`, `Jabatan_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `testimoni`
+-- Table structure for table `testimoni`
 --
 
 CREATE TABLE `testimoni` (
@@ -298,7 +312,7 @@ CREATE TABLE `testimoni` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `testimoni`
+-- Dumping data for table `testimoni`
 --
 
 INSERT INTO `testimoni` (`ID_Testimoni`, `ID_Admin`, `Foto_Mahasiswa`, `Nama_Mahasiswa`, `Kesan_Mahasiswa`, `Tanggal_Testimoni`) VALUES
@@ -309,210 +323,210 @@ INSERT INTO `testimoni` (`ID_Testimoni`, `ID_Admin`, `Foto_Mahasiswa`, `Nama_Mah
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`ID_Admin`);
 
 --
--- Indeks untuk tabel `agenda`
+-- Indexes for table `agenda`
 --
 ALTER TABLE `agenda`
   ADD PRIMARY KEY (`ID_Agenda`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indeks untuk tabel `berita`
+-- Indexes for table `berita`
 --
 ALTER TABLE `berita`
   ADD PRIMARY KEY (`ID_Berita`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indeks untuk tabel `carousel`
+-- Indexes for table `carousel`
 --
 ALTER TABLE `carousel`
   ADD PRIMARY KEY (`ID_Carousel`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indeks untuk tabel `kalender_akademik`
+-- Indexes for table `kalender_akademik`
 --
 ALTER TABLE `kalender_akademik`
   ADD PRIMARY KEY (`ID_Akademik`),
   ADD UNIQUE KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indeks untuk tabel `kelulusan`
+-- Indexes for table `kelulusan`
 --
 ALTER TABLE `kelulusan`
   ADD PRIMARY KEY (`ID_Kelulusan`),
   ADD KEY `ID_Prodi` (`ID_Prodi`);
 
 --
--- Indeks untuk tabel `navbar`
+-- Indexes for table `navbar`
 --
 ALTER TABLE `navbar`
   ADD PRIMARY KEY (`ID_Navbar`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indeks untuk tabel `pengumuman`
+-- Indexes for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
   ADD PRIMARY KEY (`ID_Pengumuman`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indeks untuk tabel `program_studi`
+-- Indexes for table `program_studi`
 --
 ALTER TABLE `program_studi`
   ADD PRIMARY KEY (`ID_Prodi`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indeks untuk tabel `tenaga_dosen`
+-- Indexes for table `tenaga_dosen`
 --
 ALTER TABLE `tenaga_dosen`
   ADD PRIMARY KEY (`ID_Dosen`);
 
 --
--- Indeks untuk tabel `tenaga_staff`
+-- Indexes for table `tenaga_staff`
 --
 ALTER TABLE `tenaga_staff`
   ADD PRIMARY KEY (`ID_Staff`);
 
 --
--- Indeks untuk tabel `testimoni`
+-- Indexes for table `testimoni`
 --
 ALTER TABLE `testimoni`
   ADD PRIMARY KEY (`ID_Testimoni`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `ID_Admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT untuk tabel `agenda`
+-- AUTO_INCREMENT for table `agenda`
 --
 ALTER TABLE `agenda`
   MODIFY `ID_Agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `berita`
+-- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `ID_Berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID_Berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `carousel`
+-- AUTO_INCREMENT for table `carousel`
 --
 ALTER TABLE `carousel`
-  MODIFY `ID_Carousel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ID_Carousel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT untuk tabel `kalender_akademik`
+-- AUTO_INCREMENT for table `kalender_akademik`
 --
 ALTER TABLE `kalender_akademik`
   MODIFY `ID_Akademik` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `kelulusan`
+-- AUTO_INCREMENT for table `kelulusan`
 --
 ALTER TABLE `kelulusan`
   MODIFY `ID_Kelulusan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `navbar`
+-- AUTO_INCREMENT for table `navbar`
 --
 ALTER TABLE `navbar`
-  MODIFY `ID_Navbar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `ID_Navbar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
--- AUTO_INCREMENT untuk tabel `pengumuman`
+-- AUTO_INCREMENT for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
   MODIFY `ID_Pengumuman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `program_studi`
+-- AUTO_INCREMENT for table `program_studi`
 --
 ALTER TABLE `program_studi`
   MODIFY `ID_Prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `tenaga_dosen`
+-- AUTO_INCREMENT for table `tenaga_dosen`
 --
 ALTER TABLE `tenaga_dosen`
   MODIFY `ID_Dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT untuk tabel `tenaga_staff`
+-- AUTO_INCREMENT for table `tenaga_staff`
 --
 ALTER TABLE `tenaga_staff`
   MODIFY `ID_Staff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT untuk tabel `testimoni`
+-- AUTO_INCREMENT for table `testimoni`
 --
 ALTER TABLE `testimoni`
   MODIFY `ID_Testimoni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `agenda`
+-- Constraints for table `agenda`
 --
 ALTER TABLE `agenda`
   ADD CONSTRAINT `agenda_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `berita`
+-- Constraints for table `berita`
 --
 ALTER TABLE `berita`
   ADD CONSTRAINT `berita_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `carousel`
+-- Constraints for table `carousel`
 --
 ALTER TABLE `carousel`
   ADD CONSTRAINT `carousel_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `kelulusan`
+-- Constraints for table `kelulusan`
 --
 ALTER TABLE `kelulusan`
   ADD CONSTRAINT `kelulusan_ibfk_1` FOREIGN KEY (`ID_Prodi`) REFERENCES `program_studi` (`ID_Prodi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `navbar`
+-- Constraints for table `navbar`
 --
 ALTER TABLE `navbar`
   ADD CONSTRAINT `navbar_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `pengumuman`
+-- Constraints for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
   ADD CONSTRAINT `pengumuman_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `program_studi`
+-- Constraints for table `program_studi`
 --
 ALTER TABLE `program_studi`
   ADD CONSTRAINT `program_studi_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `testimoni`
+-- Constraints for table `testimoni`
 --
 ALTER TABLE `testimoni`
   ADD CONSTRAINT `testimoni_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;

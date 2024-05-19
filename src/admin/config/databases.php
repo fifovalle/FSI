@@ -52,6 +52,18 @@ class Admin
         }
     }
 
+    public function perbaruiKataSandi($id, $data)
+    {
+        $query = "UPDATE admin SET Kata_Sandi=?, Konfirmasi_Kata_Sandi=? WHERE ID_Admin=?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("ssi", $data['Kata_Sandi'], $data['Konfirmasi_Kata_Sandi'], $id);
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function perbaruiProfile($id, $data)
     {
         $query = "UPDATE admin SET Foto_Admin=?, Nama_Admin=?, Email_Admin=?, Kata_Sandi=?, Konfirmasi_Kata_Sandi=? WHERE ID_Admin=?";
@@ -279,13 +291,14 @@ class Navbar
 
     public function tambahNavbar($data)
     {
-        $query = "INSERT INTO navbar (ID_Admin, Daftar_Nama, Tautan, Kategori) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO navbar (ID_Admin, Daftar_Nama, Tautan, Kategori, Sub_Kategori) VALUES (?, ?, ?, ?, ?)";
         $statement = $this->koneksi->prepare($query);
         $daftarNama = mysqli_real_escape_string($this->koneksi, $data['Daftar_Nama']);
         $tautan = mysqli_real_escape_string($this->koneksi, $data['Tautan']);
         $kategori = mysqli_real_escape_string($this->koneksi, $data['Kategori']);
+        $subKategori = mysqli_real_escape_string($this->koneksi, $data['Sub_Kategori']);
         $idAdmin = intval($data['ID_Admin']);
-        $statement->bind_param("isss", $idAdmin, $daftarNama, $tautan, $kategori);
+        $statement->bind_param("issss", $idAdmin, $daftarNama, $tautan, $kategori, $subKategori);
         if ($statement->execute()) {
             return true;
         } else {

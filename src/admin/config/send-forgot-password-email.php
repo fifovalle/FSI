@@ -68,7 +68,7 @@ try {
                 </tr>
             </table>
         </body>
-       ';
+    ';
 
     $mail->send();
 } catch (Exception $e) {

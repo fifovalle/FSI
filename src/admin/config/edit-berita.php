@@ -7,26 +7,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $isiBerita = $_POST['Isi_Berita'] ?? '';
     $tanggalTerbitBerita = $_POST['Tanggal_Terbit'] ?? '';
 
-    if (!isset($_FILES['Gambar'])) {
-        echo json_encode(array("success" => false, "message" => "Gambar berita tidak tersedia."));
-        exit;
-    }
-
-    $gambarBerita = $_FILES['Gambar'];
-    $namaFileBaru = uniqid() . '_' . $gambarBerita['name'];
-    $lokasiFile = '../../uploads/' . $namaFileBaru;
-
     $beritaModel = new Berita($koneksi);
 
-    $gambarLama = $beritaModel->getGambarBeritaById($idBerita);
+    $namaFileBaru = '';
 
-    if (!empty($gambarLama)) {
-        unlink('../../uploads/' . $gambarLama);
+    if (isset($_FILES['Gambar']) && ($_FILES['Gambar']['size'] > 0)) {
+        $gambarBerita = $_FILES['Gambar'];
+        $lokasiFile = $gambarBerita['tmp_name'];
+        $ekstensiFile = pathinfo($gambarBerita['name'], PATHINFO_EXTENSION);
+
+        if (!in_array($ekstensiFile, array('jpg', 'jpeg', 'png', 'gif'))) {
+            echo json_encode(array("success" => false, "message" => "Ekstensi file gambar tidak valid. Harus berupa JPG, JPEG, PNG, atau GIF."));
+            exit;
+        }
+
+        $namaFileBaru = uniqid() . '.' . $ekstensiFile;
+        $tujuanGambarBerita = "../../uploads/" . $namaFileBaru;
+
+        if (!move_uploaded_file($lokasiFile, $tujuanGambarBerita)) {
+            echo json_encode(array("success" => false, "message" => "Gagal mengunggah gambar baru."));
+            exit;
+        }
     }
 
-    if (!move_uploaded_file($gambarBerita['tmp_name'], $lokasiFile)) {
-        echo json_encode(array("success" => false, "message" => "Gagal mengunggah gambar berita."));
-        exit;
+    $beritaLama = $beritaModel->getGambarBeritaById($idBerita);
+
+    if (empty($namaFileBaru)) {
+        $namaFileBaru = $beritaLama;
+    }
+
+    if (!empty($beritaLama) && $namaFileBaru !== $beritaLama) {
+        unlink('../../uploads/' . $beritaLama);
     }
 
     $dataBerita = array(
