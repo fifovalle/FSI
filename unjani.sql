@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 02:22 AM
+-- Generation Time: May 20, 2024 at 02:41 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -72,10 +72,18 @@ CREATE TABLE `beasiswa` (
   `Gambar` longblob NOT NULL,
   `Nama_Penerima` varchar(225) NOT NULL,
   `Nama_Beasiswa` varchar(225) NOT NULL,
-  `Durasi_Beasiswa` varchar(225) NOT NULL,
+  `Durasi_Beasiswa` varchar(225) DEFAULT NULL,
   `Link_Instagram` varchar(225) NOT NULL,
   `Link_Website` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `beasiswa`
+--
+
+INSERT INTO `beasiswa` (`ID_Beasiswa`, `ID_Admin`, `Gambar`, `Nama_Penerima`, `Nama_Beasiswa`, `Durasi_Beasiswa`, `Link_Instagram`, `Link_Website`) VALUES
+(3, 50, 0x363634613961313963383833372e6a7067, 'Yolanda Charmenia Nadine Yusrin', 'Beasiswa Jabar Future Leaders Scholarship (JFLS)', 'Beasiswa Percepatan Akses Pendidikan Tinggi (1 Tahun)', 'https://www.instagram.com/p/Cw3xOpQPcHy/?utm_source=ig_web_copy_link&amp;igshid=MzRlODBiNWFlZA%3D%3D', 'https://beasiswa-jfl.jabarprov.go.id/'),
+(4, 50, 0x363634613961353639396662662e6a7067, 'Dara Santika Putri Banaranto', 'Beasiswa Djarum Plus', NULL, 'https://www.instagram.com/p/CwxZdOhvGgz/?utm_source=ig_web_copy_link&amp;igshid=MzRlODBiNWFlZA%3D%3D', 'https://djarumbeasiswaplus.org/');
 
 -- --------------------------------------------------------
 
@@ -313,6 +321,14 @@ CREATE TABLE `prestasi` (
   `Pencapaian` varchar(225) NOT NULL,
   `Tahun_Pencapaian` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prestasi`
+--
+
+INSERT INTO `prestasi` (`ID_Prestasi`, `ID_Admin`, `Gambar`, `Nama_Mahasiswa`, `Kegiatan`, `Pencapaian`, `Tahun_Pencapaian`) VALUES
+(5, 50, 0x363634613938373434373334642e6a7067, 'Rifaz Muhammad Sukma', 'Capstone Project Bangkit 2023', 'Juara 2', '2023'),
+(6, 50, 0x363634613938393666313932362e6a7067, 'Rifaz Muhammad Sukma Annisa Mufidah Sopia Saepurizal', 'Konferensi Perpustakaan Digital Indonesia Ke-13', 'Juara 1', '2022');
 
 -- --------------------------------------------------------
 
@@ -646,7 +662,7 @@ ALTER TABLE `agenda`
 -- AUTO_INCREMENT for table `beasiswa`
 --
 ALTER TABLE `beasiswa`
-  MODIFY `ID_Beasiswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Beasiswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `berita`
@@ -718,7 +734,7 @@ ALTER TABLE `pengumuman`
 -- AUTO_INCREMENT for table `prestasi`
 --
 ALTER TABLE `prestasi`
-  MODIFY `ID_Prestasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_Prestasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `produk_inovatif`

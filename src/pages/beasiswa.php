@@ -18,45 +18,41 @@
     <!-- NAVBAR END -->
 
     <!-- MAIN START -->
+    <?php
+    $beasiswaMahasiswa = new beasiswaMahasiswa($koneksi);
+    $beasiswaMahasiswaInfo = $beasiswaMahasiswa->tampilkanDataBeasiswaMahasiswa();
+    ?>
     <main class="container-fluid p-0">
         <div class="section-beasiswa">
             <div class="container-fluid p-0 fakultas-animation">
                 <div class="row beasiswa">
-                    <div class="col-md-3 text-end col-sm-12">
-                        <img class="img-fluid" src="../assets/img/beasiswa/b.jpg" alt="">
-                    </div>
-                    <div class="col-md-3 text-start col-sm-12">
-                        <div class="teks-beasiswa">
-                            <h2>Yolanda Charmenia Nadine Yusrin</h2>
-                            <h5>Beasiswa Jabar Future Leaders Scholarship (JFLS)</h5>
-                            <h6>Beasiswa Percepatan Akses Pendidikan Tinggi (1 Tahun)</h6>
-                            <span>
-                                <a href="https://www.instagram.com/p/Cw3xOpQPcHy/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA%3D%3D" target="_blank">
-                                    <box-icon name='instagram-alt' type='logo'></box-icon>
-                                </a>
-                                <a href="https://beasiswa-jfl.jabarprov.go.id/" target="_blank">
-                                    <box-icon name='globe'></box-icon>
-                                </a>
-                            </span>
+                    <?php if (!empty($beasiswaMahasiswaInfo)) : ?>
+                        <?php $nomor = 1; ?>
+                        <?php foreach ($beasiswaMahasiswaInfo as $beasiswaMahasiswa) : ?>
+                            <div class="col-md-3 text-end col-sm-12">
+                                <img class="img-fluid" src="../uploads/<?php echo $beasiswaMahasiswa['Gambar']; ?>" alt="">
+                            </div>
+                            <div class="col-md-3 text-start col-sm-12">
+                                <div class="teks-beasiswa">
+                                    <h2><?php echo $beasiswaMahasiswa['Nama_Penerima']; ?></h2>
+                                    <h5><?php echo $beasiswaMahasiswa['Nama_Beasiswa']; ?></h5>
+                                    <h6><?php echo $beasiswaMahasiswa['Durasi_Beasiswa'] ?? ''; ?></h6>
+                                    <span>
+                                        <a href="<?php echo $beasiswaMahasiswa['Link_Instagram']; ?>" target="_blank">
+                                            <box-icon name='instagram-alt' type='logo'></box-icon>
+                                        </a>
+                                        <a href="<?php echo $beasiswaMahasiswa['Link_Website']; ?>" target="_blank">
+                                            <box-icon name='globe'></box-icon>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <div class="col-12 text-center">
+                            <p>Tidak ada data beasiswa mahasiswa yang ditemukan.</p>
                         </div>
-                    </div>
-                    <div class="col-md-3 text-end col-sm-12">
-                        <img class="img-fluid" src="../assets/img/beasiswa/b2.jpg" alt="">
-                    </div>
-                    <div class="col-md-3 text-start col-sm-12">
-                        <div class="teks-beasiswa">
-                            <h2>Dara Santika Putri Banaranto</h2>
-                            <h5>Beasiswa Djarum Plus</h5>
-                            <span>
-                                <a href="https://www.instagram.com/p/CwxZdOhvGgz/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA%3D%3D" target="_blank">
-                                    <box-icon name='instagram-alt' type='logo'></box-icon>
-                                </a>
-                                <a href="https://djarumbeasiswaplus.org/" target="_blank">
-                                    <box-icon name='globe'></box-icon>
-                                </a>
-                            </span>
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

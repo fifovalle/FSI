@@ -21,29 +21,30 @@
     <main class="container-fluid p-0">
         <div class="section-prestasi">
             <div class="container-fluid p-0 fakultas-animation">
+                <?php
+                $prestasiModel = new prestasiMahasiswa($koneksi);
+                $pretasiInfo = $prestasiModel->tampilkanDataPrestasiMahasiswa();
+                ?>
                 <div class="row prestasi">
-                    <div class="col-md-3 text-end col-sm-12">
-                        <img class="img-fluid" src="../assets/img/prestasi/p2.jpg" alt="">
-                    </div>
-                    <div class="col-md-3 text-start col-sm-12">
-                        <div class="teks-prestasi">
-                            <h2>Rifaz Muhammad Sukma</h2>
-                            <h5>Kegiatan : Capstone Project Bangkit 2023</h5>
-                            <h6>Pencapaian : Juara 2</h6>
-                            <h6>Tahun : 2023</h6>
+                    <?php if (!empty($pretasiInfo)) { ?>
+                        <?php foreach ($pretasiInfo as $prestasi) { ?>
+                            <div class="col-md-3 text-end col-sm-12">
+                                <img class="img-fluid" src="../uploads/<?php echo $prestasi['Gambar']; ?>" alt="">
+                            </div>
+                            <div class="col-md-3 text-start col-sm-12">
+                                <div class="teks-prestasi">
+                                    <h2><?php echo htmlspecialchars($prestasi['Nama_Mahasiswa']); ?></h2>
+                                    <h5>Kegiatan : <?php echo htmlspecialchars($prestasi['Kegiatan']); ?></h5>
+                                    <h6>Pencapaian : <?php echo htmlspecialchars($prestasi['Pencapaian']); ?></h6>
+                                    <h6>Tahun : <?php echo htmlspecialchars($prestasi['Tahun_Pencapaian']); ?></h6>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <div class="col-12 text-center">
+                            <p>Tidak ada data prestasi yang ditemukan.</p>
                         </div>
-                    </div>
-                    <div class="col-md-3 text-end col-sm-12">
-                        <img class="img-fluid" src="../assets/img/prestasi/p.jpg" alt="">
-                    </div>
-                    <div class="col-md-3 text-start col-sm-12">
-                        <div class="teks-prestasi2">
-                            <h2>Rifaz Muhammad Sukma Annisa Mufidah Sopia Saepurizal</h2>
-                            <h5>Kegiatan : Konferensi Perpustakaan Digital Indonesia Ke-13</h5>
-                            <h6>Pencapaian : Juara 1</h6>
-                            <h6>Tahun : 2022</h6>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
