@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 02:41 AM
+-- Generation Time: May 21, 2024 at 01:30 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -166,8 +166,8 @@ CREATE TABLE `navbar` (
   `ID_Admin` int(11) DEFAULT NULL,
   `Daftar_Nama` varchar(100) NOT NULL,
   `Tautan` varchar(255) NOT NULL,
-  `Kategori` enum('Tentang Fakultas','Visi & Misi','Pimpinan','Struktur Organisasi','Kerja Sama','Laporan') NOT NULL,
-  `Sub_Kategori` enum('Survey') DEFAULT NULL
+  `Kategori` enum('Profil','SDM','Akademik','Fasilitas','Penjaminan Mutu') NOT NULL,
+  `Sub_Kategori` enum('Survey','Dokumen Akademik') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -175,12 +175,28 @@ CREATE TABLE `navbar` (
 --
 
 INSERT INTO `navbar` (`ID_Navbar`, `ID_Admin`, `Daftar_Nama`, `Tautan`, `Kategori`, `Sub_Kategori`) VALUES
-(34, 50, 'Tentang Fakultas', 'http://localhost/UNJANI/src/pages/tentang-fakultas.php', 'Tentang Fakultas', 'Survey'),
-(35, 50, 'Visi &amp; Misi', 'http://localhost/UNJANI/src/pages/visi-misi.php', 'Visi & Misi', 'Survey'),
-(36, 50, 'Pimpinan', 'http://localhost/UNJANI/src/pages/pimpinan.php', 'Pimpinan', ''),
-(37, 50, 'Struktur Organisasi', 'http://localhost/UNJANI/src/pages/struktur-organisasi.php', 'Struktur Organisasi', 'Survey'),
-(38, 50, 'Kerja Sama', 'https://linktr.ee/KerjaSamaFSI', 'Kerja Sama', 'Survey'),
-(39, 50, 'Laporan', 'https://drive.google.com/drive/folders/1jRfasqGRLrh7zlYOKDr_lmiuqGQlSVPH', 'Laporan', 'Survey');
+(53, 50, 'Tentang Fakultas', 'http://localhost/UNJANI/src/pages/tentang-fakultas.php', 'Profil', NULL),
+(54, 50, 'Visi &amp; Misi', 'http://localhost/UNJANI/src/pages/visi-misi.php', 'Profil', NULL),
+(55, 50, 'Pimpinan', 'http://localhost/UNJANI/src/pages/pimpinan.php', 'Profil', NULL),
+(56, 50, 'Struktur Organisasi', 'http://localhost/UNJANI/src/pages/struktur-organisasi.php', 'Profil', NULL),
+(57, 50, 'Kerjasama', 'https://linktr.ee/KerjaSamaFSI', 'Profil', NULL),
+(59, 50, 'Survey', 'http://localhost/UNJANI/src/pages/survey.php', 'Profil', 'Survey'),
+(60, 50, 'Hasil Survey', 'http://localhost/UNJANI/src/pages/hasil-survey.php', 'Profil', 'Survey'),
+(61, 50, 'Tenaga Pendidik/Dosen', 'http://localhost/UNJANI/src/pages/tenaga-dosen.php', 'SDM', NULL),
+(62, 50, 'Tenaga Kependidikan', 'http://localhost/UNJANI/src/pages/tenaga-staff.php', 'SDM', NULL),
+(63, 50, 'Kimia', 'https://kimia.unjani.ac.id/', 'Akademik', NULL),
+(64, 50, 'Informatika', 'https://if.unjani.ac.id/', 'Akademik', NULL),
+(65, 50, 'Sistem Informasi', 'https://si.unjani.ac.id/', 'Akademik', NULL),
+(66, 50, 'Magister Kimia', 'https://magister.kimia.unjani.ac.id/', 'Akademik', NULL),
+(67, 50, 'Jurnal Kartika (Kimia)', 'https://jkk.unjani.ac.id/index.php/jkk', 'Akademik', 'Dokumen Akademik'),
+(68, 50, 'Jumanji (Informatika)', 'https://jumanji.unjani.ac.id/index.php/jumanji', 'Akademik', 'Dokumen Akademik'),
+(69, 50, 'Kalender Akademik', 'http://localhost/UNJANI/src/pages/kalender-akademik.php', 'Akademik', 'Dokumen Akademik'),
+(70, 50, 'Buku Aturan Akademik', 'http://localhost/UNJANI/src/pages/buku-pedoman.php', 'Akademik', 'Dokumen Akademik'),
+(71, 50, 'Ruang Kelas', 'http://localhost/UNJANI/src/pages/ruang-kelas.php', 'Fasilitas', NULL),
+(72, 50, 'Laboratorium', 'http://localhost/UNJANI/src/pages/laboratorium.php', 'Fasilitas', NULL),
+(73, 50, 'Fasilitas Umum', 'http://localhost/UNJANI/src/pages/fasil-umum.php', 'Fasilitas', NULL),
+(74, 50, 'Penjamin Mutu Internal', '	http://localhost/UNJANI/src/pages/akreditasi-internal.php', 'Penjaminan Mutu', NULL),
+(75, 50, 'Penjamin Mutu Eksternal', 'http://localhost/UNJANI/src/pages/akreditasi.php', 'Penjaminan Mutu', NULL);
 
 -- --------------------------------------------------------
 
@@ -692,7 +708,7 @@ ALTER TABLE `kelulusan`
 -- AUTO_INCREMENT for table `navbar`
 --
 ALTER TABLE `navbar`
-  MODIFY `ID_Navbar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `ID_Navbar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `penelitian_if`

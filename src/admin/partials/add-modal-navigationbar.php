@@ -18,20 +18,20 @@
                         <label for="tambahKategoriBarNavigasi" class="form-label">Kategori</label>
                         <select name="Kategori" id="tambahKategoriBarNavigasi" class="form-control" required>
                             <option value="" disabled selected>Pilih Kategori</option>
-                            <option value="Tentang Fakultas">Tentang Fakultas</option>
-                            <option value="Visi & Misi">Visi & Misi</option>
-                            <option value="Pimpinan">Pimpinan</option>
-                            <option value="Struktur Organisasi">Struktur Organisasi</option>
-                            <option value="Kerja Sama">Kerja Sama</option>
-                            <option value="Laporan">Laporan</option>
-                        </select>   
+                            <option value="Profil">Profil</option>
+                            <option value="SDM">SDM</option>
+                            <option value="Akademik">Akademik</option>
+                            <option value="Fasilitas">Fasilitas</option>
+                            <option value="Penjaminan Mutu">Penjaminan Mutu</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="tambahSubKategoriBarNavigasi" class="form-label">Sub Kategori</label>
                         <select name="Sub_Kategori" id="tambahSubKategoriBarNavigasi" class="form-control">
                             <option value="" selected>Pilih Sub Kategori</option>
                             <option value="Survey">Survey</option>
-                        </select>   
+                            <option value="Dokumen Akademik">Dokumen Akademik</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" name="Simpan"><?php echo htmlspecialchars('Simpan'); ?></button>

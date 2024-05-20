@@ -64,6 +64,7 @@ if (!isset($_SESSION['ID_Admin'])) {
                                             <th>Daftar Nama</th>
                                             <th>Tautan</th>
                                             <th>Kategori</th>
+                                            <th>Sub Kategori</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -83,6 +84,7 @@ if (!isset($_SESSION['ID_Admin'])) {
                                                     <td><?php echo $navbar['Daftar_Nama']; ?></td>
                                                     <td><?php echo $navbar['Tautan']; ?></td>
                                                     <td><?php echo $navbar['Kategori']; ?></td>
+                                                    <td><?php echo $navbar['Sub_Kategori'] ?? 'TIdak Ada Sub Kategori'; ?></td>
                                                     <td>
                                                         <div class="dropdown">
                                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -108,7 +110,7 @@ if (!isset($_SESSION['ID_Admin'])) {
 
                         <!-- FOOTER START -->
                         <?php include '../partials/footer.php'; ?>
-                        <!-- FOOTER END --> 
+                        <!-- FOOTER END -->
 
                         <div class="content-backdrop fade"></div>
                     </div>

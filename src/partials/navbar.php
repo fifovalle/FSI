@@ -1,3 +1,6 @@
+<?php
+$navbarModel = new Navbar($koneksi);
+?>
 <nav class="navbar navbar-expand-sm navbar-light fixed-top" aria-label="fakultas_sains_dan_informatika">
     <div class="container-fluid mx-auto align-items-center nav-section1">
         <div class="collapse navbar-collapse border border-0 " id="navbarNavDarkDropdown">
@@ -66,51 +69,80 @@
                     <a class="nav-link" aria-current="page" href="../pages/index.php" id="beranda">Beranda</a>
                 </li>
                 <?php
-                $navbarModel = new Navbar($koneksi);
-                $navbarInfo = $navbarModel->tampilkanDataNavbar();
+                $navbarProfilInfo = $navbarModel->tampilkanDataNavbarKategoriProfil();
                 ?>
-                <?php if (!empty($navbarInfo)) : ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="profil">Profil</a>
-                        <ul class="dropdown-menu">
-                            <?php foreach ($navbarInfo as $navbar) : ?>
-                                <li><a class="dropdown-item" href="<?= $navbar['Tautan']; ?>"><?= $navbar['Daftar_Nama']; ?></a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="profil">Profil</a>
+                    <ul class="dropdown-menu">
+                        <?php if (!empty($navbarProfilInfo)) : ?>
+                            <?php foreach ($navbarProfilInfo as $profil) : ?>
+                                <li><a class="dropdown-item" href="<?= $profil['Tautan']; ?>"><?= $profil['Daftar_Nama']; ?></a></li>
                             <?php endforeach; ?>
                             <li class="dropdown-item dropdown ">
-                            <a class="dropdown-item p-0 " href="#" data-bs-toggle="dropdown" aria-expanded="false">Survey
-                                <i class='bx bx-chevron-right'></i>
-                            </a>
-                            <ul class="submenu dropdown-menu">
-                                <li><a class="submenu-item" href="../pages/survey.php">Survey</a></li>
-                                <li><a class="submenu-item" href="../pages/hasil-survey.php">Hasil Survey</a></li>
-                            </ul>
-                        </li>
-                        </ul>
-                    </li>
-                <?php endif; ?>
+                                <a class="dropdown-item p-0 " href="#" data-bs-toggle="dropdown" aria-expanded="false">Survey
+                                    <i class='bx bx-chevron-right'></i>
+                                </a>
+                                <ul class="submenu dropdown-menu">
+                                    <?php
+                                    $navbarProfilSurveyInfo = $navbarModel->tampilkanDataNavbarKategoriProfilSubSurvey();
+                                    ?>
+                                    <?php if (!empty($navbarProfilSurveyInfo)) : ?>
+                                        <?php foreach ($navbarProfilSurveyInfo as $profilSurvey) : ?>
+                                            <li><a class="submenu-item" href="<?= $profilSurvey['Tautan']; ?>"><?= $profilSurvey['Daftar_Nama']; ?></a></li>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <p class="text-center fw-bold text-danger">Tidak Ada Data!</p>
+                                    <?php endif; ?>
+                                </ul>
+                            </li>
+                        <?php else : ?>
+                            <p class="text-center fw-bold text-danger">Tidak Ada Data!</p>
+                        <?php endif; ?>
+                    </ul>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="sdm">SDM</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../pages/tenaga-dosen.php">Tenaga Pendidik/Dosen</a></li>
-                        <li><a class="dropdown-item" href="../pages/tenaga-staff.php">Tenaga Kependidikan</a></li>
+                        <?php
+                        $navbarSdmInfo = $navbarModel->tampilkanDataNavbarKategoriSDM();
+                        ?>
+                        <?php if (!empty($navbarSdmInfo)) : ?>
+                            <?php foreach ($navbarSdmInfo as $sdm) : ?>
+                                <li><a class="dropdown-item" href="<?= $sdm['Tautan']; ?>"><?= $sdm['Daftar_Nama']; ?></a></li>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <p class="text-center fw-bold text-danger">Tidak Ada Data!</p>
+                        <?php endif; ?>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="akademik">Akademik</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="https://kimia.unjani.ac.id/" target="_blank">Kimia</a></li>
-                        <li><a class="dropdown-item" href="#https://if.unjani.ac.id/" target="_blank">Informatika</a></li>
-                        <li><a class=" dropdown-item" href="https://si.unjani.ac.id/" target="_blank">Sistem Informasi</a></li>
-                        <li><a class="dropdown-item" href="https://magister.kimia.unjani.ac.id/" target="_blank">Magister Kimia</a></li>
+                        <?php
+                        $navbarAkademikInfo = $navbarModel->tampilkanDataNavbarKategoriAkademik();
+                        ?>
+                        <?php if (!empty($navbarAkademikInfo)) : ?>
+                            <?php foreach ($navbarAkademikInfo as $akademik) : ?>
+                                <li><a class="dropdown-item" href="<?= $akademik['Tautan']; ?>" target="_blank"><?= $akademik['Daftar_Nama']; ?></a></li>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <p class="text-center fw-bold text-danger">Tidak Ada Data!</p>
+                        <?php endif; ?>
                         <li class="dropdown-item dropdown ">
                             <a class="dropdown-item p-0 " href="#" data-bs-toggle="dropdown" aria-expanded="false">Dokumen Akademik
                                 <i class='bx bx-chevron-right'></i>
                             </a>
                             <ul class="submenu dropdown-menu">
-                                <li><a class="submenu-item" href="https://jkk.unjani.ac.id/index.php/jkk" target="_blank">Jurnal Kartika (Kimia)</a></li>
-                                <li><a class="submenu-item" href="https://jumanji.unjani.ac.id/index.php/jumanji" target="_blank">Jumanji (Informatika)</a></li>
-                                <li><a class="submenu-item" href="../pages/kalender-akademik.php">Kalender Akademik</a></li>
-                                <li><a class="submenu-item" href="../pages/buku-pedoman.php">Buku Aturan Akademik</a></li>
+                                <?php
+                                $navbarAkademikDokumenInfo = $navbarModel->tampilkanDataNavbarKategoriAkademikSubDokumen();
+                                ?>
+                                <?php if (!empty($navbarAkademikDokumenInfo)) : ?>
+                                    <?php foreach ($navbarAkademikDokumenInfo as $akademikDokumen) : ?>
+                                        <li><a class="submenu-item" href="<?= $akademikDokumen['Tautan']; ?>" target="_blank"><?= $akademikDokumen['Daftar_Nama']; ?></a></li>
+                                    <?php endforeach; ?>
+                                <?php else : ?>
+                                    <p class="text-center fw-bold text-danger">Tidak Ada Data!</p>
+                                <?php endif; ?>
                             </ul>
                         </li>
                     </ul>
@@ -118,16 +150,31 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="fasilitas">Fasilitas</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../pages/ruang-kelas.php">Ruang Kelas</a></li>
-                        <li><a class="dropdown-item" href="../pages/laboratorium.php">Laboratorium</a></li>
-                        <li><a class="dropdown-item" href="../pages/fasil-umum.php">Fasilitas Umum</a></li>
+                        <?php
+                        $navbarFasilitasInfo = $navbarModel->tampilkanDataNavbarKategoriFasilitas();
+                        ?>
+                        <?php if (!empty($navbarFasilitasInfo)) : ?>
+                            <?php foreach ($navbarFasilitasInfo as $fasilitas) : ?>
+                                <li><a class="dropdown-item" href="<?= $fasilitas['Tautan']; ?>"><?= $fasilitas['Daftar_Nama']; ?></a></li>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <p class="text-center fw-bold text-danger">Tidak Ada Data!</p>
+                        <?php endif; ?>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="penjaminan">Penjaminan Mutu</a>
                     <ul class="dropdown-menu dropdown-menu-start">
-                        <li><a class="dropdown-item" href="../pages/akreditasi-internal.php">Penjamin Mutu Internal</a></li>
-                        <li><a class="dropdown-item" href="../pages/akreditasi.php">Penjamin Mutu Eksternal</a></li>
+                        <?php
+                        $navbarPenjaminanInfo = $navbarModel->tampilkanDataNavbarKategoriPenjaminan();
+                        ?>
+                        <?php if (!empty($navbarPenjaminanInfo)) : ?>
+                            <?php foreach ($navbarPenjaminanInfo as $penjaminan) : ?>
+                                <li><a class="dropdown-item" href="<?= $penjaminan['Tautan']; ?>"><?= $penjaminan['Daftar_Nama']; ?></a></li>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <p class="text-center fw-bold text-danger">Tidak Ada Data!</p>
+                        <?php endif; ?>
                     </ul>
                 </li>
             </ul>

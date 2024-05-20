@@ -14,7 +14,7 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
-    $valid_kategori = ['Tentang Fakultas', 'Visi & Misi', 'Pimpinan', 'Struktur Organisasi', 'Kerja Sama', 'Laporan'];
+    $valid_kategori = ['Profil', 'SDM', 'Akademik', 'Fasilitas', 'Penjaminan Mutu'];
     if (!in_array($kategori, $valid_kategori)) {
         setPesanKesalahan("Anda harus memilih kategori yang valid.");
         header("Location: " . $akar_tautan . "src/admin/pages/bar-navigasi.php");

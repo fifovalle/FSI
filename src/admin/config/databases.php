@@ -322,6 +322,118 @@ class Navbar
         }
     }
 
+    public function tampilkanDataNavbarKategoriProfil()
+    {
+        $query = "SELECT * FROM navbar WHERE Kategori = 'profil' AND Sub_Kategori IS NULL";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanDataNavbarKategoriProfilSubSurvey()
+    {
+        $query = "SELECT * FROM navbar WHERE Kategori = 'profil' AND Sub_Kategori = 'survey'";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanDataNavbarKategoriSDM()
+    {
+        $query = "SELECT * FROM navbar WHERE Kategori = 'SDM' AND Sub_Kategori IS NULL";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanDataNavbarKategoriAkademik()
+    {
+        $query = "SELECT * FROM navbar WHERE Kategori = 'Akademik' AND Sub_Kategori IS NULL";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanDataNavbarKategoriAkademikSubDokumen()
+    {
+        $query = "SELECT * FROM navbar WHERE Kategori = 'Akademik' AND Sub_Kategori = 'Dokumen Akademik'";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanDataNavbarKategoriFasilitas()
+    {
+        $query = "SELECT * FROM navbar WHERE Kategori = 'Fasilitas' AND Sub_Kategori IS NULL";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function tampilkanDataNavbarKategoriPenjaminan()
+    {
+        $query = "SELECT * FROM navbar WHERE Kategori = 'Penjaminan Mutu' AND Sub_Kategori IS NULL";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
     public function perbaruiNavbar($idNavbar, $dataNavbar)
     {
         $sql = "UPDATE navbar SET Daftar_Nama = ?, Tautan = ?, Kategori = ? WHERE ID_Navbar = ?";
