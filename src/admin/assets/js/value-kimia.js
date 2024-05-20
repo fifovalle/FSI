@@ -1,23 +1,27 @@
 $(document).ready(function () {
-  $(".buttonDosen").click(function (e) {
+  $(".buttonKimia").click(function (e) {
     e.preventDefault();
-    let dosenID = $(this).data("id");
-    console.log(dosenID);
+    let kimiaID = $(this).data("id");
+    console.log(kimiaID);
     $.ajax({
-      url: "../config/get-dosen-data.php",
+      url: "../config/get-kimia-data.php",
       method: "GET",
       data: {
-        dosen_id: dosenID,
+        kimia_id: kimiaID,
       },
       success: function (data) {
         console.log(data);
-        let dosenData = JSON.parse(data);
-        console.log(dosenData);
-        $("#suntingDosenID").val(dosenData.ID_Dosen);
-        $("#suntingNIPNID").val(dosenData.NIP_NID_Dosen);
-        $("#suntingNamaDosen").val(dosenData.Nama_Dosen);
-        $("#suntingNamaJabatanDosen").val(dosenData.Jabatan_Dosen);
-        $("#suntingDosen").modal("show");
+        let kimiaData = JSON.parse(data);
+        console.log(kimiaData);
+        $("#suntingIDPenelitianKimia").val(kimiaData.ID_Penelitian_Kimia);
+        $("#suntingJudulPenelitian").val(kimiaData.Judul_Penelitian);
+        $("#suntingLinkPenelitian").val(kimiaData.Tautan_Penelitian);
+        $("#suntingTingkatan").val(kimiaData.Tingkatan);
+        $("#suntingJudulJournal").val(kimiaData.Judul_Jurnal);
+        $("#suntingLinkJournal").val(kimiaData.Tautan_Jurnal);
+        $("#suntingCreator").val(kimiaData.Pencipta);
+        $("#suntingTahun").val(kimiaData.Tahun);
+        $("#suntingPenelitianKimia").modal("show");
       },
       error: function (xhr) {
         console.error(xhr.responseText);
@@ -26,13 +30,13 @@ $(document).ready(function () {
   });
 
   $(document).ready(function () {
-    $("#tombolSimpanDosen").click(function (e) {
+    $("#tombolSimpanKimia").click(function (e) {
       e.preventDefault();
 
       let formData = new FormData($(this).closest("form")[0]);
 
       $.ajax({
-        url: "../config/edit-dosen.php",
+        url: "../config/edit-kimia.php",
         method: "POST",
         data: formData,
         processData: false,
@@ -55,7 +59,7 @@ $(document).ready(function () {
               timerProgressBar: true,
             }).then((result) => {
               result.dismiss === Swal.DismissReason.timer
-                ? (window.location.href = "../pages/dosen.php")
+                ? (window.location.href = "../pages/penelitian-kimia.php")
                 : null;
             });
           } else {
@@ -85,7 +89,7 @@ $(document).ready(function () {
           });
         },
         complete: function () {
-          $("#suntingDosen").modal("hide");
+          $("#suntingPenelitianKimia").modal("hide");
         },
       });
     });

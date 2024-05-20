@@ -5,7 +5,8 @@
                 <h5 class="modal-title" id="addDataModalLabel">Sunting ProdukInovatif</h5>
             </div>
             <div class="modal-body">
-                <form method="post" action="" enctype="multipart/form-data">
+                <form method="post">
+                    <input type="hidden" id="editIDProduk" name="ID_Produk" autocomplete="off">
                     <div class="mb-3">
                         <label for="editJudulInovasi" class="form-label">Judul Inovasi</label>
                         <input type="text" placeholder="Masukkan Judul Inovasi" name="Judul_Inovasi" class="form-control" id="editJudulInovasi" autocomplete="off">
@@ -28,10 +29,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="editTahun" class="form-label">Tahun</label>
-                        <input type="text" placeholder="Masukkan Tahun" name="Tahun" class="form-control" id="editTahun" autocomplete="off">
+                        <input type="number" placeholder="Masukkan Tahun" name="Tahun" class="form-control" id="editTahun" autocomplete="off">
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" name="Simpan"><?php echo htmlspecialchars('Simpan'); ?></button>
+                        <button type="submit" class="btn btn-primary" id="tombolSimpanProduk" name="Simpan"><?php echo htmlspecialchars('Simpan'); ?></button>
                     </div>
                 </form>
             </div>

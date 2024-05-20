@@ -59,41 +59,59 @@ if (!isset($_SESSION['ID_Admin'])) {
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Pengelola</th>
                                             <th>Judul Penelitian</th>
-                                            <th>Link Penelitian</th>
+                                            <th>Tautan Penelitian</th>
                                             <th>Tingkatan</th>
                                             <th>Judul Journal</th>
-                                            <th>Link Journal</th>
+                                            <th>Tautan Journal</th>
                                             <th>Creator</th>
                                             <th>Tahun</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                    $teknikInformatika = new Informatika($koneksi);
+                                    $informatikaInfo = $teknikInformatika->tampilkanDataTeknikInformatika();
+                                    ?>
                                     <tbody class="table-border-bottom-0">
-                                        <tr>
-                                            <td>1</td>
-                                            <td><strong>Performance and economic evaluation of a pilot scale embedded ends-free membrane bioreactor (EEF-MBR)</strong></td>
-                                            <td>https://www.scopus.com/home.uri</td>
-                                            <td>Q1 Journal</td>
-                                            <td><strong>Applied Microbiology and Biotechnology</strong></td>
-                                            <td>https://www.scopus.com/sourceid/14957</td>
-                                            <td>Siagian U.W.R</td>
-                                            <td>2023</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item buttonDosen" data-bs-toggle="modal" data-id=""><i class="bx bx-edit-alt me-1"></i>Sunting</a>
-                                                        <a class="dropdown-item" onclick=""><i class="bx bx-trash me-1"></i>Hapus</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="6" class="text-center text-danger fw-bold">Tidak ada data dosen!</td>
-                                        </tr>
+                                        <?php if (!empty($informatikaInfo)) : ?>
+                                            <?php $nomor = 1; ?>
+                                            <?php foreach ($informatikaInfo as $informatika) : ?>
+                                                <tr>
+                                                    <td><?php echo $nomor++; ?></td>
+                                                    <td>
+                                                        <strong><?php echo $informatika['Nama_Admin']; ?></strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong><?php echo $informatika['Judul_Penelitian']; ?></strong>
+                                                    </td>
+                                                    <td><?php echo $informatika['Link_Penelitian']; ?></td>
+                                                    <td><?php echo $informatika['Tingkatan']; ?></td>
+                                                    <td>
+                                                        <strong><?php echo $informatika['Judul_Jurnal']; ?></strong>
+                                                    </td>
+                                                    <td><?php echo $informatika['Link_Jurnal']; ?></td>
+                                                    <td><?php echo $informatika['Pencipta']; ?></td>
+                                                    <td><?php echo $informatika['Tahun']; ?></td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item buttonInformatika" data-bs-toggle="modal" data-id="<?php echo $informatika['ID_Penelitian_If']; ?>"><i class="bx bx-edit-alt me-1"></i>Sunting</a>
+                                                                <a class="dropdown-item" onclick="konfirmasiHapusInformatika(<?php echo $informatika['ID_Penelitian_If']; ?>)"><i class="bx bx-trash me-1"></i>Hapus</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php else : ?>
+                                            <tr>
+                                                <td colspan="10" class="text-center text-danger fw-bold">Tidak ada data penelitian teknik informatika!</td>
+                                            </tr>
+                                        <?php endif; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -123,8 +141,8 @@ if (!isset($_SESSION['ID_Admin'])) {
         <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
         <script src="../assets/js/main.js"></script>
         <script src="../assets/js/dashboards-analytics.js"></script>
-        <script src="../assets/js/value-dosen.js"></script>
-        <script src="../assets/js/delete-dosen.js"></script>
+        <script src="../assets/js/value-informatika.js"></script>
+        <script src="../assets/js/delete-informatika.js"></script>
         <!-- CORE JS END -->
         <!-- ALERT -->
         <?php include '../partials/alert.php' ?>

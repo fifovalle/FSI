@@ -5,14 +5,14 @@
                 <h5 class="modal-title" id="addDataModalLabel">Tambah Produk Inovatif</h5>
             </div>
             <div class="modal-body">
-                <form method="post" action="" enctype="multipart/form-data">
+                <form method="post" action="../config/add-produk-inovatif.php">
                     <div class="mb-3">
                         <label for="tambahJudulInovasi" class="form-label">Judul Inovasi</label>
                         <input type="text" placeholder="Masukkan Judul Inovasi" name="Judul_Inovasi" class="form-control" id="tambahJudulInovasi" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label for="tambahLinkInovasi" class="form-label">Link Inovasi</label>
-                        <input type="link" placeholder="Masukkan Link Inovasi" name="Link_Inovasi" class="form-control" id="tambahLinkInovasi" autocomplete="off">
+                        <input type="text" placeholder="Masukkan Link Inovasi" name="Link_Inovasi" class="form-control" id="tambahLinkInovasi" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label for="tambahLeader" class="form-label">Leader</label>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="tambahTahun" class="form-label">Tahun</label>
-                        <input type="text" placeholder="Masukkan Tahun" name="Tahun" class="form-control" id="tambahTahun" autocomplete="off">
+                        <input type="number" placeholder="Masukkan Tahun" name="Tahun" class="form-control" id="tambahTahun" autocomplete="off">
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" name="Simpan"><?php echo htmlspecialchars('Simpan'); ?></button>

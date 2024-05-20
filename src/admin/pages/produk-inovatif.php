@@ -59,6 +59,7 @@ if (!isset($_SESSION['ID_Admin'])) {
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Pengelola</th>
                                             <th>Judul Inovasi</th>
                                             <th>Link Inovasi</th>
                                             <th>Leader</th>
@@ -68,30 +69,43 @@ if (!isset($_SESSION['ID_Admin'])) {
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                    $produkInovatifModel = new ProdukInovatif($koneksi);
+                                    $produkInovatifInfo = $produkInovatifModel->tampilkanDataProdukInovatif();
+                                    ?>
                                     <tbody class="table-border-bottom-0">
-                                        <tr>
-                                            <td>1</td>
-                                            <td><strong>PELATIHAN PENYUSUNAN LAPORAN KEUANGAN DANA MASJID PADA MASJID-MASJID JAMI DI DESA JAMBUDIPA CISARUA BANDUNG BARAT</strong></td>
-                                            <td>https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!</td>
-                                            <td>Siti Kustinah</td>
-                                            <td><strong>HIBAH INTERNAL (KU)</strong></td>
-                                            <td>Romly; Eddy Winarso</td>
-                                            <td>2023</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item buttonDosen" data-bs-toggle="modal" data-id=""><i class="bx bx-edit-alt me-1"></i>Sunting</a>
-                                                        <a class="dropdown-item" onclick=""><i class="bx bx-trash me-1"></i>Hapus</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="6" class="text-center text-danger fw-bold">Tidak ada data!</td>
-                                        </tr>
+                                        <?php if (!empty($produkInovatifInfo)) : ?>
+                                            <?php $nomor = 1; ?>
+                                            <?php foreach ($produkInovatifInfo as $produkInovatif) : ?>
+                                                <tr>
+                                                    <td><?php echo $nomor++; ?></td>
+                                                    <td>
+                                                        <strong><?php echo $produkInovatif['Nama_Admin']; ?></strong>
+                                                    </td>
+                                                    <td><strong><?php echo $produkInovatif['Judul_Inovasi']; ?></strong></td>
+                                                    <td><?php echo $produkInovatif['Tautan_Inovasi']; ?></td>
+                                                    <td><?php echo $produkInovatif['Leader']; ?></td>
+                                                    <td><strong><?php echo $produkInovatif['Event']; ?></strong></td>
+                                                    <td><?php echo $produkInovatif['Personil']; ?></td>
+                                                    <td><?php echo $produkInovatif['Tahun']; ?></td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item buttonProdukInovatif" data-bs-toggle="modal" data-id="<?php echo $produkInovatif['ID_Produk']; ?>"><i class="bx bx-edit-alt me-1"></i>Sunting</a>
+                                                                <a class="dropdown-item" onclick="konfirmasiHapusProdukInovatif(<?php echo $produkInovatif['ID_Produk']; ?>)"><i class="bx bx-trash me-1"></i>Hapus</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php else : ?>
+                                            <tr>
+                                                <td colspan="10" class="text-center text-danger fw-bold">Tidak ada data Produk Inovatif!</td>
+                                            </tr>
+                                        <?php endif; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -109,7 +123,7 @@ if (!isset($_SESSION['ID_Admin'])) {
 
         <!-- MODAL START -->
         <?php include '../partials/add-modal-produkinovatif.php'; ?>
-        <?php include '../partials/edit-modal-pengabdianmasyarakat.php'; ?>
+        <?php include '../partials/edit-modal-produkinovatif.php'; ?>
         <!-- MODAL END -->
 
         <!-- CORE JS START -->
@@ -121,8 +135,8 @@ if (!isset($_SESSION['ID_Admin'])) {
         <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
         <script src="../assets/js/main.js"></script>
         <script src="../assets/js/dashboards-analytics.js"></script>
-        <script src="../assets/js/value-dosen.js"></script>
-        <script src="../assets/js/delete-dosen.js"></script>
+        <script src="../assets/js/value-produk-inovatif.js"></script>
+        <script src="../assets/js/delete-produk-inovatif.js"></script>
         <!-- CORE JS END -->
         <!-- ALERT -->
         <?php include '../partials/alert.php' ?>

@@ -5,33 +5,34 @@
                 <h5 class="modal-title" id="addDataModalLabel">Sunting Pengabdian Kepada Masyarakat</h5>
             </div>
             <div class="modal-body">
-                <form method="post" action="" enctype="multipart/form-data">
+                <form>
+                    <input type="hidden" name="ID_Pengabdian" id="suntingIDPengabdian">
                     <div class="mb-3">
-                        <label for="editJudulPengabdian" class="form-label">Judul Pengabdian</label>
-                        <input type="text" placeholder="Masukkan Judul Pengabdian" name="Judul_Pengabdian" class="form-control" id="editJudulPengabdian" autocomplete="off">
+                        <label for="suntingJudulPengabdian" class="form-label">Judul Pengabdian</label>
+                        <input type="text" placeholder="Masukkan Judul Pengabdian" name="Judul_Pengabdian" class="form-control" id="suntingJudulPengabdian" autocomplete="off">
                     </div>
                     <div class="mb-3">
-                        <label for="editLinkPengabdian" class="form-label">Link Pengabdian</label>
-                        <input type="link" placeholder="Masukkan Link Pengabdian" name="Link_Pengabdian" class="form-control" id="editLinkPengabdian" autocomplete="off">
+                        <label for="suntingLinkPengabdian" class="form-label">Link Pengabdian</label>
+                        <input type="link" placeholder="Masukkan Link Pengabdian" name="Link_Pengabdian" class="form-control" id="suntingLinkPengabdian" autocomplete="off">
                     </div>
                     <div class="mb-3">
-                        <label for="editLeader" class="form-label">Leader</label>
-                        <input type="text" placeholder="Masukkan Leader" name="Leader" class="form-control" id="editLeader" autocomplete="off">
+                        <label for="suntingLeader" class="form-label">Leader</label>
+                        <input type="text" placeholder="Masukkan Leader" name="Leader" class="form-control" id="suntingLeader" autocomplete="off">
                     </div>
                     <div class="mb-3">
-                        <label for="editJudulEvent" class="form-label">Judul Event</label>
-                        <input type="text" placeholder="Masukkan Judul Event" name="Judul_Event" class="form-control" id="editJudulEvent" autocomplete="off">
+                        <label for="suntingJudulEvent" class="form-label">Judul Event</label>
+                        <input type="text" placeholder="Masukkan Judul Event" name="Judul_Event" class="form-control" id="suntingJudulEvent" autocomplete="off">
                     </div>
                     <div class="mb-3">
-                        <label for="editPersonil" class="form-label">Personil</label>
-                        <input type="text" placeholder="Masukkan Personil" name="Personil" class="form-control" id="editPersonil" autocomplete="off">
+                        <label for="suntingPersonil" class="form-label">Personil</label>
+                        <input type="text" placeholder="Masukkan Personil" name="Personil" class="form-control" id="suntingPersonil" autocomplete="off">
                     </div>
                     <div class="mb-3">
-                        <label for="editTahun" class="form-label">Tahun</label>
-                        <input type="text" placeholder="Masukkan Tahun" name="Tahun" class="form-control" id="editTahun" autocomplete="off">
+                        <label for="suntingTahun" class="form-label">Tahun</label>
+                        <input type="number" placeholder="Masukkan Tahun" name="Tahun" class="form-control" id="suntingTahun" autocomplete="off">
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" name="Simpan"><?php echo htmlspecialchars('Simpan'); ?></button>
+                        <button type="submit" class="btn btn-primary" id="tombolSuntingPengabdian" name="Simpan"><?php echo htmlspecialchars('Simpan'); ?></button>
                     </div>
                 </form>
             </div>

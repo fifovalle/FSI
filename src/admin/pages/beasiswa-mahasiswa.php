@@ -68,32 +68,42 @@ if (!isset($_SESSION['ID_Admin'])) {
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                    $beasiswaMahasiswa = new beasiswaMahasiswa($koneksi);
+                                    $beasiswaMahasiswaInfo = $beasiswaMahasiswa->tampilkanDataBeasiswaMahasiswa();
+                                    ?>
                                     <tbody class="table-border-bottom-0">
-                                        <tr>
-                                            <td>1</td>
-                                            <td>
-                                                <img src="../../uploads/default.jpeg" alt="Avatar" class="rounded-circle avatar avatar-xl" />
-                                            </td>
-                                            <td><strong>Yolanda Charmenia Nadine Yusrin</strong></td>
-                                            <td>Beasiswa Jabar Future Leaders Scholarship (JFLS)</td>
-                                            <td>Beasiswa Percepatan Akses Pendidikan Tinggi (1 Tahun)</td>
-                                            <td>https://www.instagram.com/p/Cw3xOpQPcHy/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA%3D%3D</td>
-                                            <td>https://beasiswa-jfl.jabarprov.go.id/</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item buttonDosen" data-bs-toggle="modal" data-id=""><i class="bx bx-edit-alt me-1"></i>Sunting</a>
-                                                        <a class="dropdown-item" onclick=""><i class="bx bx-trash me-1"></i>Hapus</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="6" class="text-center text-danger fw-bold">Tidak ada data dosen!</td>
-                                        </tr>
+                                        <?php if (!empty($beasiswaMahasiswaInfo)) : ?>
+                                            <?php $nomor = 1; ?>
+                                            <?php foreach ($beasiswaMahasiswaInfo as $beasiswaMahasiswa) : ?>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <img src="../../uploads/<?php echo $beasiswaMahasiswa['Gambar']; ?>" alt="Avatar" class="rounded-circle avatar avatar-xl" />
+                                                    </td>
+                                                    <td><strong><?php echo $beasiswaMahasiswa['Nama_Penerima']; ?></strong></td>
+                                                    <td><?php echo $beasiswaMahasiswa['Nama_Beasiswa']; ?></td>
+                                                    <td><?php echo $beasiswaMahasiswa['Durasi_Beasiswa']; ?></td>
+                                                    <td><?php echo $beasiswaMahasiswa['Link_Instagram']; ?></td>
+                                                    <td><?php echo $beasiswaMahasiswa['Link_Website']; ?></td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item buttonBeasiswaMahasiswa" data-bs-toggle="modal" data-id="<?php echo $beasiswaMahasiswa['ID_Beasiswa']; ?>"><i class="bx bx-edit-alt me-1"></i>Sunting</a>
+                                                                <a class="dropdown-item" onclick="konfirmasiHapusBeasiswaMahasiswa(<?php echo $beasiswaMahasiswa['ID_Beasiswa']; ?>)"><i class="bx bx-trash me-1"></i>Hapus</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php else : ?>
+                                            <tr>
+                                                <td colspan="8" class="text-center text-danger fw-bold">Tidak ada data Beasiswa Mahasiswa!</td>
+                                            </tr>
+                                        <?php endif; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -123,8 +133,8 @@ if (!isset($_SESSION['ID_Admin'])) {
         <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
         <script src="../assets/js/main.js"></script>
         <script src="../assets/js/dashboards-analytics.js"></script>
-        <script src="../assets/js/value-dosen.js"></script>
-        <script src="../assets/js/delete-dosen.js"></script>
+        <script src="../assets/js/value-beasiswa-mahasiswa.js"></script>
+        <script src="../assets/js/delete-beasiswa-mahasiswa.js"></script>
         <!-- CORE JS END -->
         <!-- ALERT -->
         <?php include '../partials/alert.php' ?>

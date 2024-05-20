@@ -67,31 +67,41 @@ if (!isset($_SESSION['ID_Admin'])) {
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                    $prestasiMahasiswa = new prestasiMahasiswa($koneksi);
+                                    $prestasiMahasiswaInfo = $prestasiMahasiswa->tampilkanDataPrestasiMahasiswa();
+                                    ?>
                                     <tbody class="table-border-bottom-0">
-                                        <tr>
-                                            <td>1</td>
-                                            <td>
-                                                <img src="../../uploads/default.jpeg" alt="Avatar" class="rounded-circle avatar avatar-xl" />
-                                            </td>
-                                            <td><strong>Rifaz Muhammad Sukma</strong></td>
-                                            <td>Capstone Project Bangkit 2023</td>
-                                            <td>Juara 2</td>
-                                            <td>2023</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item buttonDosen" data-bs-toggle="modal" data-id=""><i class="bx bx-edit-alt me-1"></i>Sunting</a>
-                                                        <a class="dropdown-item" onclick=""><i class="bx bx-trash me-1"></i>Hapus</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="6" class="text-center text-danger fw-bold">Tidak ada data!</td>
-                                        </tr>
+                                        <?php if (!empty($prestasiMahasiswaInfo)) : ?>
+                                            <?php $nomor = 1; ?>
+                                            <?php foreach ($prestasiMahasiswaInfo as $prestasiMahasiswa) : ?>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <img src="../../uploads/<?php echo $prestasiMahasiswa['Gambar']; ?>" alt="Avatar" class="rounded-circle avatar avatar-xl" />
+                                                    </td>
+                                                    <td><strong><?php echo $prestasiMahasiswa['Nama_Mahasiswa']; ?></strong></td>
+                                                    <td><?php echo $prestasiMahasiswa['Kegiatan']; ?></td>
+                                                    <td><?php echo $prestasiMahasiswa['Pencapaian']; ?></td>
+                                                    <td><?php echo $prestasiMahasiswa['Tahun_Pencapaian']; ?></td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item buttonPrestasiMahasiswa" data-bs-toggle="modal" data-id="<?php echo $prestasiMahasiswa['ID_Prestasi']; ?>" data-bs-target="#editPrestasiMahasiswa"><i class="bx bx-edit-alt me-1"></i>Sunting</a>
+                                                                <a class="dropdown-item" onclick="konfirmasiHapusPrestasiMahasiswa(<?php echo $prestasiMahasiswa['ID_Prestasi']; ?>)"><i class="bx bx-trash me-1"></i>Hapus</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php else : ?>
+                                            <tr>
+                                                <td colspan="6" class="text-center text-danger fw-bold">Tidak ada data Prestasi Mahasiswa!</td>
+                                            </tr>
+                                        <?php endif; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -121,8 +131,8 @@ if (!isset($_SESSION['ID_Admin'])) {
         <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
         <script src="../assets/js/main.js"></script>
         <script src="../assets/js/dashboards-analytics.js"></script>
-        <script src="../assets/js/value-dosen.js"></script>
-        <script src="../assets/js/delete-dosen.js"></script>
+        <script src="../assets/js/value-prestasi-mahasiswa.js"></script>
+        <script src="../assets/js/delete-prestasi-mahasiswa.js"></script>
         <!-- CORE JS END -->
         <!-- ALERT -->
         <?php include '../partials/alert.php' ?>

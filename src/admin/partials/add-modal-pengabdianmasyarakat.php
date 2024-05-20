@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="addDataModalLabel">Tambah Pengabdian Kepada Masyarakat</h5>
             </div>
             <div class="modal-body">
-                <form method="post" action="" enctype="multipart/form-data">
+                <form method="post" action="../config/add-pengabdian-masyarakat.php">
                     <div class="mb-3">
                         <label for="tambahJudulPengabdian" class="form-label">Judul Pengabdian</label>
                         <input type="text" placeholder="Masukkan Judul Pengabdian" name="Judul_Pengabdian" class="form-control" id="tambahJudulPengabdian" autocomplete="off">
@@ -28,7 +28,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="tambahTahun" class="form-label">Tahun</label>
-                        <input type="text" placeholder="Masukkan Tahun" name="Tahun" class="form-control" id="tambahTahun" autocomplete="off">
+                        <input type="number" placeholder="Masukkan Tahun" name="Tahun" class="form-control" id="tambahTahun" autocomplete="off">
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" name="Simpan"><?php echo htmlspecialchars('Simpan'); ?></button>

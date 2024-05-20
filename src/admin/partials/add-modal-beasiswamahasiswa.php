@@ -5,10 +5,10 @@
                 <h5 class="modal-title" id="addDataModalLabel">Tambah Beasiswa Mahasiswa</h5>
             </div>
             <div class="modal-body">
-                <form method="post" action="" enctype="multipart/form-data">
+                <form method="post" action="../config/add-beasiswa-mahasiswa.php" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="tambahGambarBeasiswa" class="form-label">Gambar Beasiswa</label>
-                        <input type="file" placeholder="Masukkan Gambar Beasiswa" name="Gambar_Beasiswa" class="form-control" id="tambahGambarBeasiswa" autocomplete="off">
+                        <input type="file" placeholder="Masukkan Gambar Beasiswa" name="Gambar" class="form-control" id="tambahGambarBeasiswa" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label for="tambahNamaPenerima" class="form-label">Nama Penerima</label>
@@ -20,15 +20,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="tambahDurasiBeasiswa" class="form-label">Durasi Beasiswa</label>
-                        <input type="text" placeholder="Masukkan DurasiBeasiswa" name="DurasiBeasiswa" class="form-control" id="tambahDurasiBeasiswa" autocomplete="off">
+                        <input type="text" placeholder="Masukkan DurasiBeasiswa" name="Durasi_Beasiswa" class="form-control" id="tambahDurasiBeasiswa" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label for="tambahInstagram" class="form-label">Link Instagram Beasiswa</label>
-                        <input type="link" placeholder="Masukkan Link Instagram" name="Instagram" class="form-control" id="tambahInstagram" autocomplete="off">
+                        <input type="link" placeholder="Masukkan Link Instagram" name="Link_Instagram" class="form-control" id="tambahInstagram" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label for="tambahWebsite" class="form-label">Link Website Beasiswa</label>
-                        <input type="link" placeholder="Masukkan Link Website" name="Website" class="form-control" id="tambahWebsite" autocomplete="off">
+                        <input type="link" placeholder="Masukkan Link Website" name="Link_Website" class="form-control" id="tambahWebsite" autocomplete="off">
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" name="Simpan"><?php echo htmlspecialchars('Simpan'); ?></button>

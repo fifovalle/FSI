@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2024 at 04:04 PM
+-- Generation Time: May 20, 2024 at 02:22 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -58,6 +58,23 @@ CREATE TABLE `agenda` (
   `Gambar_Agenda` longblob NOT NULL,
   `Judul_Agenda` varchar(225) NOT NULL,
   `Isi_Agenda` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `beasiswa`
+--
+
+CREATE TABLE `beasiswa` (
+  `ID_Beasiswa` int(11) NOT NULL,
+  `ID_Admin` int(11) NOT NULL,
+  `Gambar` longblob NOT NULL,
+  `Nama_Penerima` varchar(225) NOT NULL,
+  `Nama_Beasiswa` varchar(225) NOT NULL,
+  `Durasi_Beasiswa` varchar(225) NOT NULL,
+  `Link_Instagram` varchar(225) NOT NULL,
+  `Link_Website` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -160,6 +177,116 @@ INSERT INTO `navbar` (`ID_Navbar`, `ID_Admin`, `Daftar_Nama`, `Tautan`, `Kategor
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `penelitian_if`
+--
+
+CREATE TABLE `penelitian_if` (
+  `ID_Penelitian_If` int(11) NOT NULL,
+  `ID_Admin` int(11) NOT NULL,
+  `Judul_Penelitian` varchar(225) NOT NULL,
+  `Link_Penelitian` varchar(225) NOT NULL,
+  `Tingkatan` varchar(50) NOT NULL,
+  `Judul_Jurnal` varchar(100) NOT NULL,
+  `Link_Jurnal` varchar(225) NOT NULL,
+  `Pencipta` varchar(50) NOT NULL,
+  `Tahun` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `penelitian_if`
+--
+
+INSERT INTO `penelitian_if` (`ID_Penelitian_If`, `ID_Admin`, `Judul_Penelitian`, `Link_Penelitian`, `Tingkatan`, `Judul_Jurnal`, `Link_Jurnal`, `Pencipta`, `Tahun`) VALUES
+(4, 50, 'Clothing type classification using convolutional neural networks', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Putri R.G.A', '2023');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penelitian_kimia`
+--
+
+CREATE TABLE `penelitian_kimia` (
+  `ID_Penelitian_Kimia` int(11) NOT NULL,
+  `ID_Admin` int(11) NOT NULL,
+  `Judul_Penelitian` varchar(255) NOT NULL,
+  `Tautan_Penelitian` varchar(100) NOT NULL,
+  `Tingkatan` varchar(50) NOT NULL,
+  `Judul_Jurnal` varchar(100) NOT NULL,
+  `Tautan_Jurnal` varchar(100) NOT NULL,
+  `Pencipta` varchar(50) NOT NULL,
+  `Tahun` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `penelitian_kimia`
+--
+
+INSERT INTO `penelitian_kimia` (`ID_Penelitian_Kimia`, `ID_Admin`, `Judul_Penelitian`, `Tautan_Penelitian`, `Tingkatan`, `Judul_Jurnal`, `Tautan_Jurnal`, `Pencipta`, `Tahun`) VALUES
+(6, 50, 'Performance and economic evaluation of a pilot scale embedded ends-free membrane bioreactor (EEF-MBR)', 'https://www.scopus.com/home.uri', 'Q1 Journal', 'Applied Microbiology and Biotechnology', 'https://www.scopus.com/sourceid/14957', 'Siagian U.W.R', '2023');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penelitian_magister_kimia`
+--
+
+CREATE TABLE `penelitian_magister_kimia` (
+  `ID_Penelitian_Magister_Kimia` int(11) NOT NULL,
+  `ID_Admin` int(11) NOT NULL,
+  `Judul_Penelitian` varchar(255) NOT NULL,
+  `Tautan_Penelitian` varchar(100) NOT NULL,
+  `Tingkatan` varchar(50) NOT NULL,
+  `Judul_Journal` varchar(100) NOT NULL,
+  `Tautan_Journal` varchar(100) NOT NULL,
+  `Pencipta` varchar(50) NOT NULL,
+  `Tahun` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `penelitian_magister_kimia`
+--
+
+INSERT INTO `penelitian_magister_kimia` (`ID_Penelitian_Magister_Kimia`, `ID_Admin`, `Judul_Penelitian`, `Tautan_Penelitian`, `Tingkatan`, `Judul_Journal`, `Tautan_Journal`, `Pencipta`, `Tahun`) VALUES
+(3, 50, 'Synthesis and Characterization of Fe-Doped CaTiO3 Polyhedra Prepared by Molten NaCl Salt', 'https://www.scopus.com/home.uri', 'Q2 Journal', 'Science and Technology Indonesia', 'https://www.scopus.com/sourceid/21101040666', 'Novianti D.R', '2022');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penelitian_sistem_informasi`
+--
+
+CREATE TABLE `penelitian_sistem_informasi` (
+  `ID_Sistem_Informasi` int(11) NOT NULL,
+  `ID_Admin` int(11) NOT NULL,
+  `Judul_Penelitian` varchar(255) NOT NULL,
+  `Tautan_Penelitian` varchar(100) NOT NULL,
+  `Tingkatan` varchar(50) NOT NULL,
+  `Judul_Jurnal` varchar(100) NOT NULL,
+  `Tautan_Jurnal` varchar(100) NOT NULL,
+  `Pencipta` varchar(50) NOT NULL,
+  `Tahun` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengabdian_masyarakat`
+--
+
+CREATE TABLE `pengabdian_masyarakat` (
+  `ID_Pengabdian` int(11) NOT NULL,
+  `ID_Admin` int(11) NOT NULL,
+  `Judul_Pengabdian` varchar(255) NOT NULL,
+  `Tautan_Pengabdian` varchar(100) NOT NULL,
+  `Leader` varchar(50) NOT NULL,
+  `Event` varchar(100) NOT NULL,
+  `Personil` varchar(50) NOT NULL,
+  `Tahun` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pengumuman`
 --
 
@@ -170,6 +297,46 @@ CREATE TABLE `pengumuman` (
   `Judul_Pengumuman` varchar(225) NOT NULL,
   `Isi_Pengumuman` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prestasi`
+--
+
+CREATE TABLE `prestasi` (
+  `ID_Prestasi` int(11) NOT NULL,
+  `ID_Admin` int(11) NOT NULL,
+  `Gambar` longblob NOT NULL,
+  `Nama_Mahasiswa` varchar(225) NOT NULL,
+  `Kegiatan` varchar(225) NOT NULL,
+  `Pencapaian` varchar(225) NOT NULL,
+  `Tahun_Pencapaian` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produk_inovatif`
+--
+
+CREATE TABLE `produk_inovatif` (
+  `ID_Produk` int(11) NOT NULL,
+  `ID_Admin` int(11) NOT NULL,
+  `Judul_Inovasi` varchar(255) NOT NULL,
+  `Tautan_Inovasi` varchar(100) NOT NULL,
+  `Leader` varchar(50) NOT NULL,
+  `Event` varchar(50) NOT NULL,
+  `Personil` varchar(50) NOT NULL,
+  `Tahun` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `produk_inovatif`
+--
+
+INSERT INTO `produk_inovatif` (`ID_Produk`, `ID_Admin`, `Judul_Inovasi`, `Tautan_Inovasi`, `Leader`, `Event`, `Personil`, `Tahun`) VALUES
+(3, 50, 'Standardisasi, Uji Pra Klinik dan Toksisitas Kumis Kucing (Orthosiphon Aristatus (Blume) Miq.) Varietas Ungu Sebagai Dasar Pengembangan Obat Herbal Antihipertensi', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Fahrauk Faramayuda', 'PENELITIAN DESENTRALISASI (PDUPT)', 'Soraya Riyanti; Suryani', '2024');
 
 -- --------------------------------------------------------
 
@@ -336,6 +503,13 @@ ALTER TABLE `agenda`
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
+-- Indexes for table `beasiswa`
+--
+ALTER TABLE `beasiswa`
+  ADD PRIMARY KEY (`ID_Beasiswa`),
+  ADD KEY `ID_Admin` (`ID_Admin`);
+
+--
 -- Indexes for table `berita`
 --
 ALTER TABLE `berita`
@@ -371,10 +545,59 @@ ALTER TABLE `navbar`
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
+-- Indexes for table `penelitian_if`
+--
+ALTER TABLE `penelitian_if`
+  ADD PRIMARY KEY (`ID_Penelitian_If`),
+  ADD KEY `ID_Admin` (`ID_Admin`);
+
+--
+-- Indexes for table `penelitian_kimia`
+--
+ALTER TABLE `penelitian_kimia`
+  ADD PRIMARY KEY (`ID_Penelitian_Kimia`),
+  ADD KEY `ID_Admin` (`ID_Admin`);
+
+--
+-- Indexes for table `penelitian_magister_kimia`
+--
+ALTER TABLE `penelitian_magister_kimia`
+  ADD PRIMARY KEY (`ID_Penelitian_Magister_Kimia`),
+  ADD KEY `ID_Admin` (`ID_Admin`);
+
+--
+-- Indexes for table `penelitian_sistem_informasi`
+--
+ALTER TABLE `penelitian_sistem_informasi`
+  ADD PRIMARY KEY (`ID_Sistem_Informasi`),
+  ADD KEY `ID_Admin` (`ID_Admin`);
+
+--
+-- Indexes for table `pengabdian_masyarakat`
+--
+ALTER TABLE `pengabdian_masyarakat`
+  ADD PRIMARY KEY (`ID_Pengabdian`),
+  ADD KEY `ID_Admin` (`ID_Admin`);
+
+--
 -- Indexes for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
   ADD PRIMARY KEY (`ID_Pengumuman`),
+  ADD KEY `ID_Admin` (`ID_Admin`);
+
+--
+-- Indexes for table `prestasi`
+--
+ALTER TABLE `prestasi`
+  ADD PRIMARY KEY (`ID_Prestasi`),
+  ADD KEY `ID_Admin` (`ID_Admin`);
+
+--
+-- Indexes for table `produk_inovatif`
+--
+ALTER TABLE `produk_inovatif`
+  ADD PRIMARY KEY (`ID_Produk`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
@@ -420,6 +643,12 @@ ALTER TABLE `agenda`
   MODIFY `ID_Agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `beasiswa`
+--
+ALTER TABLE `beasiswa`
+  MODIFY `ID_Beasiswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
@@ -450,10 +679,52 @@ ALTER TABLE `navbar`
   MODIFY `ID_Navbar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
+-- AUTO_INCREMENT for table `penelitian_if`
+--
+ALTER TABLE `penelitian_if`
+  MODIFY `ID_Penelitian_If` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `penelitian_kimia`
+--
+ALTER TABLE `penelitian_kimia`
+  MODIFY `ID_Penelitian_Kimia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `penelitian_magister_kimia`
+--
+ALTER TABLE `penelitian_magister_kimia`
+  MODIFY `ID_Penelitian_Magister_Kimia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `penelitian_sistem_informasi`
+--
+ALTER TABLE `penelitian_sistem_informasi`
+  MODIFY `ID_Sistem_Informasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `pengabdian_masyarakat`
+--
+ALTER TABLE `pengabdian_masyarakat`
+  MODIFY `ID_Pengabdian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
   MODIFY `ID_Pengumuman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `prestasi`
+--
+ALTER TABLE `prestasi`
+  MODIFY `ID_Prestasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `produk_inovatif`
+--
+ALTER TABLE `produk_inovatif`
+  MODIFY `ID_Produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `program_studi`
@@ -490,6 +761,12 @@ ALTER TABLE `agenda`
   ADD CONSTRAINT `agenda_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `beasiswa`
+--
+ALTER TABLE `beasiswa`
+  ADD CONSTRAINT `beasiswa_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `berita`
 --
 ALTER TABLE `berita`
@@ -514,10 +791,52 @@ ALTER TABLE `navbar`
   ADD CONSTRAINT `navbar_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `penelitian_if`
+--
+ALTER TABLE `penelitian_if`
+  ADD CONSTRAINT `penelitian_if_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `penelitian_kimia`
+--
+ALTER TABLE `penelitian_kimia`
+  ADD CONSTRAINT `penelitian_kimia_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `penelitian_magister_kimia`
+--
+ALTER TABLE `penelitian_magister_kimia`
+  ADD CONSTRAINT `penelitian_magister_kimia_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `penelitian_sistem_informasi`
+--
+ALTER TABLE `penelitian_sistem_informasi`
+  ADD CONSTRAINT `penelitian_sistem_informasi_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `pengabdian_masyarakat`
+--
+ALTER TABLE `pengabdian_masyarakat`
+  ADD CONSTRAINT `pengabdian_masyarakat_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
   ADD CONSTRAINT `pengumuman_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `prestasi`
+--
+ALTER TABLE `prestasi`
+  ADD CONSTRAINT `prestasi_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `produk_inovatif`
+--
+ALTER TABLE `produk_inovatif`
+  ADD CONSTRAINT `produk_inovatif_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `program_studi`

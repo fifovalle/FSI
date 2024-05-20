@@ -59,6 +59,7 @@ if (!isset($_SESSION['ID_Admin'])) {
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Pengelola</th>
                                             <th>Judul Penelitian</th>
                                             <th>Link Penelitian</th>
                                             <th>Tingkatan</th>
@@ -69,31 +70,44 @@ if (!isset($_SESSION['ID_Admin'])) {
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                    $sistemInformasiModel = new SistemInformasi($koneksi);
+                                    $sistemInformasiInfo = $sistemInformasiModel->tampilkanDataSistemInformasi();
+                                    ?>
                                     <tbody class="table-border-bottom-0">
-                                        <tr>
-                                            <td>1</td>
-                                            <td><strong>Performance and economic evaluation of a pilot scale embedded ends-free membrane bioreactor (EEF-MBR)</strong></td>
-                                            <td>https://www.scopus.com/home.uri</td>
-                                            <td>Q1 Journal</td>
-                                            <td><strong>Applied Microbiology and Biotechnology</strong></td>
-                                            <td>https://www.scopus.com/sourceid/14957</td>
-                                            <td>Siagian U.W.R</td>
-                                            <td>2023</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item buttonDosen" data-bs-toggle="modal" data-id=""><i class="bx bx-edit-alt me-1"></i>Sunting</a>
-                                                        <a class="dropdown-item" onclick=""><i class="bx bx-trash me-1"></i>Hapus</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="6" class="text-center text-danger fw-bold">Tidak ada data dosen!</td>
-                                        </tr>
+                                        <?php if (!empty($sistemInformasiInfo)) : ?>
+                                            <?php $nomor = 1; ?>
+                                            <?php foreach ($sistemInformasiInfo as $sistemInformasi) : ?>
+                                                <tr>
+                                                    <td><?php echo $nomor++; ?></td>
+                                                    <td>
+                                                        <strong><?php echo $sistemInformasi['Nama_Admin']; ?></strong>
+                                                    </td>
+                                                    <td><strong><?php echo $sistemInformasi['Judul_Penelitian']; ?></strong></td>
+                                                    <td><?php echo $sistemInformasi['Tautan_Penelitian']; ?></td>
+                                                    <td><?php echo $sistemInformasi['Tingkatan']; ?></td>
+                                                    <td><strong><?php echo $sistemInformasi['Judul_Jurnal']; ?></strong></td>
+                                                    <td><?php echo $sistemInformasi['Tautan_Jurnal']; ?></td>
+                                                    <td><?php echo $sistemInformasi['Pencipta']; ?></td>
+                                                    <td><?php echo $sistemInformasi['Tahun']; ?></td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item buttonSistemInformasi" data-bs-toggle="modal" data-id="<?php echo $sistemInformasi['ID_Sistem_Informasi']; ?>"><i class="bx bx-edit-alt me-1"></i>Sunting</a>
+                                                                <a class="dropdown-item" onclick="konfirmasiHapusSistemInformasi(<?php echo $sistemInformasi['ID_Sistem_Informasi']; ?>)"><i class="bx bx-trash me-1"></i>Hapus</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php else : ?>
+                                            <tr>
+                                                <td colspan="10" class="text-center text-danger fw-bold">Tidak ada data Sistem Informasi!</td>
+                                            </tr>
+                                        <?php endif; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -123,8 +137,8 @@ if (!isset($_SESSION['ID_Admin'])) {
         <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
         <script src="../assets/js/main.js"></script>
         <script src="../assets/js/dashboards-analytics.js"></script>
-        <script src="../assets/js/value-dosen.js"></script>
-        <script src="../assets/js/delete-dosen.js"></script>
+        <script src="../assets/js/value-sistem-informasi.js"></script>
+        <script src="../assets/js/delete-sistem-informasi.js"></script>
         <!-- CORE JS END -->
         <!-- ALERT -->
         <?php include '../partials/alert.php' ?>
