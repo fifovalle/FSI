@@ -13,7 +13,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="suntingLinkPenelitian" class="form-label">Link Penelitian</label>
-                        <input type="link" placeholder="Masukkan Link Penelitian" name="Link_Penlitian" class="form-control" id="suntingLinkPenelitian" autocomplete="off">
+                        <input type="link" placeholder="Masukkan Link Penelitian" name="Link_Penelitian" class="form-control" id="suntingLinkPenelitian" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label for="suntingTingkatan" class="form-label">Tingkatan</label>

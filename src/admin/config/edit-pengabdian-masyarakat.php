@@ -15,6 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    $pattern = "/^https:\/\/.+$/";
+
+    if (!preg_match($pattern, $tautanPengabdian)) {
+        echo json_encode(array("success" => false, "message" => "Tautan Pengabdian tidak valid. Harus menggunakan format https."));
+        exit;
+    }
+
     $pengabdianMasyarakatModel = new PengabdianMasyarakat($koneksi);
 
     $datapengabdianMasyarakat = array(

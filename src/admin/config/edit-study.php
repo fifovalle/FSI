@@ -4,6 +4,7 @@ include 'databases.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idProdi = $_POST['ID_Prodi'] ?? '';
     $namaProdi = $_POST['Nama_Prodi'] ?? '';
+    $tautanProdi = $_POST['Tautan_Prodi'] ?? '';
 
 
     $prodiModel = new ProgramStudi($koneksi);
@@ -29,6 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    if (!filter_var($tautanProdi, FILTER_VALIDATE_URL) || strpos($tautanProdi, 'https://') !== 0) {
+        echo json_encode(array("success" => false, "message" => "Tautan Program Studi harus berupa URL HTTPS yang valid."));
+        exit;
+    }
+
+
     $prodiLama = $prodiModel->getProgramStudiById($idProdi);
 
 
@@ -42,7 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $dataProdi = array(
         'Nama_Prodi' => $namaProdi,
-        'Gambar_Prodi' => $namaFileBaru
+        'Gambar_Prodi' => $namaFileBaru,
+        'Tautan_Prodi' => $tautanProdi
     );
 
     $updateDataProdi = $prodiModel->perbaruiProgramStudi($idProdi, $dataProdi);

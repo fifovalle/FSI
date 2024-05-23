@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2024 at 01:30 AM
+-- Generation Time: May 21, 2024 at 09:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -166,8 +166,8 @@ CREATE TABLE `navbar` (
   `ID_Admin` int(11) DEFAULT NULL,
   `Daftar_Nama` varchar(100) NOT NULL,
   `Tautan` varchar(255) NOT NULL,
-  `Kategori` enum('Profil','SDM','Akademik','Fasilitas','Penjaminan Mutu') NOT NULL,
-  `Sub_Kategori` enum('Survey','Dokumen Akademik') DEFAULT NULL
+  `Kategori` enum('Profil','SDM','Akademik','Fasilitas','Penjaminan Mutu','Penelitian Dan Pengabdian','Mahasiswa','Siterpadu') NOT NULL,
+  `Sub_Kategori` enum('Survey','Dokumen Akademik','Penelitian') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -196,7 +196,22 @@ INSERT INTO `navbar` (`ID_Navbar`, `ID_Admin`, `Daftar_Nama`, `Tautan`, `Kategor
 (72, 50, 'Laboratorium', 'http://localhost/UNJANI/src/pages/laboratorium.php', 'Fasilitas', NULL),
 (73, 50, 'Fasilitas Umum', 'http://localhost/UNJANI/src/pages/fasil-umum.php', 'Fasilitas', NULL),
 (74, 50, 'Penjamin Mutu Internal', '	http://localhost/UNJANI/src/pages/akreditasi-internal.php', 'Penjaminan Mutu', NULL),
-(75, 50, 'Penjamin Mutu Eksternal', 'http://localhost/UNJANI/src/pages/akreditasi.php', 'Penjaminan Mutu', NULL);
+(75, 50, 'Penjamin Mutu Eksternal', 'http://localhost/UNJANI/src/pages/akreditasi.php', 'Penjaminan Mutu', NULL),
+(76, 50, 'A', 'http://localhost/UNJANI/src/admin/pages/bar-navigasi.php', 'Profil', 'Survey'),
+(77, 50, 'Pengabdian Kepada Masyarakat', 'http://localhost/UNJANI/src/pages/pengabdian-masyarakat.php', 'Penelitian Dan Pengabdian', NULL),
+(78, 50, 'Produk Inovatif', 'http://localhost/UNJANI/src/pages/produk-inovatif.php', 'Penelitian Dan Pengabdian', NULL),
+(79, 50, 'Info Penerimaan Mahasiswa Baru', 'https://pmb.unjani.ac.id/', 'Mahasiswa', NULL),
+(80, 50, 'Organisasi Kemahasiswaan', 'https://www.unjani.ac.id/organisasi-mahasiswa-dan-ukm/', 'Mahasiswa', NULL),
+(81, 50, 'Kegiatan Kemahasiswaan', 'http://localhost/UNJANI/src/pages/kegiatan-kemahasiswaan.php', 'Mahasiswa', NULL),
+(82, 50, 'Prestasi', 'http://localhost/UNJANI/src/pages/prestasi.php', 'Mahasiswa', NULL),
+(83, 50, 'Beasiswa', 'http://localhost/UNJANI/src/pages/beasiswa.php', 'Mahasiswa', NULL),
+(84, 50, 'Portal Lecturer', 'https://lecturer.unjani.ac.id/', 'Siterpadu', NULL),
+(85, 50, 'Portal Student', 'https://student.unjani.ac.id/', 'Siterpadu', NULL),
+(86, 50, 'Portal Tenaga Pendidikan', 'https://stpd.unjani.ac.id/', 'Siterpadu', NULL),
+(88, 50, 'Kimia S-1', 'http://localhost/UNJANI/src/pages/penelitian-kimia.php', 'Penelitian Dan Pengabdian', 'Penelitian'),
+(89, 50, 'Magister Kimia S-2', 'http://localhost/UNJANI/src/pages/penelitian-kimia2.php', 'Penelitian Dan Pengabdian', 'Penelitian'),
+(90, 50, 'Teknik Informatika S-1', 'http://localhost/UNJANI/src/pages/penelitian-informatika.php', 'Penelitian Dan Pengabdian', 'Penelitian'),
+(91, 50, 'Sistem Informasi  S-1', 'http://localhost/UNJANI/src/pages/penelitian-sisteminformasi.php', 'Penelitian Dan Pengabdian', 'Penelitian');
 
 -- --------------------------------------------------------
 
@@ -708,31 +723,31 @@ ALTER TABLE `kelulusan`
 -- AUTO_INCREMENT for table `navbar`
 --
 ALTER TABLE `navbar`
-  MODIFY `ID_Navbar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `ID_Navbar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `penelitian_if`
 --
 ALTER TABLE `penelitian_if`
-  MODIFY `ID_Penelitian_If` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_Penelitian_If` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `penelitian_kimia`
 --
 ALTER TABLE `penelitian_kimia`
-  MODIFY `ID_Penelitian_Kimia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_Penelitian_Kimia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `penelitian_magister_kimia`
 --
 ALTER TABLE `penelitian_magister_kimia`
-  MODIFY `ID_Penelitian_Magister_Kimia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Penelitian_Magister_Kimia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `penelitian_sistem_informasi`
 --
 ALTER TABLE `penelitian_sistem_informasi`
-  MODIFY `ID_Sistem_Informasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_Sistem_Informasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pengabdian_masyarakat`
@@ -762,7 +777,7 @@ ALTER TABLE `produk_inovatif`
 -- AUTO_INCREMENT for table `program_studi`
 --
 ALTER TABLE `program_studi`
-  MODIFY `ID_Prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID_Prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tenaga_dosen`

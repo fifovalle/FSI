@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="addDataModalLabel">Sunting Program Studi</h5>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="POST" enctype="multipart/form-data">
                     <input type="hidden" id="suntingProgramStudiID" name="ID_Prodi" autocomplete="off">
                     <div class="mb-3">
                         <label for="suntingGambarStudi" class="form-label">Gambar Program Studi</label>

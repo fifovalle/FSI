@@ -11,13 +11,27 @@ if (isset($_POST['Simpan'])) {
     $pencipta = mysqli_real_escape_string($koneksi, $_POST['Pencipta']);
     $tahun = mysqli_real_escape_string($koneksi, $_POST['Tahun']);
 
+    $objekInformatika = new Informatika($koneksi);
+
     if (empty($judulPenelitian) || empty($linkPenelitian) || empty($tingkatan) || empty($judulJurnal) || empty($linkJurnal) || empty($pencipta) || empty($tahun)) {
         setPesanKesalahan("Semua field harus diisi.");
-        header("Location: $akar_tautan" . "src/admin/pages/penelitian-teknikinformatika.php");
+        header("Location: " . $akar_tautan . "src/admin/pages/penelitian-teknikinformatika.php");
         exit;
     }
 
-    $objekInformatika = new Informatika($koneksi);
+    $pattern = "/^https?:\/\/.+$/";
+
+    if (!preg_match($pattern, $linkPenelitian)) {
+        setPesanKesalahan("Tautan penelitian tidak valid. Harus menggunakan format http atau https.");
+        header("Location: " . $akar_tautan . "src/admin/pages/penelitian-teknikinformatika.php");
+        exit;
+    }
+
+    if (!preg_match($pattern, $linkJurnal)) {
+        setPesanKesalahan("Tautan jurnal tidak valid. Harus menggunakan format http atau https.");
+        header("Location: " . $akar_tautan . "src/admin/pages/penelitian-teknikinformatika.php");
+        exit;
+    }
 
     $dataInformatika = array(
         "ID_Admin" => $_SESSION['ID_Admin'],
@@ -35,12 +49,12 @@ if (isset($_POST['Simpan'])) {
     if ($simpanDataInformatika) {
         setPesanKeberhasilan("Berhasil menyimpan data Penelitian Teknik Informatika.");
     } else {
-        setPesanKesalahan("Gagal menyimpan data  Penelitian Teknik Informatika.");
+        setPesanKesalahan("Gagal menyimpan data Penelitian Teknik Informatika.");
     }
-    header("Location: $akar_tautan" . "src/admin/pages/penelitian-teknikinformatika.php");
+    header("Location: " . $akar_tautan . "src/admin/pages/penelitian-teknikinformatika.php");
     exit;
 } else {
-    header("Location: $akar_tautan" . "src/admin/pages/penelitian-teknikinformatika.php");
+    header("Location: " . $akar_tautan . "src/admin/pages/penelitian-teknikinformatika.php");
     exit;
 }
 ob_end_flush();

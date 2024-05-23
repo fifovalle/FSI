@@ -17,6 +17,7 @@ $(document).ready(function () {
         $("#suntingNamaBarNavigasi").val(navbarData.Daftar_Nama);
         $("#suntingTautanBarNavigasi").val(navbarData.Tautan);
         $("#suntingKategoriBarNavigasi").val(navbarData.Kategori);
+        $("#suntingSubKategoriBarNavigasi").val(navbarData.Sub_Kategori);
         $("#suntingNavbar").modal("show");
       },
       error: function (xhr) {

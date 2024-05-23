@@ -23,15 +23,21 @@
                             <option value="Akademik">Akademik</option>
                             <option value="Fasilitas">Fasilitas</option>
                             <option value="Penjaminan Mutu">Penjaminan Mutu</option>
+                            <option value="Berita Dan Pengumuman">Berita Dan Pengumuman</option>
+                            <option value="Penelitian Dan Pengabdian">Penelitian Dan Pengabdian</option>
+                            <option value="Mahasiswa">Mahasiswa</option>
+                            <option value="Siterpadu">Siterpadu</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="tambahSubKategoriBarNavigasi" class="form-label">Sub Kategori</label>
                         <select name="Sub_Kategori" id="tambahSubKategoriBarNavigasi" class="form-control">
                             <option value="" selected>Pilih Sub Kategori</option>
-                            <option value="Survey">Survey</option>
-                            <option value="Dokumen Akademik">Dokumen Akademik</option>
+                            <option value="Survey" id="surveyOption">Survey</option>
+                            <option value="Dokumen Akademik" id="dokumenAkademikOption">Dokumen Akademik</option>
+                            <option value="Penelitian" id="penelitianOption">Penelitian</option>
                         </select>
+                        <p id="subKategoriMessage" class="text-danger d-none">Sub Kategori Tidak Tersedia</p>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" name="Simpan"><?php echo htmlspecialchars('Simpan'); ?></button>

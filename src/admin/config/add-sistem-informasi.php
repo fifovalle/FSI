@@ -17,32 +17,13 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
-    function validateUrl($url)
-    {
-        $parsedUrl = parse_url($url);
-
-        if (!isset($parsedUrl['scheme'])) {
-            $url = 'https://' . $url;
-        }
-
-        if (!filter_var($url, FILTER_VALIDATE_URL)) {
-            return false;
-        }
-
-        return $url;
-    }
-
-    $linkPenelitian = validateUrl($linkPenelitian);
-    if ($linkPenelitian === false) {
-        setPesanKesalahan("Tautan penelitian tidak valid.");
-        header("Location: $akar_tautan" . "src/admin/pages/penelitian-sisteminformasi.php");
+    if (!filter_var($linkPenelitian, FILTER_VALIDATE_URL) || (strpos($linkPenelitian, 'http://') !== 0 && strpos($linkPenelitian, 'https://') !== 0)) {
+        echo json_encode(array("success" => false, "message" => "Tautan Penelitian harus berupa URL HTTP atau HTTPS yang valid."));
         exit;
     }
 
-    $linkJurnal = validateUrl($linkJurnal);
-    if ($linkJurnal === false) {
-        setPesanKesalahan("Tautan jurnal tidak valid.");
-        header("Location: $akar_tautan" . "src/admin/pages/penelitian-sisteminformasi.php");
+    if (!filter_var($linkJurnal, FILTER_VALIDATE_URL) || (strpos($linkJurnal, 'http://') !== 0 && strpos($linkJurnal, 'https://') !== 0)) {
+        echo json_encode(array("success" => false, "message" => "Tautan Jurnal harus berupa URL HTTP atau HTTPS yang valid."));
         exit;
     }
 

@@ -6,29 +6,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $namaBarNavigasi = $_POST['Daftar_Nama'] ?? '';
     $tautanBarNavigasi = $_POST['Tautan'] ?? '';
     $kategori = $_POST['Kategori'] ?? '';
+    $subKategori = $_POST['Sub_Kategori'] ?? '';
+
+    $navbarModel = new Navbar($koneksi);
+
+    if ($subKategori === "" || $subKategori === "Pilih Sub Kategori") {
+        $subKategori = NULL;
+    }
 
     if (!is_numeric($idNavbar) || $idNavbar <= 0) {
         echo json_encode(array("success" => false, "message" => "ID navbar tidak valid."));
         exit;
     }
 
-    $parsedUrl = parse_url($tautanBarNavigasi);
-    if (!isset($parsedUrl['scheme'])) {
-        $tautanBarNavigasi = 'http://' . $tautanBarNavigasi;
-    }
+    $pattern = "/^https?:\/\/.+$/";
 
-    if (!filter_var($tautanBarNavigasi, FILTER_VALIDATE_URL)) {
-        echo json_encode(array("success" => false, "message" => "Tautan tidak valid."));
+    if (!preg_match($pattern, $tautanBarNavigasi)) {
+        echo json_encode(array("success" => false, "message" => "Tautan navbar tidak valid. Harus menggunakan format http atau https."));
         exit;
     }
-
-    $navbarModel = new Navbar($koneksi);
 
     $dataNavbar = array(
         'Daftar_Nama' => $namaBarNavigasi,
         'Tautan' => $tautanBarNavigasi,
-        'Kategori' => $kategori
+        'Kategori' => $kategori,
+        'Sub_Kategori' => $subKategori
     );
+
+    $subcategories = $navbarModel->getSubcategories($kategori);
 
     $updateDataNavbar = $navbarModel->perbaruiNavbar($idNavbar, $dataNavbar);
 

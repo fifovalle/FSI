@@ -10,16 +10,7 @@ if (isset($_POST['Simpan'])) {
     $personil = mysqli_real_escape_string($koneksi, $_POST['Personil']);
     $tahun = mysqli_real_escape_string($koneksi, $_POST['Tahun']);
 
-    $parsedUrl = parse_url($linkInovasi);
-    if (!isset($parsedUrl['scheme'])) {
-        $linkInovasi = 'https://' . $linkInovasi;
-    }
-
-    if (!filter_var($linkInovasi, FILTER_VALIDATE_URL)) {
-        setPesanKesalahan("Tautan inovasi tidak valid.");
-        header("Location: $akar_tautan" . "src/admin/pages/produk-inovatif.php");
-        exit;
-    }
+    $objekProdukInovatif = new ProdukInovatif($koneksi);
 
     if (empty($judulInovasi) || empty($linkInovasi) || empty($leader) || empty($judulEvent) || empty($personil) || empty($tahun)) {
         setPesanKesalahan("Semua field harus diisi.");
@@ -27,7 +18,13 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
-    $objekProdukInovatif = new ProdukInovatif($koneksi);
+    $pattern = "/^https?:\/\/.+$/";
+
+    if (!preg_match($pattern, $linkInovasi)) {
+        setPesanKesalahan("Tautan Produk Inovatif tidak valid. Harus menggunakan format http atau https.");
+        header("Location: " . $akar_tautan . "src/admin/pages/produk-inovatif.php");
+        exit;
+    }
 
     $dataProdukInovatif = array(
         "ID_Admin" => $_SESSION['ID_Admin'],

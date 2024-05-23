@@ -15,6 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    $pattern = "/^https:\/\/.+$/";
+
+    if (!preg_match($pattern, $tautanInovasi)) {
+        echo json_encode(array("success" => false, "message" => "Tautan Produk Inovatif tidak valid. Harus menggunakan format https."));
+        exit;
+    }
+
     $produkInovatif = new ProdukInovatif($koneksi);
 
     $dataProdukInovatif = array(

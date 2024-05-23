@@ -11,12 +11,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $creator = $_POST['Creator'] ?? '';
     $tahunJurnal = $_POST['Tahun'] ?? '';
 
+    $penelitianKimia = new Kimia($koneksi);
+
     if (!is_numeric($idPenelitianKimia) || $idPenelitianKimia <= 0) {
         echo json_encode(array("success" => false, "message" => "ID kimia tidak valid."));
         exit;
     }
 
-    $penelitianKimia = new Kimia($koneksi);
+    $pattern = "/^https:\/\/.+$/";
+
+    if (!preg_match($pattern, $tautanPenelitian)) {
+        echo json_encode(array("success" => false, "message" => "Tautan Penelitian tidak valid. Harus menggunakan format https."));
+        exit;
+    }
+
+    if (!preg_match($pattern, $tautanJurnal)) {
+        echo json_encode(array("success" => false, "message" => "Tautan Jurnal tidak valid. Harus menggunakan format https."));
+        exit;
+    }
 
     $dataPenelitianKimia = array(
         'Judul_Penelitian' => $judulPenelitian,

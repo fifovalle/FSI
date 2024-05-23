@@ -17,32 +17,17 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
-    function validateUrl($url)
-    {
-        $parsedUrl = parse_url($url);
+    $pattern = "/^https?:\/\/.+$/";
 
-        if (!isset($parsedUrl['scheme'])) {
-            $url = 'https://' . $url;
-        }
-
-        if (!filter_var($url, FILTER_VALIDATE_URL)) {
-            return false;
-        }
-
-        return $url;
-    }
-
-    $linkPenelitian = validateUrl($linkPenelitian);
-    if ($linkPenelitian === false) {
-        setPesanKesalahan("Tautan penelitian tidak valid.");
-        header("Location: $akar_tautan" . "src/admin/pages/penelitian-kimia.php");
+    if (!preg_match($pattern, $linkPenelitian)) {
+        setPesanKesalahan("Tautan penelitian tidak valid. Harus menggunakan format http atau https.");
+        header("Location: " . $akar_tautan . "src/admin/pages/penelitian-kimia.php");
         exit;
     }
 
-    $linkJurnal = validateUrl($linkJurnal);
-    if ($linkJurnal === false) {
-        setPesanKesalahan("Tautan jurnal tidak valid.");
-        header("Location: $akar_tautan" . "src/admin/pages/penelitian-kimia.php");
+    if (!preg_match($pattern, $linkJurnal)) {
+        setPesanKesalahan("Tautan jurnal tidak valid. Harus menggunakan format http atau https.");
+        header("Location: " . $akar_tautan . "src/admin/pages/penelitian-kimia.php");
         exit;
     }
 

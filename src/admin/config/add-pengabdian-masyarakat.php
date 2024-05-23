@@ -10,16 +10,7 @@ if (isset($_POST['Simpan'])) {
     $personil = mysqli_real_escape_string($koneksi, $_POST['Personil']);
     $tahun = mysqli_real_escape_string($koneksi, $_POST['Tahun']);
 
-    $parsedUrl = parse_url($linkPengabdian);
-    if (!isset($parsedUrl['scheme'])) {
-        $linkPengabdian = 'https://' . $linkPengabdian;
-    }
-
-    if (!filter_var($linkPengabdian, FILTER_VALIDATE_URL)) {
-        setPesanKesalahan("Tautan pengabdian tidak valid.");
-        header("Location: $akar_tautan" . "src/admin/pages/pengabdian-masyarakat.php");
-        exit;
-    }
+    $objekPengabdianMasyarakat = new PengabdianMasyarakat($koneksi);
 
     if (empty($judulPengabdian) || empty($linkPengabdian) || empty($leader) || empty($judulEvent) || empty($personil) || empty($tahun)) {
         setPesanKesalahan("Semua field harus diisi.");
@@ -27,7 +18,13 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
-    $objekPengabdianMasyarakat = new PengabdianMasyarakat($koneksi);
+    $pattern = "/^https?:\/\/.+$/";
+
+    if (!preg_match($pattern, $linkPengabdian)) {
+        setPesanKesalahan("Tautan Pengabdian tidak valid. Harus menggunakan format http atau https.");
+        header("Location: " . $akar_tautan . "src/admin/pages/pengabdian-masyarakat.php");
+        exit;
+    }
 
     $dataPengabdianMasyarakat = array(
         "ID_Admin" => $_SESSION['ID_Admin'],

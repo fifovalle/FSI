@@ -11,37 +11,63 @@ $navbarModel = new Navbar($koneksi);
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="penelitian">Penelitian dan Pengabdian</a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-item dropdown ">
-                            <a class="dropdown-item p-0 " href="#" data-bs-toggle="dropdown" aria-expanded="false">Penelitian
-                                <i class='bx bx-chevron-right'></i>
-                            </a>
-                            <ul class="submenu dropdown-menu">
-                                <li><a class="submenu-item" href="../pages/penelitian-kimia.php">Kimia S-1</a></li>
-                                <li><a class="submenu-item" href="../pages/penelitian-kimia2.php">Magister Kimia S-2</a></li>
-                                <li><a class="submenu-item" href="../pages/penelitian-informatika.php">Teknik Informatika S-1</a></li>
-                                <li><a class="submenu-item" href="../pages/penelitian-sisteminformasi.php">Sistem Informasi S-1</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="dropdown-item" id="pengabdian" href="../pages/pengabdian-masyarakat.php">Pengabdian Kepada Masyarakat</a></li>
-                        <li><a class="dropdown-item" href="../pages/produk-inovatif.php">Produk Inovatif</a></li>
+                        <?php
+                        $navbarPenelitianDanPengabdianInfo = $navbarModel->tampilkanDataNavbarKategoriPenelitianDanPengabdian();
+                        ?>
+                        <?php if (!empty($navbarPenelitianDanPengabdianInfo)) : ?>
+                            <?php foreach ($navbarPenelitianDanPengabdianInfo as $penelitianDanPengabdian) : ?>
+                                <li><a class="dropdown-item" href="<?= $penelitianDanPengabdian['Tautan']; ?>"><?= $penelitianDanPengabdian['Daftar_Nama']; ?></a></li>
+                            <?php endforeach; ?>
+                            <li class="dropdown-item dropdown">
+                                <a class="dropdown-item p-0" href="#" data-bs-toggle="dropdown" aria-expanded="false">Penelitian
+                                    <i class='bx bx-chevron-right'></i>
+                                </a>
+                                <ul class="submenu dropdown-menu">
+                                    <?php
+                                    $navbarPenelitianDanPengabdianPenelitianInfo = $navbarModel->tampilkanDataNavbarKategoriPenelitian();
+                                    ?>
+                                    <?php if (!empty($navbarPenelitianDanPengabdianPenelitianInfo)) : ?>
+                                        <?php foreach ($navbarPenelitianDanPengabdianPenelitianInfo as $penelitianDanPengabdianPenelitian) : ?>
+                                            <li><a class="submenu-item" href="<?= $penelitianDanPengabdianPenelitian['Tautan']; ?>"><?= $penelitianDanPengabdianPenelitian['Daftar_Nama']; ?></a></li>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <p class="text-center fw-bold text-danger">Tidak Ada Data!</p>
+                                    <?php endif; ?>
+                                </ul>
+                            </li>
+                        <?php else : ?>
+                            <p class="text-center fw-bold text-danger">Tidak Ada Data!</p>
+                        <?php endif; ?>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="mahasiswa">Mahasiswa</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="https://pmb.unjani.ac.id/" target="_blank">Info Penerimaan Mahasiswa Baru</a></li>
-                        <li><a class="dropdown-item" href="https://www.unjani.ac.id/organisasi-mahasiswa-dan-ukm/" target="_blank">Organisasi Kemahasiswaan</a></li>
-                        <li><a class="dropdown-item" href="../pages/kegiatan-kemahasiswaan.php">Kegiatan Kemahasiswaan</a></li>
-                        <li><a class="dropdown-item" href="../pages/prestasi.php">Prestasi</a></li>
-                        <li><a class="dropdown-item" href="../pages/beasiswa.php">Beasiswa</a></li>
+                        <?php
+                        $navbarMahasiswaInfo = $navbarModel->tampilkanDataNavbarKategoriMahasiswa();
+                        ?>
+                        <?php if (!empty($navbarMahasiswaInfo)) : ?>
+                            <?php foreach ($navbarMahasiswaInfo as $mahasiswa) : ?>
+                                <li><a class="dropdown-item" href="<?= $mahasiswa['Tautan']; ?>"><?= $mahasiswa['Daftar_Nama']; ?></a></li>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <p class="text-center fw-bold text-danger">Tidak Ada Data!</p>
+                        <?php endif; ?>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="penjaminan"> <strong>SITERPADU</strong></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="https://lecturer.unjani.ac.id/" target="_blank">Portal Lecturer</a></li>
-                        <li><a class="dropdown-item" href="https://student.unjani.ac.id/" target="_blank">Portal Student</a></li>
-                        <li><a class="dropdown-item" href="https://stpd.unjani.ac.id/" target="_blank">Portal Tenaga Pendidik</a></li>
+                        <?php
+                        $navbarSiterpaduInfo = $navbarModel->tampilkanDataNavbarKategoriSiterpadu();
+                        ?>
+                        <?php if (!empty($navbarSiterpaduInfo)) : ?>
+                            <?php foreach ($navbarSiterpaduInfo as $siterpadu) : ?>
+                                <li><a class="dropdown-item" href="<?= $siterpadu['Tautan']; ?>"><?= $siterpadu['Daftar_Nama']; ?></a></li>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <p class="text-center fw-bold text-danger">Tidak Ada Data!</p>
+                        <?php endif; ?>
                     </ul>
                 </li>
                 <li class="nav-item">

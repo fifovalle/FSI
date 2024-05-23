@@ -133,6 +133,7 @@ if (!isset($_SESSION['ID_Admin'])) {
         <script src="../assets/js/main.js"></script>
         <script src="../assets/js/dashboards-analytics.js"></script>
         <script src="../assets/js/value-navbar.js"></script>
+        <script src="../assets/js/logic.js"></script>
         <script src="../assets/js/delete-navigationbar.js"></script>
         <!-- CORE JS END -->
         <!-- ALERT -->

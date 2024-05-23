@@ -17,6 +17,16 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
+    if (!filter_var($tautanPenelitian, FILTER_VALIDATE_URL) || (strpos($tautanPenelitian, 'http://') !== 0 && strpos($tautanPenelitian, 'https://') !== 0)) {
+        echo json_encode(array("success" => false, "message" => "Tautan Penelitian harus berupa URL HTTP atau HTTPS yang valid."));
+        exit;
+    }
+
+    if (!filter_var($tautanJournal, FILTER_VALIDATE_URL) || (strpos($tautanJournal, 'http://') !== 0 && strpos($tautanJournal, 'https://') !== 0)) {
+        echo json_encode(array("success" => false, "message" => "Tautan Jurnal harus berupa URL HTTP atau HTTPS yang valid."));
+        exit;
+    }
+
     $objekMagisterKimia = new magisterKimia($koneksi);
 
     $dataMagisterKimia = array(
@@ -35,7 +45,7 @@ if (isset($_POST['Simpan'])) {
     if ($simpanDataMagisterKimia) {
         setPesanKeberhasilan("Berhasil menyimpan data Penelitian Magister Kimia.");
     } else {
-        setPesanKesalahan("Gagal menyimpan data  Penelitian Magister Kimia.");
+        setPesanKesalahan("Gagal menyimpan data Penelitian Magister Kimia.");
     }
     header("Location: $akar_tautan" . "src/admin/pages/penelitian-magisterkimia.php");
     exit;

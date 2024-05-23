@@ -16,6 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    if (!filter_var($tautanPenelitian, FILTER_VALIDATE_URL) || (strpos($tautanPenelitian, 'http://') !== 0 && strpos($tautanPenelitian, 'https://') !== 0)) {
+        echo json_encode(array("success" => false, "message" => "Tautan Penelitian harus berupa URL HTTP atau HTTPS yang valid."));
+        exit;
+    }
+
+    if (!filter_var($tautanJurnal, FILTER_VALIDATE_URL) || (strpos($tautanJurnal, 'http://') !== 0 && strpos($tautanJurnal, 'https://') !== 0)) {
+        echo json_encode(array("success" => false, "message" => "Tautan Jurnal harus berupa URL HTTP atau HTTPS yang valid."));
+        exit;
+    }
+
     $penelitianMagisterkimia = new magisterKimia($koneksi);
 
     $dataPenelitianMagisterKimia = array(

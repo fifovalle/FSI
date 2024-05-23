@@ -13,13 +13,11 @@ if (isset($_POST['Simpan'])) {
         exit;
     }
 
-    $parsedUrl = parse_url($tautanProdi);
-    if (!isset($parsedUrl['scheme'])) {
-        $tautanProdi = 'https://' . $tautanProdi;
-    }
+    $pattern = "/^https?:\/\/.+$/";
 
-    if (!filter_var($tautanProdi, FILTER_VALIDATE_URL)) {
-        echo json_encode(array("success" => false, "message" => "Tautan tidak valid."));
+    if (!preg_match($pattern, $tautanProdi)) {
+        setPesanKesalahan("Tautan Program Studi tidak valid. Harus menggunakan format http atau https.");
+        header("Location: " . $akar_tautan . "src/admin/pages/program-studi.php");
         exit;
     }
 
