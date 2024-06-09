@@ -1,12 +1,42 @@
 <?php
 include 'databases.php';
 
+function containsXSS($input)
+{
+    $xss_patterns = [
+        "/<script\b[^>]*>(.*?)<\/script>/is",
+        "/<img\b[^>]*src[\s]*=[\s]*[\"]*javascript:/i",
+        "/<iframe\b[^>]*>(.*?)<\/iframe>/is",
+        "/<link\b[^>]*href[\s]*=[\s]*[\"]*javascript:/i",
+        "/<object\b[^>]*>(.*?)<\/object>/is",
+        "/on[a-zA-Z]+\s*=\s*\"[^\"]*\"/i",
+        "/on[a-zA-Z]+\s*=\s*\"[^\"]*\"/i",
+        "/<script\b[^>]*>[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/i",
+        "/<a\b[^>]*href\s*=\s*(?:\"|')(?:javascript:|.*?\"javascript:).*?(?:\"|')/i",
+        "/<embed\b[^>]*>(.*?)<\/embed>/is",
+        "/<applet\b[^>]*>(.*?)<\/applet>/is",
+        "/<!--.*?-->/",
+        "/(<script\b[^>]*>(.*?)<\/script>|<img\b[^>]*src[\s]*=[\s]*[\"]*javascript:|<iframe\b[^>]*>(.*?)<\/iframe>|<link\b[^>]*href[\s]*=[\s]*[\"]*javascript:|<object\b[^>]*>(.*?)<\/object>|on[a-zA-Z]+\s*=\s*\"[^\"]*\"|<[^>]*(>|$)(?:<|>)+|<[^>]*script\s*.*?(?:>|$)|<![^>]*-->|eval\s*\((.*?)\)|setTimeout\s*\((.*?)\)|<[^>]*\bstyle\s*=\s*[\"'][^\"']*[;{][^\"']*['\"]|<meta[^>]*http-equiv=[\"']?refresh[\"']?[^>]*url=|<[^>]*src\s*=\s*\"[^>]*\"[^>]*>|expression\s*\((.*?)\))/i"
+    ];
+
+    foreach ($xss_patterns as $pattern) {
+        if (preg_match($pattern, $input)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 if (isset($_POST['Simpan'])) {
+    require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
+    $config = HTMLPurifier_Config::createDefault();
+    $purifier = new HTMLPurifier($config);
     $idAdmin = $_SESSION['ID_Admin'];
-    $namaAdmin = $_POST['Nama_Admin'];
-    $emailAdmin = $_POST['Email_Admin'];
-    $kataSandi = $_POST['Kata_Sandi'];
-    $konfirmasiKataSandi = $_POST['Konfirmasi_Kata_Sandi'];
+    $namaAdmin = filter_input(INPUT_POST, 'Nama_Admin', FILTER_SANITIZE_STRING);
+    $emailAdmin = filter_input(INPUT_POST, 'Email_Admin', FILTER_SANITIZE_EMAIL);
+    $kataSandi = filter_input(INPUT_POST, 'Kata_Sandi', FILTER_SANITIZE_STRING);
+    $konfirmasiKataSandi = filter_input(INPUT_POST, 'Konfirmasi_Kata_Sandi', FILTER_SANITIZE_STRING);
 
     $pesanKesalahan = '';
 
@@ -14,6 +44,11 @@ if (isset($_POST['Simpan'])) {
         $pesanKesalahan .= "Semua bidang kecuali foto harus diisi. ";
     }
 
+    $emailAdmin = filter_var($emailAdmin, FILTER_VALIDATE_EMAIL);
+    if (!$emailAdmin) {
+        echo json_encode(array("success" => false, "message" => "Format email tidak valid."));
+        exit;
+    }
     $panjangKataSandi = strlen($kataSandi) >= 8;
     $persyaratanKataSandi = preg_match('/[A-Z]/', $kataSandi) && preg_match('/[a-z]/', $kataSandi) && preg_match('/[0-9]/', $kataSandi) && preg_match('/[^A-Za-z0-9]/', $kataSandi);
     $kataSandiYangValid = $panjangKataSandi && $persyaratanKataSandi;

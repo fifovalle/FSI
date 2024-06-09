@@ -1,14 +1,45 @@
 <?php
 include 'databases.php';
 
+function containsXSS($input)
+{
+    $xss_patterns = [
+        "/<script\b[^>]*>(.*?)<\/script>/is",
+        "/<img\b[^>]*src[\s]*=[\s]*[\"]*javascript:/i",
+        "/<iframe\b[^>]*>(.*?)<\/iframe>/is",
+        "/<link\b[^>]*href[\s]*=[\s]*[\"]*javascript:/i",
+        "/<object\b[^>]*>(.*?)<\/object>/is",
+        "/on[a-zA-Z]+\s*=\s*\"[^\"]*\"/i",
+        "/on[a-zA-Z]+\s*=\s*\"[^\"]*\"/i",
+        "/<script\b[^>]*>[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/i",
+        "/<a\b[^>]*href\s*=\s*(?:\"|')(?:javascript:|.*?\"javascript:).*?(?:\"|')/i",
+        "/<embed\b[^>]*>(.*?)<\/embed>/is",
+        "/<applet\b[^>]*>(.*?)<\/applet>/is",
+        "/<!--.*?-->/",
+        "/(<script\b[^>]*>(.*?)<\/script>|<img\b[^>]*src[\s]*=[\s]*[\"]*javascript:|<iframe\b[^>]*>(.*?)<\/iframe>|<link\b[^>]*href[\s]*=[\s]*[\"]*javascript:|<object\b[^>]*>(.*?)<\/object>|on[a-zA-Z]+\s*=\s*\"[^\"]*\"|<[^>]*(>|$)(?:<|>)+|<[^>]*script\s*.*?(?:>|$)|<![^>]*-->|eval\s*\((.*?)\)|setTimeout\s*\((.*?)\)|<[^>]*\bstyle\s*=\s*[\"'][^\"']*[;{][^\"']*['\"]|<meta[^>]*http-equiv=[\"']?refresh[\"']?[^>]*url=|<[^>]*src\s*=\s*\"[^>]*\"[^>]*>|expression\s*\((.*?)\))/i"
+    ];
+
+    foreach ($xss_patterns as $pattern) {
+        if (preg_match($pattern, $input)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $idProduk = $_POST['ID_Produk'] ?? '';
-    $judulInovasi = $_POST['Judul_Inovasi'] ?? '';
-    $tautanInovasi = $_POST['Link_Inovasi'] ?? '';
-    $leader = $_POST['Leader'] ?? '';
-    $judulEvent = $_POST['Judul_Event'] ?? '';
-    $personil = $_POST['Personil'] ?? '';
-    $tahun = $_POST['Tahun'] ?? '';
+    require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
+    $config = HTMLPurifier_Config::createDefault();
+    $purifier = new HTMLPurifier($config);
+    $idProduk = filter_input(INPUT_POST, 'ID_Produk', FILTER_SANITIZE_STRING);
+    $judulInovasi = filter_input(INPUT_POST, 'Judul_Inovasi', FILTER_SANITIZE_STRING);
+    $tautanInovasi = filter_input(INPUT_POST, 'Link_Inovasi', FILTER_SANITIZE_URL);
+    $leader = filter_input(INPUT_POST, 'Leader', FILTER_SANITIZE_STRING);
+    $judulEvent = filter_input(INPUT_POST, 'Judul_Event', FILTER_SANITIZE_STRING);
+    $personil = filter_input(INPUT_POST, 'Personil', FILTER_SANITIZE_STRING);
+    $tahun = filter_input(INPUT_POST, 'Tahun', FILTER_SANITIZE_STRING);
+
 
     if (!is_numeric($idProduk) || $idProduk <= 0) {
         echo json_encode(array("success" => false, "message" => "ID produk tidak valid."));

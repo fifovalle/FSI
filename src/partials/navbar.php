@@ -92,7 +92,7 @@ $navbarModel = new Navbar($koneksi);
         <div class="collapse navbar-collapse border border-0" id="navbarNavDarkDropdown">
             <ul class="navbar-nav ms-auto me-5 mb-2 mb-sm-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="../pages/index.php" id="beranda">Beranda</a>
+                    <a class="nav-link nav-active" aria-current="page" href="../pages/index.php" id="beranda">Beranda</a>
                 </li>
                 <?php
                 $navbarProfilInfo = $navbarModel->tampilkanDataNavbarKategoriProfil();

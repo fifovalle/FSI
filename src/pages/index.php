@@ -30,22 +30,22 @@
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?php echo $i; ?>" <?php echo ($i === 0) ? 'class="active"' : ''; ?> aria-label="Slide <?php echo ($i + 1); ?>"></button>
                 <?php } ?>
             </div>
-            <div class="carousel-inner">
+            <div class="carousel-inner animate-down">
                 <?php foreach ($carouselInfo as $index => $item) { ?>
                     <div class="carousel-item <?php echo ($index === 0) ? 'active' : ''; ?>">
                         <img src="../uploads/<?php echo $item['Gambar']; ?>" class="d-block w-100 h-100" alt="...">
                         <div class="carousel-caption d-sm-block d-md-block">
-                            <h5><?php echo $item['Judul']; ?></h5>
-                            <lead><?php echo $item['Deskripsi']; ?></lead>
+                            <h5 class="text-right"><?php echo $item['Judul']; ?></h5>
+                            <h6 class="text-up"><?php echo $item['Deskripsi']; ?></>
                         </div>
                     </div>
                 <?php } ?>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <button id="cprevButton" class="carousel-control-prev animate-right" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon " aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <button id="cnextButton" class="carousel-control-next animate-left" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>

@@ -170,6 +170,10 @@
     background-color: #01012f;
   }
 
+  .nav-active {
+    color: #007bff;
+  }
+
   .agenda:hover,
   .berita:hover,
   .pengumuman:hover {
@@ -493,5 +497,85 @@
     font-weight: 600;
     letter-spacing: 1px;
     color: rgba(80, 80, 80, 1);
+  }
+
+  .animate-down {
+    animation: Down 0.8s forwards;
+  }
+
+  .animate-right {
+    animation: Right 1s forwards;
+  }
+
+  .animate-left {
+    animation: Left 1s forwards;
+  }
+
+  .text-right {
+    animation: textRight 1s forwards;
+  }
+
+  .text-up {
+    animation: textUp 1s forwards;
+  }
+
+  @keyframes Down {
+    from {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes Right {
+    from {
+      opacity: 0;
+      transform: translateX(150%);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes Left {
+    from {
+      opacity: 0;
+      transform: translateX(-150%);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes textRight {
+    from {
+      opacity: 0;
+      transform: translateX(-30%);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes textUp {
+    from {
+      opacity: 0;
+      transform: translateY(90%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

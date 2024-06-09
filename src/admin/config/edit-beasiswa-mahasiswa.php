@@ -1,13 +1,43 @@
 <?php
 include 'databases.php';
 
+function containsXSS($input)
+{
+    $xss_patterns = [
+        "/<script\b[^>]*>(.*?)<\/script>/is",
+        "/<img\b[^>]*src[\s]*=[\s]*[\"]*javascript:/i",
+        "/<iframe\b[^>]*>(.*?)<\/iframe>/is",
+        "/<link\b[^>]*href[\s]*=[\s]*[\"]*javascript:/i",
+        "/<object\b[^>]*>(.*?)<\/object>/is",
+        "/on[a-zA-Z]+\s*=\s*\"[^\"]*\"/i",
+        "/on[a-zA-Z]+\s*=\s*\"[^\"]*\"/i",
+        "/<script\b[^>]*>[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/i",
+        "/<a\b[^>]*href\s*=\s*(?:\"|')(?:javascript:|.*?\"javascript:).*?(?:\"|')/i",
+        "/<embed\b[^>]*>(.*?)<\/embed>/is",
+        "/<applet\b[^>]*>(.*?)<\/applet>/is",
+        "/<!--.*?-->/",
+        "/(<script\b[^>]*>(.*?)<\/script>|<img\b[^>]*src[\s]*=[\s]*[\"]*javascript:|<iframe\b[^>]*>(.*?)<\/iframe>|<link\b[^>]*href[\s]*=[\s]*[\"]*javascript:|<object\b[^>]*>(.*?)<\/object>|on[a-zA-Z]+\s*=\s*\"[^\"]*\"|<[^>]*(>|$)(?:<|>)+|<[^>]*script\s*.*?(?:>|$)|<![^>]*-->|eval\s*\((.*?)\)|setTimeout\s*\((.*?)\)|<[^>]*\bstyle\s*=\s*[\"'][^\"']*[;{][^\"']*['\"]|<meta[^>]*http-equiv=[\"']?refresh[\"']?[^>]*url=|<[^>]*src\s*=\s*\"[^>]*\"[^>]*>|expression\s*\((.*?)\))/i"
+    ];
+
+    foreach ($xss_patterns as $pattern) {
+        if (preg_match($pattern, $input)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $idBeasiswa = $_POST['ID_Beasiswa'] ?? '';
-    $namaPenerima = $_POST['Nama_Penerima'] ?? '';
-    $namaBeasiswa = $_POST['Nama_Beasiswa'] ?? '';
-    $durasiBeasiswa = $_POST['Durasi_Beasiswa'] ?? '';
-    $Instagram = $_POST['Instagram'] ?? '';
-    $Website = $_POST['Website'] ?? '';
+    require_once '../../../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
+    $config = HTMLPurifier_Config::createDefault();
+    $purifier = new HTMLPurifier($config);
+    $idBeasiswa = filter_input(INPUT_POST, 'ID_Beasiswa', FILTER_SANITIZE_STRING);
+    $namaPenerima = filter_input(INPUT_POST, 'Nama_Penerima', FILTER_SANITIZE_STRING);
+    $namaBeasiswa = filter_input(INPUT_POST, 'Nama_Beasiswa', FILTER_SANITIZE_STRING);
+    $durasiBeasiswa = filter_input(INPUT_POST, 'Durasi_Beasiswa', FILTER_SANITIZE_STRING);
+    $Instagram = filter_input(INPUT_POST, 'Instagram', FILTER_SANITIZE_STRING);
+    $Website = filter_input(INPUT_POST, 'Website', FILTER_SANITIZE_STRING);
 
     $beasiswaMahasiswaModel = new beasiswaMahasiswa($koneksi);
 

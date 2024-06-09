@@ -5,6 +5,42 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const carouselElement = document.querySelector('#carouselExampleCaptions');
+    const nextButton = document.getElementById('cnextButton');
+
+    nextButton.addEventListener('click', function () {
+        const activeItem = carouselElement.querySelector('.carousel-item.active');
+        const nextItem = activeItem.nextElementSibling || carouselElement.querySelector('.carousel-item:first-child');
+
+        activeItem.querySelector('img').classList.add('animate__animated', 'animate__zoomOutLeft');
+        nextItem.querySelector('img').classList.add('animate__animated', 'animate__zoomIn');
+
+        setTimeout(() => {
+            activeItem.querySelector('img').classList.remove('animate__animated', 'animate__zoomOutLeft');
+            nextItem.querySelector('img').classList.remove('animate__animated', 'animate__zoomIn');
+        }, 2000);  // Adjust this timeout according to the duration of the animations
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const carouselElement = document.querySelector('#carouselExampleCaptions');
+    const nextButton = document.getElementById('cprevButton');
+
+    nextButton.addEventListener('click', function () {
+        const activeItem = carouselElement.querySelector('.carousel-item.active');
+        const nextItem = activeItem.nextElementSibling || carouselElement.querySelector('.carousel-item:first-child');
+
+        activeItem.querySelector('img').classList.add('animate__animated', 'animate__zoomOutRight');
+        nextItem.querySelector('img').classList.add('animate__animated', 'animate__zoomIn');
+
+        setTimeout(() => {
+            activeItem.querySelector('img').classList.remove('animate__animated', 'animate__zoomOutRight');
+            nextItem.querySelector('img').classList.remove('animate__animated', 'animate__zoomIn');
+        }, 2000);  // Adjust this timeout according to the duration of the animations
+    });
+});
+
 function scrollBeritaTerbaru(entries, observer1) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
