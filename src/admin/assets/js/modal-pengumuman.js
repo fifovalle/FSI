@@ -4,7 +4,7 @@ $(document).ready(function () {
     let pengumumanID = $(this).data("id");
     console.log(pengumumanID);
     $.ajax({
-      url: "https://unjani-fsi.000webhostapp.com/src/admin/config/get-announcement-data.php",
+      url: "../../src/admin/config/get-announcement-data.php",
       method: "GET",
       data: {
         pengumuman_id: pengumumanID,

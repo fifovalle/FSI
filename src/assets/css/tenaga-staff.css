@@ -23,6 +23,10 @@
     margin: 0 0 0 0;
   }
 
+  .pagination{
+    padding: 0 150px;
+  }
+
   .navigasi button {
     padding: 10px 18px;
     color: black;

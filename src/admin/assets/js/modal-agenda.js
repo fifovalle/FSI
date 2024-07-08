@@ -4,7 +4,7 @@ $(document).ready(function () {
     let agendaID = $(this).data("id");
     console.log(agendaID);
     $.ajax({
-      url: "https://unjani-fsi.000webhostapp.com/src/admin/config/get-agenda-data.php",
+      url: "../../src/admin/config/get-agenda-data.php",
       method: "GET",
       data: {
         agenda_id: agendaID,

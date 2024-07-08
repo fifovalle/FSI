@@ -4,7 +4,7 @@ $(document).ready(function () {
     let beritaID = $(this).data("id");
     console.log(beritaID);
     $.ajax({
-      url: "https://unjani-fsi.000webhostapp.com/src/admin/config/get-berita-data.php",
+      url: "../../src/admin/config/get-berita-data.php",
       method: "GET",
       data: {
         berita_id: beritaID,

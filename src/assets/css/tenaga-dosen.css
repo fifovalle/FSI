@@ -18,11 +18,10 @@
   .header-tenagadosen table {
     padding: 10px 10px;
   }
-
   .navigasi {
-    padding: 0 400px 0 400px;
+    margin: 0 0 0 0;
   }
-  
+
   .pagination{
     padding: 0 150px;
   }

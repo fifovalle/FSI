@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-md-12 col-sm-12 mt-md-2 px-auto justify-content-center navigasi">
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination">
+                            <ul class="pagination justify-content-center">
                                 <li class="page-item <?= ($page <= 1) ? 'disabled' : ''; ?>">
                                     <a class="page-link" href="?page=<?= $page - 1 ?>" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>

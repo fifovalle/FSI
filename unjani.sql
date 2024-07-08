@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2024 at 09:35 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Waktu pembuatan: 07 Jul 2024 pada 09.55
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE `admin` (
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `admin`
+-- Dumping data untuk tabel `admin`
 --
 
 INSERT INTO `admin` (`ID_Admin`, `Nama_Admin`, `Foto_Admin`, `Email_Admin`, `Jenis_Kelamin_Admin`, `Status_Verifikasi_Email`, `Kata_Sandi`, `Konfirmasi_Kata_Sandi`, `Token_Verifikasi`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `admin` (`ID_Admin`, `Nama_Admin`, `Foto_Admin`, `Email_Admin`, `Jen
 -- --------------------------------------------------------
 
 --
--- Table structure for table `agenda`
+-- Struktur dari tabel `agenda`
 --
 
 CREATE TABLE `agenda` (
@@ -60,10 +60,17 @@ CREATE TABLE `agenda` (
   `Isi_Agenda` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `agenda`
+--
+
+INSERT INTO `agenda` (`ID_Agenda`, `ID_Admin`, `Gambar_Agenda`, `Judul_Agenda`, `Isi_Agenda`) VALUES
+(9, 50, 0x6167656e64615f363638336333313761326430622e706e67, 'Selamat dan Sukses', 'Selamat dan Sukses atas diraihnya Pendanaan Program Kreativitas Mahasiswa (PKM) Kemendikbudristekdikti Tahun 2024	');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `beasiswa`
+-- Struktur dari tabel `beasiswa`
 --
 
 CREATE TABLE `beasiswa` (
@@ -78,7 +85,7 @@ CREATE TABLE `beasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `beasiswa`
+-- Dumping data untuk tabel `beasiswa`
 --
 
 INSERT INTO `beasiswa` (`ID_Beasiswa`, `ID_Admin`, `Gambar`, `Nama_Penerima`, `Nama_Beasiswa`, `Durasi_Beasiswa`, `Link_Instagram`, `Link_Website`) VALUES
@@ -88,7 +95,7 @@ INSERT INTO `beasiswa` (`ID_Beasiswa`, `ID_Admin`, `Gambar`, `Nama_Penerima`, `N
 -- --------------------------------------------------------
 
 --
--- Table structure for table `berita`
+-- Struktur dari tabel `berita`
 --
 
 CREATE TABLE `berita` (
@@ -101,16 +108,16 @@ CREATE TABLE `berita` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `berita`
+-- Dumping data untuk tabel `berita`
 --
 
 INSERT INTO `berita` (`ID_Berita`, `ID_Admin`, `Gambar`, `Judul`, `Isi_Berita`, `Tanggal_Terbit`) VALUES
-(12, 50, 0x363634396632343531656133612e706e67, 'ADA YANG BARU', 'AAAA', '2024-05-17');
+(12, 50, 0x363638336365353830343664352e6a706567, 'Tim Kimia FSI Unjani menjadi Juara Favorit di PIMNAS ke-34, USU, Medan', 'Selamat kepada Natasha, Aryza, dan Lutfia serta Bu Yenny selaku pembimbing yang telah membawa nama harum Universitas Jenderal Achmad Yani (Unjani) umumnya dan Jurusan Kimia FSI Unjani khususnya. Semoga pencapaian ini dapat memberikan atmosfer semangat dalam berkompetisi khususnya kompetisi berbasis riset/ penelitian kepada seluruh sivitas akademik Kimia FSI Unjani terutama bagi mahasiswa aktif.', '2021-11-05');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carousel`
+-- Struktur dari tabel `carousel`
 --
 
 CREATE TABLE `carousel` (
@@ -122,17 +129,22 @@ CREATE TABLE `carousel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `carousel`
+-- Dumping data untuk tabel `carousel`
 --
 
 INSERT INTO `carousel` (`ID_Carousel`, `ID_Admin`, `Judul`, `Deskripsi`, `Gambar`) VALUES
-(27, 50, 'A', 'A', 0x363634396633323339333232322e6a7067),
-(28, 50, 'B', 'B', 0x36363439663334633062623230322e6a7067);
+(27, 50, 'Fakultas Sains dan Informatika', 'Selamat datang di Website Official Fakultas Sains dan Informatika Universitas Jenderal Achmad Yani', 0x363634396633323339333232322e6a7067),
+(28, 50, 'Selamat Wisuda Kepada Seluruh Wisudawan', 'Selamat Wisuda Kepada Seluruh Wisudawan Periode 1 Tahun 2024', 0x363638336265666262613166352e6a706567),
+(29, 50, 'Penerimaan Mahasiswa Baru Tahun 2024', 'Terdapat berbagai jalur masuk yang tersedia di Universitas Jenderal Achmad Yani', 0x36363833626638613731633533312e6a7067),
+(30, 50, 'Penerimaan Mahasiswa Baru Tahun 2024', 'Terdapat banyak kemudahan pembiayaan kuliah di Universitas Jenderal Achmad Yani', 0x36363833633032633439373830322e6a7067),
+(31, 50, 'Penerimaan Mahasiswa Baru Tahun 2024', 'Terdapat berbagai fasilitas yang tersedia di Universitas Jenderal Achmad Yani', 0x36363833633036383739356531332e6a7067),
+(32, 50, 'Selamat dan Sukses Kepada Rekan-Rekan', 'Selamat dan Sukses atas diraihnya Pendanaan Program Kreativitas Mahasiswa (PKM) Kemendikbudristekdikti Tahun 2024 ', 0x36363833633230333138346661312e706e67),
+(33, 50, 'Penjajakan Kerja Sama ', 'Penjajakan Kerja Sama FSI UNJANI bersama FMIPA UNUD', 0x36363833633235653766306635322e706e67);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kalender_akademik`
+-- Struktur dari tabel `kalender_akademik`
 --
 
 CREATE TABLE `kalender_akademik` (
@@ -144,7 +156,7 @@ CREATE TABLE `kalender_akademik` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelulusan`
+-- Struktur dari tabel `kelulusan`
 --
 
 CREATE TABLE `kelulusan` (
@@ -158,7 +170,7 @@ CREATE TABLE `kelulusan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `navbar`
+-- Struktur dari tabel `navbar`
 --
 
 CREATE TABLE `navbar` (
@@ -171,7 +183,7 @@ CREATE TABLE `navbar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `navbar`
+-- Dumping data untuk tabel `navbar`
 --
 
 INSERT INTO `navbar` (`ID_Navbar`, `ID_Admin`, `Daftar_Nama`, `Tautan`, `Kategori`, `Sub_Kategori`) VALUES
@@ -197,7 +209,6 @@ INSERT INTO `navbar` (`ID_Navbar`, `ID_Admin`, `Daftar_Nama`, `Tautan`, `Kategor
 (73, 50, 'Fasilitas Umum', 'http://localhost/UNJANI/src/pages/fasil-umum.php', 'Fasilitas', NULL),
 (74, 50, 'Penjamin Mutu Internal', '	http://localhost/UNJANI/src/pages/akreditasi-internal.php', 'Penjaminan Mutu', NULL),
 (75, 50, 'Penjamin Mutu Eksternal', 'http://localhost/UNJANI/src/pages/akreditasi.php', 'Penjaminan Mutu', NULL),
-(76, 50, 'A', 'http://localhost/UNJANI/src/admin/pages/bar-navigasi.php', 'Profil', 'Survey'),
 (77, 50, 'Pengabdian Kepada Masyarakat', 'http://localhost/UNJANI/src/pages/pengabdian-masyarakat.php', 'Penelitian Dan Pengabdian', NULL),
 (78, 50, 'Produk Inovatif', 'http://localhost/UNJANI/src/pages/produk-inovatif.php', 'Penelitian Dan Pengabdian', NULL),
 (79, 50, 'Info Penerimaan Mahasiswa Baru', 'https://pmb.unjani.ac.id/', 'Mahasiswa', NULL),
@@ -216,7 +227,7 @@ INSERT INTO `navbar` (`ID_Navbar`, `ID_Admin`, `Daftar_Nama`, `Tautan`, `Kategor
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penelitian_if`
+-- Struktur dari tabel `penelitian_if`
 --
 
 CREATE TABLE `penelitian_if` (
@@ -232,16 +243,25 @@ CREATE TABLE `penelitian_if` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `penelitian_if`
+-- Dumping data untuk tabel `penelitian_if`
 --
 
 INSERT INTO `penelitian_if` (`ID_Penelitian_If`, `ID_Admin`, `Judul_Penelitian`, `Link_Penelitian`, `Tingkatan`, `Judul_Jurnal`, `Link_Jurnal`, `Pencipta`, `Tahun`) VALUES
-(4, 50, 'Clothing type classification using convolutional neural networks', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Putri R.G.A', '2023');
+(4, 50, 'Clothing type classification using convolutional neural networks', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Putri R.G.A', '2023'),
+(6, 50, 'Spatial and Temporal Analysis of COVID-19 Cases in West Java, Indonesia and Its Influencing Factors', 'https://www.scopus.com/home.uri', 'Q1 Journal', 'Engineering Letters', 'https://www.scopus.com/sourceid/17800156701', 'Melina', '2022'),
+(7, 50, 'Classifier types of personal document imagery using convolutional neural network', 'https://www.scopus.com/home.uri', 'Q3 Journal', 'International Journal of Environmental Research and Public Health', 'https://www.scopus.com/sourceid/144989', 'Putri D.I.P', '2023'),
+(8, 50, 'A Conceptual Model of Investment-Risk Prediction in the Stock Market Using Extreme Value Theory with Machine Learning: A Semisystematic Literature Review', 'https://www.scopus.com/home.uri', 'Q1 Journal', 'Risks', 'https://www.scopus.com/sourceid/21100886347', 'Melina', '2023'),
+(9, 50, 'Recognition of cat ras of face and body using convolutional neural networks', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Aji A.W.', '2023'),
+(10, 50, 'Recommendations for cardiac disease prevention packages based on medical records with collaborative filtering recommendations using factorization matrix', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Nova C.C', '2023'),
+(11, 50, 'Microservices technology in citizen-centric E-government', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Saepuloh R.M.', '2023'),
+(12, 50, 'Wind speed prediction using independent component analysis and convolutional neural networks', 'https://www.scopus.com/home.uri	', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Melawati M.', '2023'),
+(13, 50, 'IImplementing geographical information system in selecting a proper health facilities based on analytical hierarchy process', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Reanto A.H.', '2023'),
+(14, 50, 'Indoor temporal spatial analysis on the movement of nurses in hospitals based on local Wi-Fi networks', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Mediyanti M.', '2023');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penelitian_kimia`
+-- Struktur dari tabel `penelitian_kimia`
 --
 
 CREATE TABLE `penelitian_kimia` (
@@ -257,16 +277,34 @@ CREATE TABLE `penelitian_kimia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `penelitian_kimia`
+-- Dumping data untuk tabel `penelitian_kimia`
 --
 
 INSERT INTO `penelitian_kimia` (`ID_Penelitian_Kimia`, `ID_Admin`, `Judul_Penelitian`, `Tautan_Penelitian`, `Tingkatan`, `Judul_Jurnal`, `Tautan_Jurnal`, `Pencipta`, `Tahun`) VALUES
-(6, 50, 'Performance and economic evaluation of a pilot scale embedded ends-free membrane bioreactor (EEF-MBR)', 'https://www.scopus.com/home.uri', 'Q1 Journal', 'Applied Microbiology and Biotechnology', 'https://www.scopus.com/sourceid/14957', 'Siagian U.W.R', '2023');
+(11, 50, 'Performance and economic evaluation of a pilot scale embedded ends-free membrane bioreactor (EEF-MBR)', 'https://www.scopus.com/home.uri', 'Q1 Journal', 'Applied Microbiology and Biotechnology', 'https://www.scopus.com/sourceid/14957', 'Siagian U.W.R', '2023'),
+(12, 50, 'Pyrolysis of styrofoam plastic waste (SPW) using mount Krakatau’s volcanic ash catalyst', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Suhartono S.', '2023'),
+(13, 50, 'Ultra low-pressure reverse osmosis (ULPRO) membrane for desalination: Current challenges and future directions', 'https://www.scopus.com/home.uri', 'Q1 Journal', 'Desalination', 'https://www.scopus.com/sourceid/16322', 'Aryanti P.T.P', '2023'),
+(14, 50, 'Effect of addition of slag in cement mortar products on mechanical and chemical properties', 'https://www.scopus.com/home.uri', 'Q2 Journal', 'Innovative Infrastructure Solutions', 'https://www.scopus.com/sourceid/21100888788', 'Suharto', '2023'),
+(15, 50, 'Analyses of sustainable indicators of water resources for redesigning the health promoting water delivery networks: A case study in Sahneh, Iran', 'https://www.scopus.com/home.uri', 'Q1 Journal', 'Case Studies in Chemical and Environmental Engineering', 'https://www.scopus.com/sourceid/21101055712', 'Moussavi S.P', '2023'),
+(16, 50, 'Converting Styrofoam Waste into Fuel Using a Sequential Pyrolysis Reactor and Natural Zeolite Catalytic Reformer', 'https://www.scopus.com/home.uri', 'Q2 Journal', 'International Journal of Technology', 'https://www.scopus.com/sourceid/21100235612', 'Suhartono', '2023'),
+(17, 50, 'A novel pico-hydro power (PHP)-Microbial electrolysis cell (MEC) coupled system for sustainable hydrogen production during palm oil mill effluent (POME) wastewater treatment', 'https://www.scopus.com/home.uri', 'Q1 Journal', 'International Journal of Hydrogen Energy', 'https://www.scopus.com/sourceid/26991', 'Kadier A.', '2023'),
+(18, 50, 'PVC-based gravity driven ultrafiltration membrane for river water treatment', 'https://www.scopus.com/home.uri', 'Q3 Journal', 'Materials Today: Proceedings', 'https://www.scopus.com/sourceid/21100370037', 'Teta Prihartini Aryanti P.', '2023'),
+(19, 50, 'The Influence of Mixing on Electrocoagulation Performance During Soy Sauce Wastewater Treatment', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Nugroho F.A', '2023'),
+(20, 50, 'Polymeric membranes in electrodialysis, electrodialysis reversal, and capacitive deionization technologies', 'https://www.scopus.com/home.uri', 'no-Q Journal', 'Advancement in Polymer-Based Membranes for Water Remediation', 'https://shop.elsevier.com/books/advancement-in-polymer-based-membranes-for-water-remediation/nayak/9', 'Khoiruddin K.', '2022'),
+(21, 50, 'Antimicrobial Activity of ?-Sitosterol Isolated from Kalanchoe tomentosa Leaves Against Staphylococcus aureus and Klebsiella pneumonia', 'https://www.scopus.com/home.uri', 'Q3 Journal', 'Pakistan Journal of Biological Sciences', 'https://www.scopus.com/sourceid/3900148614', 'Anwar R.', '2022'),
+(22, 50, 'Flavonoid Compounds from leaf of Kalanchoe tomentosa', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'Research Journal of Chemistry and Environment', 'https://www.scopus.com/sourceid/5300152224', 'Aisyah L.S.', '2021'),
+(23, 50, '?-Sitosterol Compound from Dichloromethane Extracts of Kalanchoe tomentosa (Crassulacea) Leaves and Inhibition of ?-amilase Activity', 'https://www.scopus.com/home.uri', 'no-Q Journal', 'Jurnal Kimia Valensi', 'https://www.scopus.com/sourceid/21101145675', 'Aisyah L.S.', '2021'),
+(24, 50, 'Crosslinked CMC-urea hydrogel made from natural carboxymethyl cellulose (CMC) as slow-release fertilizer coating', 'https://www.scopus.com/home.uri	', 'Q2 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Suprabawati A.', '2020'),
+(25, 50, 'Antibacterial activity of extract and two secondary metabolite compounds from the leaves of Hydrangea macrophylla', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'Research Journal of Chemistry and Environment', 'https://www.scopus.com/sourceid/5300152224', 'Agustini D.M.', '2020'),
+(26, 50, 'Identification of flavonoid compounds from ethyl acetate extract of Kalanchoe millotii (Crassulaceae) and endodontics antibacterial activity', 'https://www.scopus.com/home.uri	', 'Q4 Journal', 'Research Journal of Chemistry and Environment', 'https://www.scopus.com/sourceid/5300152224', 'Yun Y.F', '2020'),
+(27, 50, 'Cellulose isolation from gracilaria genus and its potential as bioethanol raw material', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'Research Journal of Chemistry and Environment', 'https://www.scopus.com/sourceid/5300152224', 'Budi S.', '2018'),
+(28, 50, 'Flavonoid compounds from the leaves of Kalanchoe prolifera and their cytotoxic activity against P-388 murine leukimia cells', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'Natural Product Sciences', 'https://www.scopus.com/sourceid/79053', 'Aisyah L.', '2017'),
+(29, 50, 'The phenolic compound from Kalanchoe blossfeldiana (Crassulaceae) leaf and its antiplasmodial activity against Plasmodium falciparum 3D7', 'https://www.scopus.com/home.uri	', 'Q4 Journal', 'Indonesian Journal of Chemistry', 'https://www.scopus.com/sourceid/21100223536', 'Yun Y.F.', '2016');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penelitian_magister_kimia`
+-- Struktur dari tabel `penelitian_magister_kimia`
 --
 
 CREATE TABLE `penelitian_magister_kimia` (
@@ -282,16 +320,25 @@ CREATE TABLE `penelitian_magister_kimia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `penelitian_magister_kimia`
+-- Dumping data untuk tabel `penelitian_magister_kimia`
 --
 
 INSERT INTO `penelitian_magister_kimia` (`ID_Penelitian_Magister_Kimia`, `ID_Admin`, `Judul_Penelitian`, `Tautan_Penelitian`, `Tingkatan`, `Judul_Journal`, `Tautan_Journal`, `Pencipta`, `Tahun`) VALUES
-(3, 50, 'Synthesis and Characterization of Fe-Doped CaTiO3 Polyhedra Prepared by Molten NaCl Salt', 'https://www.scopus.com/home.uri', 'Q2 Journal', 'Science and Technology Indonesia', 'https://www.scopus.com/sourceid/21101040666', 'Novianti D.R', '2022');
+(3, 50, 'Synthesis and Characterization of Fe-Doped CaTiO3 Polyhedra Prepared by Molten NaCl Salt', 'https://www.scopus.com/home.uri', 'Q2 Journal', 'Science and Technology Indonesia', 'https://www.scopus.com/sourceid/21101040666', 'Novianti D.R', '2022'),
+(6, 50, 'Artificial Neural Network-Based Machine Learning Approach to Stock Market Prediction Model on the Indonesia Stock Exchange During the COVID-19', 'https://www.scopus.com/home.uri', 'Q2 Journal', 'Engineering Letters', 'https://www.scopus.com/sourceid/17800156701', 'Melina', '2022'),
+(7, 50, 'Synthesis and characterization of plate-like vanadium doped SrBi4Ti4O15 prepared via KCl molten salt method', 'https://www.scopus.com/home.uri', 'Q3 Journal', 'Communications in Science and Technology', 'https://www.scopus.com/sourceid/21101017727', 'Sari P. ', '2022'),
+(8, 50, 'IMMOBILIZATION OF CRUDE POLYPHENOL OXIDASE PURPLE EGGPLANT EXTRACT ON CHITOSANMEMBRANE FOR REMOVAL OF PHENOL WASTEWATER', 'https://www.scopus.com/home.uri', 'Q3 Journal', 'European Chemical Bulletin', 'https://www.scopus.com/sourceid/21100898023', 'Murniati A. ', '2022'),
+(9, 50, 'Utilization of Tephrosia vogelii in post-mining land reclamation', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'IOP Conference Series: Earth and Environmental Science', 'https://www.scopus.com/sourceid/19900195068', 'Kusumaningtyas V.A', '2021'),
+(10, 50, 'Green synthesis of silver@carbon dots nanocomposites for enhancing the antimicrobial activity', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Primadona I.', '2021'),
+(11, 50, 'Cu-Mn Co-doped NiFe2O4based thick ceramic film as negative temperature coefficient thermistors', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'IOP Conference Series: Earth and Environmental Science', 'https://www.scopus.com/sourceid/19900195068', 'Hardian A.', '2021'),
+(12, 50, 'The potency of Cassia siamea as phytostabilization in post-mining land reclamation', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'IOP Conference Series: Earth and Environmental Science', 'https://www.scopus.com/sourceid/19900195068', 'Kusumaningtyas V.A.', '2021'),
+(13, 50, 'Synthesis, characterization, and evaluation of ZrSiO4/Fe2O3adsorbent for methylene blue removal in aqueous solutions', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'IOP Conference Series: Earth and Environmental Science', 'https://www.scopus.com/sourceid/19900195068', 'Yuliana T.', '2021'),
+(14, 50, 'Effect of heat treatment on preparation of expanded perlite from Indonesian perlite rock', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Wahyudi A.', '2021');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penelitian_sistem_informasi`
+-- Struktur dari tabel `penelitian_sistem_informasi`
 --
 
 CREATE TABLE `penelitian_sistem_informasi` (
@@ -306,10 +353,26 @@ CREATE TABLE `penelitian_sistem_informasi` (
   `Tahun` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `penelitian_sistem_informasi`
+--
+
+INSERT INTO `penelitian_sistem_informasi` (`ID_Sistem_Informasi`, `ID_Admin`, `Judul_Penelitian`, `Tautan_Penelitian`, `Tingkatan`, `Judul_Jurnal`, `Tautan_Jurnal`, `Pencipta`, `Tahun`) VALUES
+(8, 50, 'Implementing secure rest API on the integration of electronic medical records between a local hospital and nearby private clinics', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Suryanto H.', '2023'),
+(9, 50, 'Dynamic Patient Categorization Based on Medical Records Using Fuzzy C-Means Clustering Technique', 'https://www.scopus.com/home.uri', 'no-Q Journal', 'ICCoSITE 2023 – International Conference on Computer Science, Information Technology and Engineering', 'https://www.scopus.com/sourceid/21101161002', 'Wati D.F.', '2023'),
+(10, 50, 'Microservices technology in citizen-centric E-government', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Saepuloh R.M.', '2023'),
+(11, 50, 'Indoor temporal spatial analysis on the movement of nurses in hospitals based on local Wi-Fi networks', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Mediyanti M.', '2023'),
+(12, 50, 'Smart queueing for outpatient in a private hospital using location-based service', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Sukmanisa S.S.', '2023'),
+(13, 50, 'Recommendations for cardiac disease prevention packages based on medical records with collaborative filtering recommendations using factorization matrix', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Nova C.C.', '2023'),
+(14, 50, 'Two factor authentication in E-voting system using time based one time password', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Hermawan A.F.', '2023'),
+(15, 50, 'IImplementing geographical information system in selecting a proper health facilities based on analytical hierarchy process', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Reanto A.H.', '2023'),
+(16, 50, 'Implementing public participation geographical information system to determine subsidized market operation of primary commodities in Indonesia using analytical hierarchy process', 'https://www.scopus.com/home.uri', 'Q4 Journal', 'AIP Conference Proceedings', 'https://www.scopus.com/sourceid/26916', 'Almauludin M.G.', '2023'),
+(17, 50, 'Prediction Analysis of Four Disease Risk Using Decision Tree C4.5', 'https://www.scopus.com/home.uri', 'no-Q Journal', 'ICCoSITE 2023 – International Conference on Computer Science, Information Technology and Engineering', 'https://www.scopus.com/sourceid/21101161002', 'Rusyana N.R.', '2023');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengabdian_masyarakat`
+-- Struktur dari tabel `pengabdian_masyarakat`
 --
 
 CREATE TABLE `pengabdian_masyarakat` (
@@ -323,10 +386,26 @@ CREATE TABLE `pengabdian_masyarakat` (
   `Tahun` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `pengabdian_masyarakat`
+--
+
+INSERT INTO `pengabdian_masyarakat` (`ID_Pengabdian`, `ID_Admin`, `Judul_Pengabdian`, `Tautan_Pengabdian`, `Leader`, `Event`, `Personil`, `Tahun`) VALUES
+(5, 50, 'PELATIHAN PENYUSUNAN LAPORAN KEUANGAN DANA MASJID PADA MASJID-MASJID JAMI DI DESA JAMBUDIPA CISARUA BANDUNG BARAT', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Siti Kustinah', 'HIBAH INTERNAL ( KU )', 'Romli; Eddy Winarso;', '2023'),
+(6, 50, 'PELATIHAN DAN PENDAMPINGAN DIGITAL MARKETING SERTA PENYUSUNAN LAPORAN KEUANGAN UMKM SESUAI SAK EMKM BERBASIS APLIKASI', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Raden Budi Hendaris', 'HIBAH INTERNAL ( KU )', 'Neni Maryani; Muhammad Anggionaldi;', '2023'),
+(7, 50, 'OPTIMALISASI PROGRAM PEMBERIAN TABLET BESI DAN SKRINING ANEMIA KEPADA REMAJA USIA 13-15 TAHUN DI KABUPATEN BANDUNG BARAT', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Desy Linasari', 'HIBAH INTERNAL ( KU )', 'Endry Septiadi; Anastasia Yani Triningtyas;', '2023'),
+(8, 50, 'PENYULUHAN, PEMERIKSAAN FUNGSI PENDENGARAN, DAN FAKTOR RISIKO GANGGUAN DENGAR PADA PADA PRAJURIT DENGAN RISIKO TRAUMA AKUSTIK AKIBAT LEDAKAN MERIAM HOWITZER 105.', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Asti Kristiani', 'HIBAH INTERNAL ( KU )', 'Sigit Sasongko;', '2023'),
+(9, 50, 'PENINGKATAN PERAN GURU DAN SISWA DALAM KEBERHASILAN MITIGASI BENCANA DI WILAYAH SESAR LEMBANG', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Khirisna Wisnu Sakti', 'HIBAH INTERNAL ( KU )', 'Fini Ainun Qolbi Wasdili; Diki Ardiansyah, S.kep.,', '2023'),
+(10, 50, 'PEMERIKSAAN KESEHATAN GIGI MULUT DAN PENYULUHAN BAHAN ALAM UNTUK KESEHATAN GIGI MULUT DI KAMPUNG ADAT CIREUNDEU KOTA CIMAHI', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Euis Reni Yuslianti', 'HIBAH INTERNAL ( KU )', 'Asoh Rahaju; Soraya Riyanti;', '2023'),
+(11, 50, 'PENGEMBANGAN UNIT USAHA UNGGULAN MELALUI E-COMMERCE DAN MEDIA SOSIAL MARKETING PADA SMKN 3 CIMAHI', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Abdul Ahmad Hafidh Nurmansyah', 'HIBAH INTERNAL ( KU )', 'Dian Lestari; Novi Susyani;', '2023'),
+(12, 50, 'PENGENALAN SAFETY MATERIAL DATA SHEET (MSDS) PADA PENGELOLA LABORATORIUM DAN SISWA SMK KESEHATAN', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Sitti Romlah', 'HIBAH INTRNAL ( KU )', 'Iis Herawati; Ariana Novilla;', '2023'),
+(13, 50, 'PELATIHAN BANTUAN HIDUP DASAR PADA ANGGOTA ASOSIASI PENGUSAHA JASA BOGA INDONESIA (APJI) PROVINSI JAWA BARAT', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Tezza Adriansyah Anwar', 'HIBAH INTERNAL ( KU )', 'Ridono Caesar Suhud; Indarti Trimurtini;', '2023'),
+(14, 50, 'PKM PENINGKATAN KOMPETENSI SISWA SMKN 3 CIMAHI MELALUI PELATIHAN SUPPLY CHAIN MANAGEMENT', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Aam Rachmat Mulyana', 'HIBAH INTERNAL ( KU )', 'Khaerul Rizal Abdurahman; Edi Nurtjahjadi;', '2023');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengumuman`
+-- Struktur dari tabel `pengumuman`
 --
 
 CREATE TABLE `pengumuman` (
@@ -340,7 +419,7 @@ CREATE TABLE `pengumuman` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prestasi`
+-- Struktur dari tabel `prestasi`
 --
 
 CREATE TABLE `prestasi` (
@@ -354,7 +433,7 @@ CREATE TABLE `prestasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `prestasi`
+-- Dumping data untuk tabel `prestasi`
 --
 
 INSERT INTO `prestasi` (`ID_Prestasi`, `ID_Admin`, `Gambar`, `Nama_Mahasiswa`, `Kegiatan`, `Pencapaian`, `Tahun_Pencapaian`) VALUES
@@ -364,7 +443,7 @@ INSERT INTO `prestasi` (`ID_Prestasi`, `ID_Admin`, `Gambar`, `Nama_Mahasiswa`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produk_inovatif`
+-- Struktur dari tabel `produk_inovatif`
 --
 
 CREATE TABLE `produk_inovatif` (
@@ -379,16 +458,25 @@ CREATE TABLE `produk_inovatif` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `produk_inovatif`
+-- Dumping data untuk tabel `produk_inovatif`
 --
 
 INSERT INTO `produk_inovatif` (`ID_Produk`, `ID_Admin`, `Judul_Inovasi`, `Tautan_Inovasi`, `Leader`, `Event`, `Personil`, `Tahun`) VALUES
-(3, 50, 'Standardisasi, Uji Pra Klinik dan Toksisitas Kumis Kucing (Orthosiphon Aristatus (Blume) Miq.) Varietas Ungu Sebagai Dasar Pengembangan Obat Herbal Antihipertensi', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Fahrauk Faramayuda', 'PENELITIAN DESENTRALISASI (PDUPT)', 'Soraya Riyanti; Suryani', '2024');
+(3, 50, 'Standardisasi, Uji Pra Klinik dan Toksisitas Kumis Kucing (Orthosiphon Aristatus (Blume) Miq.) Varietas Ungu Sebagai Dasar Pengembangan Obat Herbal Antihipertensi', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=services#!', 'Fahrauk Faramayuda', 'PENELITIAN DESENTRALISASI (PDUPT)', 'Soraya Riyanti; Suryani', '2024'),
+(5, 50, 'KAJIAN ASPEK-ASPEK YANG BERHUBUNGAN TERHADAP RENDAHNYA CAKUPAN TES INSPEKSI VISUAL ASAM ASETAT DALAM PENEMUAN AWAL KANKER SERVIKS DI KOTA CIMAHI', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=researches#!', 'Nasir Ahmad', 'HIBAH INTERNAL (KU)', 'Nanik Cahyati;', '2023'),
+(6, 50, 'PENGARUH PROSEDUR AUDIT BERBASIS TEKNOLOGI INFORMASI DAN PENGALAMAN AUDITOR TERHADAP KUALITAS AUDIT', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=researches#!', 'Neni Maryani', 'HIBAH INTERNAL (KU)', 'Rendi Kusuma Natita;Ali Rahman Reza Zaputra;', '2023'),
+(7, 50, 'PROFIL FITOKIMIA EKSTRAK DAUN BUNGUR DAN DAUN MANGKOKAN SEBAGAI KOMBINASI HERBAL PENURUN GLUKOSA DARAH', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=researches#!', 'Soraya Riyanti', 'Soraya Riyanti', '-', '2023'),
+(8, 50, 'KAJIAN MEKANISME KERJA RESVERATROL SEBAGAI ANTIMALARIA SECARA IN VITRO', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=researches#!', 'Faizal Hermanto', 'HIBAH INTERNAL (KU)', '-', '2023'),
+(9, 50, 'INTERAKSI ANTIMIKROBA EKSTRAK ETANOL DAUN SIRIH HIJAU (PIPER BETLE L.) DAN DAUN SIRIH MERAH (PIPER CROCATUM RUIZ &amp;amp; PAV.) DENGAN BAKTERI S. MUTANS DAN JAMUR C. ALBICANS', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=researches#!', 'Anna Choirunnisa', 'HIBAH INTERNAL (KU)', '-', '2023'),
+(10, 50, 'PEMILU DAN POLITIK IDENTITAS DI INDONESIA : SEBUAH PERSEPEKTIF DEMOKRASI MULTIKULTURAL', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=researches#!', 'Lukman Munafar Fauzi', 'HIBAH INTERNAL (KU)', 'Arlan Siddah; Dadan Kurnia;', '2023'),
+(11, 50, 'STUDI GAMBARAN RADIOGRAFI UNTUK MENGETAHUI POSISI ANATOMI GIGI IMPAKSI, SINUS MAKSILARIS, DAN FORAMEN MENTAL SEHINGGA MENCEGAH KOMPLIKASI PADA PROSEDUR ODONTEKTOMI TAHUN KE-2', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=researches#!', 'Mutiara Sukma Suntana', 'HIBAH INTERNAL (KU)', 'Ratna Trisusanti', '2023'),
+(12, 50, 'ANALYSIS OF FIRM SPECIFIC FACTORS INFLUENCING DIVIDEND POLICY ON THE INDONESIAN STOCK EXCHANGE SHARIA CAPITAL MARKET (STUDY ON CORPORTE CORPORATIONS IN JAKARTA ISLAMIC INDEX)', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=researches#!', 'Desmiza', 'HIBAH INTERNAL (KU)', 'Rosmini Ramli;', '2023'),
+(13, 50, 'PENGEMBANGAN MODEL KOMUNIKASI UMPAN BALIK PADA PENILAIAN KLINIK DALAM KULTUR HIERARKIS DAN KOLEKTIVIS', 'https://sinta.kemdikbud.go.id/affiliations/profile/1409/?view=researches#!', 'Sylvia Mustika Sari', 'HIBAH INTERNAL (KU)', 'Arlisa Wulandari', '2023');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `program_studi`
+-- Struktur dari tabel `program_studi`
 --
 
 CREATE TABLE `program_studi` (
@@ -399,10 +487,20 @@ CREATE TABLE `program_studi` (
   `Tautan_Prodi` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `program_studi`
+--
+
+INSERT INTO `program_studi` (`ID_Prodi`, `ID_Admin`, `Nama_Prodi`, `Gambar_Prodi`, `Tautan_Prodi`) VALUES
+(23, 50, 'S-1 Kimia', 0x363638336333353331666264632e706e67, 'https://kimia.unjani.ac.id/'),
+(24, 50, 'S-1 Sistem Informasi', 0x363638336333393065356662652e706e67, 'https://si.unjani.ac.id/'),
+(25, 50, 'S-1 Informatika', 0x363638336333623838303037362e706e67, 'https://if.unjani.ac.id/'),
+(26, 50, 'S-2 Magister Kimia', 0x363638336333646262353666652e706e67, 'https://magister.kimia.unjani.ac.id/');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tenaga_dosen`
+-- Struktur dari tabel `tenaga_dosen`
 --
 
 CREATE TABLE `tenaga_dosen` (
@@ -413,7 +511,7 @@ CREATE TABLE `tenaga_dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tenaga_dosen`
+-- Dumping data untuk tabel `tenaga_dosen`
 --
 
 INSERT INTO `tenaga_dosen` (`ID_Dosen`, `NIP_NID_Dosen`, `Nama_Dosen`, `Jabatan_Dosen`) VALUES
@@ -456,7 +554,7 @@ INSERT INTO `tenaga_dosen` (`ID_Dosen`, `NIP_NID_Dosen`, `Nama_Dosen`, `Jabatan_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tenaga_staff`
+-- Struktur dari tabel `tenaga_staff`
 --
 
 CREATE TABLE `tenaga_staff` (
@@ -467,7 +565,7 @@ CREATE TABLE `tenaga_staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tenaga_staff`
+-- Dumping data untuk tabel `tenaga_staff`
 --
 
 INSERT INTO `tenaga_staff` (`ID_Staff`, `NIP_NID_Staff`, `Nama_Staff`, `Jabatan_Staff`) VALUES
@@ -513,7 +611,7 @@ INSERT INTO `tenaga_staff` (`ID_Staff`, `NIP_NID_Staff`, `Nama_Staff`, `Jabatan_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `testimoni`
+-- Struktur dari tabel `testimoni`
 --
 
 CREATE TABLE `testimoni` (
@@ -526,373 +624,375 @@ CREATE TABLE `testimoni` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `testimoni`
+-- Dumping data untuk tabel `testimoni`
 --
 
 INSERT INTO `testimoni` (`ID_Testimoni`, `ID_Admin`, `Foto_Mahasiswa`, `Nama_Mahasiswa`, `Kesan_Mahasiswa`, `Tanggal_Testimoni`) VALUES
-(32, 50, 0x6d61686173697377615f363634353763393430333666362e6a7067, 'Naufal', 'FSI KEREN', '2024-05-16');
+(32, 50, 0x6d61686173697377615f363634353763393430333666362e6a7067, 'Naufal', 'FSI KEREN', '2024-05-16'),
+(33, 50, 0x6d61686173697377615f363638336262386332373939632e6a7067, 'Ahsan Ghifari', 'Masya Allah', '2024-07-11'),
+(34, 50, 0x6d61686173697377615f363638336262626663376134362e6a7067, 'Muhammad Rezky Indriawan ', 'JAYA JAYA JAYA!!!!!!!', '2024-07-05');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `admin`
+-- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`ID_Admin`);
 
 --
--- Indexes for table `agenda`
+-- Indeks untuk tabel `agenda`
 --
 ALTER TABLE `agenda`
   ADD PRIMARY KEY (`ID_Agenda`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `beasiswa`
+-- Indeks untuk tabel `beasiswa`
 --
 ALTER TABLE `beasiswa`
   ADD PRIMARY KEY (`ID_Beasiswa`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `berita`
+-- Indeks untuk tabel `berita`
 --
 ALTER TABLE `berita`
   ADD PRIMARY KEY (`ID_Berita`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `carousel`
+-- Indeks untuk tabel `carousel`
 --
 ALTER TABLE `carousel`
   ADD PRIMARY KEY (`ID_Carousel`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `kalender_akademik`
+-- Indeks untuk tabel `kalender_akademik`
 --
 ALTER TABLE `kalender_akademik`
   ADD PRIMARY KEY (`ID_Akademik`),
   ADD UNIQUE KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `kelulusan`
+-- Indeks untuk tabel `kelulusan`
 --
 ALTER TABLE `kelulusan`
   ADD PRIMARY KEY (`ID_Kelulusan`),
   ADD KEY `ID_Prodi` (`ID_Prodi`);
 
 --
--- Indexes for table `navbar`
+-- Indeks untuk tabel `navbar`
 --
 ALTER TABLE `navbar`
   ADD PRIMARY KEY (`ID_Navbar`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `penelitian_if`
+-- Indeks untuk tabel `penelitian_if`
 --
 ALTER TABLE `penelitian_if`
   ADD PRIMARY KEY (`ID_Penelitian_If`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `penelitian_kimia`
+-- Indeks untuk tabel `penelitian_kimia`
 --
 ALTER TABLE `penelitian_kimia`
   ADD PRIMARY KEY (`ID_Penelitian_Kimia`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `penelitian_magister_kimia`
+-- Indeks untuk tabel `penelitian_magister_kimia`
 --
 ALTER TABLE `penelitian_magister_kimia`
   ADD PRIMARY KEY (`ID_Penelitian_Magister_Kimia`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `penelitian_sistem_informasi`
+-- Indeks untuk tabel `penelitian_sistem_informasi`
 --
 ALTER TABLE `penelitian_sistem_informasi`
   ADD PRIMARY KEY (`ID_Sistem_Informasi`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `pengabdian_masyarakat`
+-- Indeks untuk tabel `pengabdian_masyarakat`
 --
 ALTER TABLE `pengabdian_masyarakat`
   ADD PRIMARY KEY (`ID_Pengabdian`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `pengumuman`
+-- Indeks untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
   ADD PRIMARY KEY (`ID_Pengumuman`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `prestasi`
+-- Indeks untuk tabel `prestasi`
 --
 ALTER TABLE `prestasi`
   ADD PRIMARY KEY (`ID_Prestasi`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `produk_inovatif`
+-- Indeks untuk tabel `produk_inovatif`
 --
 ALTER TABLE `produk_inovatif`
   ADD PRIMARY KEY (`ID_Produk`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `program_studi`
+-- Indeks untuk tabel `program_studi`
 --
 ALTER TABLE `program_studi`
   ADD PRIMARY KEY (`ID_Prodi`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- Indexes for table `tenaga_dosen`
+-- Indeks untuk tabel `tenaga_dosen`
 --
 ALTER TABLE `tenaga_dosen`
   ADD PRIMARY KEY (`ID_Dosen`);
 
 --
--- Indexes for table `tenaga_staff`
+-- Indeks untuk tabel `tenaga_staff`
 --
 ALTER TABLE `tenaga_staff`
   ADD PRIMARY KEY (`ID_Staff`);
 
 --
--- Indexes for table `testimoni`
+-- Indeks untuk tabel `testimoni`
 --
 ALTER TABLE `testimoni`
   ADD PRIMARY KEY (`ID_Testimoni`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
   MODIFY `ID_Admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT for table `agenda`
+-- AUTO_INCREMENT untuk tabel `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `ID_Agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_Agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `beasiswa`
+-- AUTO_INCREMENT untuk tabel `beasiswa`
 --
 ALTER TABLE `beasiswa`
   MODIFY `ID_Beasiswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `berita`
+-- AUTO_INCREMENT untuk tabel `berita`
 --
 ALTER TABLE `berita`
   MODIFY `ID_Berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `carousel`
+-- AUTO_INCREMENT untuk tabel `carousel`
 --
 ALTER TABLE `carousel`
-  MODIFY `ID_Carousel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID_Carousel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `kalender_akademik`
+-- AUTO_INCREMENT untuk tabel `kalender_akademik`
 --
 ALTER TABLE `kalender_akademik`
   MODIFY `ID_Akademik` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `kelulusan`
+-- AUTO_INCREMENT untuk tabel `kelulusan`
 --
 ALTER TABLE `kelulusan`
   MODIFY `ID_Kelulusan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `navbar`
+-- AUTO_INCREMENT untuk tabel `navbar`
 --
 ALTER TABLE `navbar`
   MODIFY `ID_Navbar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
--- AUTO_INCREMENT for table `penelitian_if`
+-- AUTO_INCREMENT untuk tabel `penelitian_if`
 --
 ALTER TABLE `penelitian_if`
-  MODIFY `ID_Penelitian_If` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_Penelitian_If` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `penelitian_kimia`
+-- AUTO_INCREMENT untuk tabel `penelitian_kimia`
 --
 ALTER TABLE `penelitian_kimia`
-  MODIFY `ID_Penelitian_Kimia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_Penelitian_Kimia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `penelitian_magister_kimia`
+-- AUTO_INCREMENT untuk tabel `penelitian_magister_kimia`
 --
 ALTER TABLE `penelitian_magister_kimia`
-  MODIFY `ID_Penelitian_Magister_Kimia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_Penelitian_Magister_Kimia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `penelitian_sistem_informasi`
+-- AUTO_INCREMENT untuk tabel `penelitian_sistem_informasi`
 --
 ALTER TABLE `penelitian_sistem_informasi`
-  MODIFY `ID_Sistem_Informasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_Sistem_Informasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `pengabdian_masyarakat`
+-- AUTO_INCREMENT untuk tabel `pengabdian_masyarakat`
 --
 ALTER TABLE `pengabdian_masyarakat`
-  MODIFY `ID_Pengabdian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_Pengabdian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `pengumuman`
+-- AUTO_INCREMENT untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
   MODIFY `ID_Pengumuman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `prestasi`
+-- AUTO_INCREMENT untuk tabel `prestasi`
 --
 ALTER TABLE `prestasi`
   MODIFY `ID_Prestasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `produk_inovatif`
+-- AUTO_INCREMENT untuk tabel `produk_inovatif`
 --
 ALTER TABLE `produk_inovatif`
-  MODIFY `ID_Produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_Produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `program_studi`
+-- AUTO_INCREMENT untuk tabel `program_studi`
 --
 ALTER TABLE `program_studi`
-  MODIFY `ID_Prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID_Prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `tenaga_dosen`
+-- AUTO_INCREMENT untuk tabel `tenaga_dosen`
 --
 ALTER TABLE `tenaga_dosen`
   MODIFY `ID_Dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT for table `tenaga_staff`
+-- AUTO_INCREMENT untuk tabel `tenaga_staff`
 --
 ALTER TABLE `tenaga_staff`
   MODIFY `ID_Staff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `testimoni`
+-- AUTO_INCREMENT untuk tabel `testimoni`
 --
 ALTER TABLE `testimoni`
-  MODIFY `ID_Testimoni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `ID_Testimoni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `agenda`
+-- Ketidakleluasaan untuk tabel `agenda`
 --
 ALTER TABLE `agenda`
   ADD CONSTRAINT `agenda_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `beasiswa`
+-- Ketidakleluasaan untuk tabel `beasiswa`
 --
 ALTER TABLE `beasiswa`
   ADD CONSTRAINT `beasiswa_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `berita`
+-- Ketidakleluasaan untuk tabel `berita`
 --
 ALTER TABLE `berita`
   ADD CONSTRAINT `berita_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `carousel`
+-- Ketidakleluasaan untuk tabel `carousel`
 --
 ALTER TABLE `carousel`
   ADD CONSTRAINT `carousel_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `kelulusan`
+-- Ketidakleluasaan untuk tabel `kelulusan`
 --
 ALTER TABLE `kelulusan`
   ADD CONSTRAINT `kelulusan_ibfk_1` FOREIGN KEY (`ID_Prodi`) REFERENCES `program_studi` (`ID_Prodi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `navbar`
+-- Ketidakleluasaan untuk tabel `navbar`
 --
 ALTER TABLE `navbar`
   ADD CONSTRAINT `navbar_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `penelitian_if`
+-- Ketidakleluasaan untuk tabel `penelitian_if`
 --
 ALTER TABLE `penelitian_if`
   ADD CONSTRAINT `penelitian_if_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `penelitian_kimia`
+-- Ketidakleluasaan untuk tabel `penelitian_kimia`
 --
 ALTER TABLE `penelitian_kimia`
   ADD CONSTRAINT `penelitian_kimia_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `penelitian_magister_kimia`
+-- Ketidakleluasaan untuk tabel `penelitian_magister_kimia`
 --
 ALTER TABLE `penelitian_magister_kimia`
   ADD CONSTRAINT `penelitian_magister_kimia_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `penelitian_sistem_informasi`
+-- Ketidakleluasaan untuk tabel `penelitian_sistem_informasi`
 --
 ALTER TABLE `penelitian_sistem_informasi`
   ADD CONSTRAINT `penelitian_sistem_informasi_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `pengabdian_masyarakat`
+-- Ketidakleluasaan untuk tabel `pengabdian_masyarakat`
 --
 ALTER TABLE `pengabdian_masyarakat`
   ADD CONSTRAINT `pengabdian_masyarakat_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `pengumuman`
+-- Ketidakleluasaan untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
   ADD CONSTRAINT `pengumuman_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `prestasi`
+-- Ketidakleluasaan untuk tabel `prestasi`
 --
 ALTER TABLE `prestasi`
   ADD CONSTRAINT `prestasi_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `produk_inovatif`
+-- Ketidakleluasaan untuk tabel `produk_inovatif`
 --
 ALTER TABLE `produk_inovatif`
   ADD CONSTRAINT `produk_inovatif_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `program_studi`
+-- Ketidakleluasaan untuk tabel `program_studi`
 --
 ALTER TABLE `program_studi`
   ADD CONSTRAINT `program_studi_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `testimoni`
+-- Ketidakleluasaan untuk tabel `testimoni`
 --
 ALTER TABLE `testimoni`
   ADD CONSTRAINT `testimoni_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
