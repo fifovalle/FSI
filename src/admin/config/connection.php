@@ -12,6 +12,7 @@ $koneksi = new mysqli($nama_server, $nama_pengguna, $kata_sandi, $nama_database)
 $halamanSaatIni = basename($_SERVER['PHP_SELF']);
 
 $_SESSION['gagal'] = $_SESSION['gagal'] ?? '';
+
 function setPesanKesalahan($pesan_kesalahan)
 {
     $_SESSION['gagal'] = $pesan_kesalahan;

@@ -31,54 +31,54 @@
                 <ul class="nav d-flex mb-3 mt-4">
                     <li class="nav-item mr-2">
                         <a href="https://www.unjani.ac.id/" target="_blank">
-                            <img src="../assets/img/sponsor/1.png" class="img-fluid" alt="...">
+                            <img src="<?php echo $akar_tautan ?>src/assets/img/sponsor/1.png" class="img-fluid" alt="...">
                         </a>
                     </li>
                     <li class="nav-item mr-2">
                         <a href="https://cimahikota.go.id/" target="_blank">
-                            <img src="../assets/img/sponsor/2.png" class="img-fluid" alt="...">
+                            <img src="<?php echo $akar_tautan ?>src/assets/img/sponsor/2.png" class="img-fluid" alt="...">
                         </a>
                     </li>
                     <li class="nav-item mr-2">
                         <a href="https://www.itb.ac.id/" target="_blank">
-                            <img src="../assets/img/sponsor/3.png" class="img-fluid" alt="...">
+                            <img src="<?php echo $akar_tautan ?>src/assets/img/sponsor/3.png" class="img-fluid" alt="...">
                         </a>
                     </li>
                     <li class="nav-item mr-2">
                         <a href="https://www.unpad.ac.id/" target="_blank">
-                            <img src="../assets/img/sponsor/4.png" class="img-fluid" alt="...">
+                            <img src="<?php echo $akar_tautan ?>src/assets/img/sponsor/4.png" class="img-fluid" alt="...">
                         </a>
                     </li>
                     <li class="nav-item mr-2">
                         <a href="https://www.rsalislam.com/" target="_blank">
-                            <img src="../assets/img/sponsor/5.png" class="img-fluid" alt="...">
+                            <img src="<?php echo $akar_tautan ?>src/assets/img/sponsor/5.png" class="img-fluid" alt="...">
                         </a>
                     </li>
                 </ul>
                 <ul class="nav d-flex mt-3">
                     <li class="nav-item mr-2">
                         <a href="https://brin.go.id/" target="_blank">
-                            <img src="../assets/img/sponsor/6.png" class="img-fluid" alt="...">
+                            <img src="<?php echo $akar_tautan ?>src/assets/img/sponsor/6.png" class="img-fluid" alt="...">
                         </a>
                     </li>
                     <li class="nav-item mr-2">
                         <a href="https://www.banpt.or.id/" target="_blank">
-                            <img src="../assets/img/sponsor/7.png" class="img-fluid" alt="...">
+                            <img src="<?php echo $akar_tautan ?>src/assets/img/sponsor/7.png" class="img-fluid" alt="...">
                         </a>
                     </li>
                     <li class="nav-item mr-2">
                         <a href="https://www.cisco.com/" target="_blank">
-                            <img src="../assets/img/sponsor/8.png" class="img-fluid" alt="...">
+                            <img src="<?php echo $akar_tautan ?>src/assets/img/sponsor/8.png" class="img-fluid" alt="...">
                         </a>
                     </li>
                     <li class="nav-item mr-2">
                         <a href="https://www.utm.my/" target="_blank">
-                            <img src="../assets/img/sponsor/9.png" class="img-fluid" alt="...">
+                            <img src="<?php echo $akar_tautan ?>src/assets/img/sponsor/9.png" class="img-fluid" alt="...">
                         </a>
                     </li>
                     <li class="nav-item mr-2">
                         <a href="https://www.yamagata-u.ac.jp/en/" target="_blank">
-                            <img src="../assets/img/sponsor/10.png" class="img-fluid" alt="...">
+                            <img src="<?php echo $akar_tautan ?>src/assets/img/sponsor/10.png" class="img-fluid" alt="...">
                         </a>
                     </li>
                 </ul>

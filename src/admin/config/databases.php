@@ -2175,3 +2175,144 @@ class PengabdianMasyarakat
     }
 }
 // ===================================PENGABDIAN MASYARAKAT====================================
+
+
+// ===================================STRUKTUR ORGANISASI====================================
+class StrukturOrganisasi
+{
+    private $koneksi;
+
+    public function __construct($koneksi)
+    {
+        $this->koneksi = $koneksi;
+    }
+
+    private function menghilangkanString($string)
+    {
+        return htmlspecialchars(mysqli_real_escape_string($this->koneksi, $string));
+    }
+
+    public function tambahStrukturOrganisasi($data)
+    {
+        $query = "INSERT INTO struktur_organisasi(ID_Admin, Foto_Dosen_Organisasi, Nama_Dosen_Organisasi, Jabatan_Dosen_Organisasi, Kasubag_Organisasi) VALUES (?, ?, ?, ?, ?)";
+
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param(
+            "issss",
+            $data['ID_Admin'],
+            $this->menghilangkanString($data['Foto_Dosen_Organisasi']),
+            $this->menghilangkanString($data['Nama_Dosen_Organisasi']),
+            $this->menghilangkanString($data['Jabatan_Dosen_Organisasi']),
+            $this->menghilangkanString($data['Kasubag_Organisasi'])
+        );
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function tampilkanDataStrukturOrganisasi()
+    {
+        $query = "SELECT * FROM struktur_organisasi LEFT JOIN admin ON struktur_organisasi.ID_Admin = admin.ID_Admin";
+        $result = $this->koneksi->query($query);
+
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($baris = $result->fetch_assoc()) {
+                $data[] = $baris;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    public function buatTree($data)
+    {
+        $tree = [];
+        $map = [];
+
+        foreach ($data as $item) {
+            $map[$item['ID_Organisasi']] = $item;
+            $map[$item['ID_Organisasi']]['children'] = [];
+        }
+
+        foreach ($data as $item) {
+            if ($item['ID_Admin'] == 0) {
+                $tree[] = &$map[$item['ID_Organisasi']];
+            } else {
+                $map[$item['ID_Admin']]['children'][] = &$map[$item['ID_Organisasi']];
+            }
+        }
+
+        return $tree;
+    }
+
+    public function hapusStrukturOrganisasi($id)
+    {
+        $query = "SELECT ID_Organisasi, Foto_Dosen_Organisasi FROM struktur_organisasi WHERE ID_Organisasi=?";
+        $statement = $this->koneksi->prepare($query);
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        $idPemilikFoto = $row['ID_Organisasi'];
+        $namaFoto = $row['Foto_Dosen_Organisasi'];
+
+        if ($idPemilikFoto != $id) {
+            return false;
+        }
+
+        $queryDelete = "DELETE FROM struktur_organisasi WHERE ID_Organisasi=?";
+        $statementDelete = $this->koneksi->prepare($queryDelete);
+        $statementDelete->bind_param("i", $id);
+        $isDeleted = $statementDelete->execute();
+
+        if ($isDeleted) {
+            $direktoriFoto = "../../uploads/";
+
+            if (file_exists($direktoriFoto . $namaFoto)) {
+                if (unlink($direktoriFoto . $namaFoto)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function getGambarStrukturOrganisasiById($idStrukturOrganisasi)
+    {
+        $sql = "SELECT Foto_Dosen_Organisasi FROM struktur_organisasi WHERE ID_Organisasi = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("i", $idStrukturOrganisasi);
+        $stmt->execute();
+
+        $foto = null;
+        $stmt->bind_result($foto);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $foto;
+    }
+
+    public function perbaruiStrukturOrganisasi($idStrukturOrganisasi, $dataStrukturOrganisasi)
+    {
+        $sql = "UPDATE struktur_organisasi SET Foto_Dosen_Organisasi = ?, Nama_Dosen_Organisasi = ?, Jabatan_Dosen_Organisasi = ?, Kasubag_Organisasi = ? WHERE ID_Organisasi = ?";
+        $stmt = $this->koneksi->prepare($sql);
+        $stmt->bind_param("ssssi", $dataStrukturOrganisasi['Foto_Dosen_Organisasi'], $dataStrukturOrganisasi['Nama_Dosen_Organisasi'], $dataStrukturOrganisasi['Jabatan_Dosen_Organisasi'], $dataStrukturOrganisasi['Kasubag_Organisasi'], $idStrukturOrganisasi);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+// ===================================STRUKTUR ORGANISASI====================================

@@ -1,5 +1,7 @@
 <?php
 
+ob_start();
+
 include 'databases.php';
 
 $adminDatabase = new Admin($koneksi);
@@ -43,3 +45,5 @@ if (isset($_POST['Masuk'])) {
         exit();
     }
 }
+
+ob_end_flush();

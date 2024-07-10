@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();
 
 function containsXSS($input)
 {
@@ -82,3 +83,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode(array("success" => false, "message" => "Metode request tidak valid."));
     exit;
 }
+ob_end_flush();

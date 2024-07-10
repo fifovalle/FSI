@@ -81,6 +81,12 @@
                     <div data-i18n="Tables">Testimoni</div>
                 </a>
             </li>
+            <li class="menu-item <?php echo is_active('struktur-organisasi.php', $halaman_sekarang); ?>">
+                <a href="<?php echo $akar_tautan; ?>src/admin/pages/struktur-organisasi.php" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-network-chart"></i>
+                    <div data-i18n="Tables">Struktur Organisasi</div>
+                </a>
+            </li>
             <li class="menu-item <?php echo is_active('dosen.php', $halaman_sekarang); ?>">
                 <a href="<?php echo $akar_tautan; ?>src/admin/pages/dosen.php" class="menu-link">
                     <i class="menu-icon tf-icons bx bxs-graduation"></i>

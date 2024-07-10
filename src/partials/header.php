@@ -6,9 +6,9 @@
 <!-- End Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.0/css/boxicons.min.css">
-<link rel="stylesheet" href="../assets/css/navbar.css">
-<link rel="stylesheet" href="../assets/css/footer.css">
-<link rel="icon" href="../assets/img/Logounjani.png">
+<link rel="stylesheet" href="<?php echo $akar_tautan ?>src/assets/css/navbar.css">
+<link rel="stylesheet" href="<?php echo $akar_tautan ?>src/assets/css/footer.css">
+<link rel="icon" href="<?php echo $akar_tautan ?>src/assets/img/Logounjani.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 <title>Fakultas Sains dan Informatika</title>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jul 2024 pada 09.55
+-- Waktu pembuatan: 08 Jul 2024 pada 16.33
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -500,6 +500,41 @@ INSERT INTO `program_studi` (`ID_Prodi`, `ID_Admin`, `Nama_Prodi`, `Gambar_Prodi
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `struktur_organisasi`
+--
+
+CREATE TABLE `struktur_organisasi` (
+  `ID_Organisasi` int(11) NOT NULL,
+  `ID_Admin` int(11) NOT NULL,
+  `Foto_Dosen_Organisasi` longblob NOT NULL,
+  `Nama_Dosen_Organisasi` varchar(225) NOT NULL,
+  `Jabatan_Dosen_Organisasi` varchar(225) NOT NULL,
+  `Kasubag_Organisasi` enum('Akademik','Umum') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `struktur_organisasi`
+--
+
+INSERT INTO `struktur_organisasi` (`ID_Organisasi`, `ID_Admin`, `Foto_Dosen_Organisasi`, `Nama_Dosen_Organisasi`, `Jabatan_Dosen_Organisasi`, `Kasubag_Organisasi`) VALUES
+(3, 50, 0x646f73656e5f363638626239396437623934322e6a7067, 'Dr.Anceu Murniati, S.Si., M.Si', 'DEKAN', 'Akademik'),
+(4, 50, 0x363638626262386462386361662e6a7067, 'Dr.Arie Hardian, S.Si., M.Si', 'Wakil Dekan I', 'Akademik'),
+(5, 50, 0x646f73656e5f363638626262356265636237642e6a7067, 'Wina Witanti, S.T., M.T.', 'Wakil Dekan II', 'Akademik'),
+(6, 50, 0x646f73656e5f363638626262376664656231652e6a7067, 'Agus Komarudin, S.Kom., M.T.', 'Wakil Dekan III', 'Akademik'),
+(7, 50, 0x646f73656e5f363638626262646466333435662e6a7067, 'Juhana, S.E', 'Kabag TU', 'Akademik'),
+(8, 50, 0x646f73656e5f363638626263313634623930392e6a7067, 'Peryatna, S.Pd', 'Kaur ADM Perpustakaan', 'Akademik'),
+(9, 50, 0x646f73656e5f363638626263336536363033622e6a7067, 'Yulia Puspita', 'Kaur ADM Akademik', 'Akademik'),
+(10, 50, 0x646f73656e5f363638626263373231383636312e6a7067, 'Roby Bayu M, S.ST.', 'Anggota Akademik FSI', 'Akademik'),
+(11, 50, 0x646f73656e5f363638626263613536666332362e6a7067, 'Hermawan', 'Kaur ADM. Personel', 'Umum'),
+(12, 50, 0x646f73656e5f363638626263653633633838382e6a7067, 'Dani R SM., S.Sos', 'Kaur ADM Umum', 'Umum'),
+(13, 50, 0x646f73656e5f363638626264313036343435612e6a7067, 'Vita Natalia P, A.Md', 'Kaur ADM Keuangan', 'Umum'),
+(14, 50, 0x646f73656e5f363638626264343265626638632e6a7067, 'Ari Saptari', 'Anggota Personel FSI', 'Umum'),
+(15, 50, 0x646f73656e5f363638626264363164663130312e6a7067, 'Muhidin', 'Anggota Umum FSI', 'Umum'),
+(17, 50, 0x646f73656e5f363638626632623334616430652e6a7067, 'Yayan Sopyan', 'Anggota Urdal FSI', 'Umum');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tenaga_dosen`
 --
 
@@ -628,9 +663,10 @@ CREATE TABLE `testimoni` (
 --
 
 INSERT INTO `testimoni` (`ID_Testimoni`, `ID_Admin`, `Foto_Mahasiswa`, `Nama_Mahasiswa`, `Kesan_Mahasiswa`, `Tanggal_Testimoni`) VALUES
-(32, 50, 0x6d61686173697377615f363634353763393430333666362e6a7067, 'Naufal', 'FSI KEREN', '2024-05-16'),
-(33, 50, 0x6d61686173697377615f363638336262386332373939632e6a7067, 'Ahsan Ghifari', 'Masya Allah', '2024-07-11'),
-(34, 50, 0x6d61686173697377615f363638336262626663376134362e6a7067, 'Muhammad Rezky Indriawan ', 'JAYA JAYA JAYA!!!!!!!', '2024-07-05');
+(35, 50, 0x6d61686173697377615f363638623937353237663864652e6a7067, 'Syntax Squad', 'FSI KEREN !!!', '2024-07-08'),
+(36, 50, 0x6d61686173697377615f363638623937643836373939622e6a7067, 'Syntax Squad', 'FSI, JAYA JAYA JAYA !!!', '2024-07-08'),
+(37, 50, 0x6d61686173697377615f363638623961356336366661352e6a7067, 'Syntax Squad ', 'JAYA JAYA JAYA!!!!!', '2024-07-12'),
+(38, 50, 0x6d61686173697377615f363638623961616564353166652e6a7067, 'Syntax Squad ', 'FSIIIIII', '2024-07-13');
 
 --
 -- Indexes for dumped tables
@@ -752,6 +788,13 @@ ALTER TABLE `produk_inovatif`
 --
 ALTER TABLE `program_studi`
   ADD PRIMARY KEY (`ID_Prodi`),
+  ADD KEY `ID_Admin` (`ID_Admin`);
+
+--
+-- Indeks untuk tabel `struktur_organisasi`
+--
+ALTER TABLE `struktur_organisasi`
+  ADD PRIMARY KEY (`ID_Organisasi`),
   ADD KEY `ID_Admin` (`ID_Admin`);
 
 --
@@ -880,6 +923,12 @@ ALTER TABLE `program_studi`
   MODIFY `ID_Prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
+-- AUTO_INCREMENT untuk tabel `struktur_organisasi`
+--
+ALTER TABLE `struktur_organisasi`
+  MODIFY `ID_Organisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT untuk tabel `tenaga_dosen`
 --
 ALTER TABLE `tenaga_dosen`
@@ -895,7 +944,7 @@ ALTER TABLE `tenaga_staff`
 -- AUTO_INCREMENT untuk tabel `testimoni`
 --
 ALTER TABLE `testimoni`
-  MODIFY `ID_Testimoni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `ID_Testimoni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -990,6 +1039,12 @@ ALTER TABLE `produk_inovatif`
 --
 ALTER TABLE `program_studi`
   ADD CONSTRAINT `program_studi_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `struktur_organisasi`
+--
+ALTER TABLE `struktur_organisasi`
+  ADD CONSTRAINT `struktur_organisasi_ibfk_1` FOREIGN KEY (`ID_Admin`) REFERENCES `admin` (`ID_Admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `testimoni`

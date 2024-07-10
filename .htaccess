@@ -1,0 +1,10 @@
+# Mengaktifkan mod_rewrite
+RewriteEngine On
+
+# Menetapkan base URL
+RewriteBase /UNJANI/src/pages/
+
+# Mengarahkan ulang permintaan ke index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]

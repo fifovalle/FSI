@@ -77,10 +77,10 @@ $navbarModel = new Navbar($koneksi);
         </div>
     </div>
     <div class="container-fluid py-2">
-        <a class="navbar-brand p-0 m-0" href="../pages/index.php" style="width: 500px;">
-            <img src="../assets/img/LogoFSI.png" class="img-fluid ps-5" alt="...">
+        <a class="navbar-brand p-0 m-0" href="<?php echo $akar_tautan; ?>" style="width: 500px;">
+            <img src="<?php echo $akar_tautan; ?>src/assets/img/LogoFSI.png" class="img-fluid ps-5" alt="...">
         </a>
-        <a class="navbar-brand1"> <img src="../assets/imgLogounjani.png" class="img-thumbnail p-0 border border-0 bg-transparent pe-sm-5" alt="..." style="width: 35px; height: 35px;"> FSI UNJANI</a>
+        <a class="navbar-brand1"> <img src="<?php echo $akar_tautan; ?>src/assets/img/Logounjani.png" class="img-thumbnail p-0 border border-0 bg-transparent pe-sm-5" alt="..." style="width: 35px; height: 35px;"> FSI UNJANI</a>
         <button class="navbar-toggler border border-0 bg-transparent py-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <input type="checkbox" id="checkbox">
             <label for="checkbox" class="toggle border border-0">
@@ -92,7 +92,7 @@ $navbarModel = new Navbar($koneksi);
         <div class="collapse navbar-collapse border border-0" id="navbarNavDarkDropdown">
             <ul class="navbar-nav ms-auto me-5 mb-2 mb-sm-0">
                 <li class="nav-item">
-                    <a class="nav-link nav-active" aria-current="page" href="../pages/index.php" id="beranda">Beranda</a>
+                    <a class="nav-link nav-active" aria-current="page" href="<?php echo $akar_tautan; ?>" id="beranda">Beranda</a>
                 </li>
                 <?php
                 $navbarProfilInfo = $navbarModel->tampilkanDataNavbarKategoriProfil();

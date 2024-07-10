@@ -1,5 +1,6 @@
 <?php
 include 'databases.php';
+ob_start();
 
 function containsXSS($input)
 {
@@ -125,3 +126,4 @@ if (isset($_POST['Simpan'])) {
     header("Location: $akar_tautan" . "src/admin/pages/profile.php");
     exit;
 }
+ob_end_flush();
